@@ -1,3 +1,5 @@
 ~$Requerimientos de informacion V22 NDA1.xlsx
 myenv
 /practicas/my_folder
+__pycache__
+*.zip

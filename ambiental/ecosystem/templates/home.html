@@ -1,10 +1,38 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Mi página web</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}" />
+    <title>Inicio</title>
+    <!-- Enlaces a hojas de estilo CSS o scripts JavaScript van aquí -->
 </head>
 <body>
-    <h1>Hola, mundo!</h1>
-    <p>Este es un ejemplo de una página web básica.</p>
+    <header class="header">
+        <div class="logo">
+            <img src="{% static 'logo2.png' %}" id="image">
+        </div>
+        <div id="rightside">   
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>   
+            <a href="#" class="btn"><button>Contacto</button></a>
+        </div>
+    </header>
+
+   <div class="categoria">
+        <div class="contenedor">
+            <h1 class="our-process">Our Process</h1>
+        </div>
+
+        <div class="contenedor2">
+            <h1 class="our-process">Our Process</h1>
+        </div>
+   </div>
 </body>
 </html>
