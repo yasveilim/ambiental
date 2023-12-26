@@ -1,5 +1,6 @@
 ~$Requerimientos de informacion V22 NDA1.xlsx
 myenv
 /practicas/my_folder
+/ecosystem/migrations/__pycache__
 __pycache__
 *.zip
