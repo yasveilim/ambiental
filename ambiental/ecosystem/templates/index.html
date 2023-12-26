@@ -1,11 +1,24 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Mi página web</title>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
+    <link rel="stylesheet" href="{% static 'css/panel.css' %}" />
+	<title>Página principal</title>
 </head>
 <body>
-    <!-- Cuando el usuario es identificado (inicia sesion) es redireccionado aqui -->
-    <h1>Hola, mundo!</h1>
-    <p>Esta es mi página web.</p>
+	<input type="checkbox" class="checkbox" id="check">
+	<label class="menu"	for="check">|||</label>
+	<div class="left-panel">
+		<ul>
+			<a href=""><li>Aire y ruído</li></a>
+			<a href=""><li>Agua</li></a>
+            <a href=""><li>Residuos</li></a>
+            <a href=""><li>RECNAT y riesgos</li></a>
+            <a href=""><li>Otros</li></a>
+			<a href=""><li>Avance</li></a>
+		</ul>
+	</div>
 </body>
 </html>
