@@ -21,6 +21,7 @@ class Index(TemplateView):
     
 
     def get_template_names(self):
+        print("Pase por aqui")
         slug = self.kwargs.get('site')
 
         if slug == 'advance':

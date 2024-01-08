@@ -27,7 +27,7 @@
 
         <div class="options__menu">	
 
-            <a href="#" class="selected">
+            <a href="{% url 'index' site='air-noise' %}" class="selected">
                 <div class="option">
                     <i class="fas fa-home" title="Aire y ruído"></i>
                     <h4>Aire y ruído</h4>
@@ -73,11 +73,10 @@
 
     </div>
 
-    <main>
-        <h1>Title Exemple</h1><br>
-       
+    <main id="content">
+        {% block content %}{% endblock content %}
     </main>
 
-    <script src="js/script.js"></script>
+    <!-- <script src="% static 'js/script.js' %"></script> -->
 </body>
 </html>
