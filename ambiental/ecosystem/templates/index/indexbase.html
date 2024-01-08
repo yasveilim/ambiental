@@ -27,42 +27,42 @@
 
         <div class="options__menu">	
 
-            <a href="{% url 'index' site='air-noise' %}" class="selected">
+            <a href="{% url 'index' site='air-noise' %}" {% if category == 'air-noise' %} class='selected'  {% endif %}>
                 <div class="option">
                     <i class="fas fa-home" title="Aire y ruído"></i>
                     <h4>Aire y ruído</h4>
                 </div>
             </a>
 
-            <a href="{% url 'index' site='water' %}" >
+            <a href="{% url 'index' site='water' %}" {% if category == 'water' %} class='selected'  {% endif %} >
                 <div class="option">
                     <i class="far fa-file" title="Agua"></i>
                     <h4>Agua</h4>
                 </div>
             </a>
             
-            <a href="{% url 'index' site='waste' %}">
+            <a href="{% url 'index' site='waste' %}" {% if category == 'waste' %} class='selected'  {% endif %}>
                 <div class="option">
                     <i class="fas fa-video" title="Residuos"></i>
                     <h4>Residuos</h4>
                 </div>
             </a>
 
-            <a href="{% url 'index' site='recnat-risks' %}">
+            <a href="{% url 'index' site='recnat-risks' %}" {% if category == 'recnat-risks' %} class='selected'  {% endif %}>
                 <div class="option">
                     <i class="far fa-sticky-note" title="Recursos naturales y riesgo"></i>
                     <h4>Recursos naturales y riesgo</h4>
                 </div>
             </a>
 
-            <a href="{% url 'index' site='others' %}">
+            <a href="{% url 'index' site='others' %}" {% if category == 'others' %} class='selected'  {% endif %}>
                 <div class="option">
                     <i class="far fa-id-badge" title="Otros"></i>
                     <h4>Otros</h4>
                 </div>
             </a>
 
-            <a href="{% url 'index' site='advance' %}">
+            <a href="{% url 'index' site='advance' %}" {% if category == 'advance' %} class='selected'  {% endif %}>
                 <div class="option">
                     <i class="far fa-address-card" title="Avance"></i>
                     <h4>Avance</h4>
