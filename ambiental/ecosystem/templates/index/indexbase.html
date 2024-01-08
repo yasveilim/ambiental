@@ -2,28 +2,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet"> 
-    <link rel="stylesheet" href="{% static 'css/panel.css' %}" />
-	<title>Página principal</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú lateral responsive - MagtimusPro</title>
+	<link rel="stylesheet" href="{% static 'css/panel.css' %}" />
+
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 </head>
-<body>
-	<input type="checkbox" class="checkbox" id="check">
-	<label class="menu"	for="check">|||</label>
-	<div class="left-panel">
-		<ul>
-			<a href="{% url 'index' site='air-noise' %}"><li>Aire y ruído</li></a>
-			<a href="{% url 'index' site='water' %}"><li>Agua</li></a>
-            <a href="{% url 'index' site='waste' %}"><li>Residuos</li></a>
-            <a href="{% url 'index' site='recnat-risks' %}"><li>RECNAT y riesgos</li></a>
-            <a href="{% url 'index' site='others' %}"><li>Otros</li></a>
-			<a href="{% url 'index' site='advance' %}"><li>Avance</li></a>
-		</ul>
-	</div>
-    <main id="content">
-        {% block content %}{% endblock content %}
+<body id="body">
+    
+    <header>
+        <div class="icon__menu">
+            <i class="fas fa-bars" id="btn_open"></i>
+        </div>
+    </header>
+
+    <div class="menu__side" id="menu_side">
+
+        <div class="name__page">
+            <i class="fab fa-youtube"></i>
+            <h4>MagtimusPro</h4>
+        </div>
+
+        <div class="options__menu">	
+
+            <a href="#" class="selected">
+                <div class="option">
+                    <i class="fas fa-home" title="Aire y ruído"></i>
+                    <h4>Aire y ruído</h4>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="option">
+                    <i class="far fa-file" title="Agua"></i>
+                    <h4>Agua</h4>
+                </div>
+            </a>
+            
+            <a href="#">
+                <div class="option">
+                    <i class="fas fa-video" title="Residuos"></i>
+                    <h4>Residuos</h4>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="option">
+                    <i class="far fa-sticky-note" title="Recursos naturales y riesgo"></i>
+                    <h4>Recursos naturales y riesgo</h4>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="option">
+                    <i class="far fa-id-badge" title="Otros"></i>
+                    <h4>Otros</h4>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="option">
+                    <i class="far fa-address-card" title="Avance"></i>
+                    <h4>Avance</h4>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+
+    <main>
+        <h1>Title Exemple</h1><br>
+       
     </main>
 
-    <footer> <p> Copyright &copy; Monica Mendoza. All Right reserved.</p></footer>
+    <script src="js/script.js"></script>
 </body>
 </html>
