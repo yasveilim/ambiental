@@ -1,171 +1,166 @@
-body {
-    /* background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c); */
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+
+*{
+	margin: 0;
+	padding: 0;
+	font-family: roboto;
+}
+ 
+ body{
+ 	overflow: hidden;
     background: linear-gradient(0.25turn, #3f87a6, #f69d3c);
-    font-family: roboto;
+ }
+
+ section{
+ 	display: flex;
+ 	justify-content: center;
+ 	align-items: center;
+ 	min-height: 100vh;
+    background: linear-gradient(0.25turn, #3f87a6, #f69d3c);
+ }
+
+ section .color{
+ 	position: absolute;
+ 	filter: blur(150px);
+ }
+
+ section .color:nth-child(1){
+    top: -350px;
+    width: 600px;
+    height: 600px;
 }
 
+ section .color:nth-child(2){
+ 	top: 150px;
+    left: -125px;
+    width: 120px;
+    height: 120px;
+    z-index: 2;
+ }
 
-#registerheader {
-    height: 130px;
-    width: 150px;
-    background-color: transparent;
-    align-items: center;
-    align-self: center;
+ section .color:nth-child(3){
+ 	bottom: 50px;
+ 	right: 100px;
+ 	width: 300px;
+ 	height: 300px;
 }
 
-#registerbody
+ .box{
+ 	position: relative;
+ }
+
+ .box .square{
+ 	position: absolute;
+ 	backdrop-filter:blur(5px);
+ 	box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+ 	border: 1px solid rgba(255,255,255,0.5);
+ 	border-right: 1px solid rgba(255,255,255,0.2);
+ 	border-bottom: 1px solid rgba(255,255,255,0.2);
+ 	background: rgba(255,255,255,0.1);
+ 	border-radius: 10px; 
+ 	animation:animate 10s linear infinite;
+ 	animation-delay:calc(-1s * var(--i));
+ }
+
+@keyframes animate
 {
-    
+	0%,100%
+	{
+		transform: translateY(-40px);
+	}
+	50%
+	{
+		transform: translateY(40px);
+	}
 }
 
-#welcome{
-    background-color: transparent;
-    text-align: center;
-    align-items: center;
+ .container{
+ 	position: relative;
+ 	min-height: 400px;
+ 	background: rgba(255,255,255,0.1);
+ 	border-radius: 10px;
+ 	display: flex;
+ 	justify-content: center;
+ 	align-items: center;
+ 	backdrop-filter:blur(5px);
+ 	box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+ 	border: 1px solid rgba(255,255,255,0.5);
+ 	border-right: 1px solid rgba(255,255,255,0.2);
+ 	border-bottom: 1px solid rgba(255,255,255,0.2);
+ }
+
+.form{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding: 40px;
 }
-#estamos
+
+.form h2{
+	position: relative;
+	color: #fff;
+	font-size: 24px;
+	font-weight: 600;
+	letter-spacing: 1px;
+	margin-bottom: 40px;
+}
+
+.form h2::before{
+	content: '';
+	position: absolute;
+	left: 0;
+	bottom: -10px;
+	width: 80px;
+	height: 4px;
+	background: #fff;
+}
+
+.form .inputBox
 {
-    color: white;
-    font-family: "Roboto", sans-serif;
-    font-size: 15px;
+	width: 100%;
+	text-align: center;
+	margin-top: 20px;
 }
 
-#form-title {
-    padding: 0.5px;
-    text-align: center;
-    margin: 0px;
-    background-color: #E3E6F2;
+.form .inputBox input
+{
+	width: 86%;
+	background: rgba(255,255,255,0.2);
+	border: none;
+	outline: none;
+	padding: 10px 20px;
+	border-radius: 35px;
+	border: 1px solid rgba(255,255,255,0.5);
+ 	border-right: 1px solid rgba(255,255,255,0.2);
+ 	border-bottom: 1px solid rgba(255,255,255,0.2);
+ 	font-size: 16px;
+ 	letter-spacing: 1px;
+ 	color: #fff;
+ 	box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
-#register{
-    color: gray;
-    font-family: "Roboto", sans-serif;
-    font-size: 13px;
+.form .inputBox input::placeholder{
+	color: #fff;
 }
 
-form {
-  
-    height: 210px;
-    width: 230px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-content: space-between;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 20px;   
-    font-family: "Roboto", sans-serif;
-    font-size: 11px;
+.form .inputBox input[type="submit"]{
+	background: #fff;
+	color: #666;
+	max-width: 200px;
+	cursor: pointer;
+	margin-bottom: 20px;
+	font-weight: 600px;
+
 }
-#form-buttom {
-    display: flex;
-    flex-direction: column;
-    align-content: flex-start;
-    align-items: stretch;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
-}
-#form-container {
-    margin: 0px;
-    background-color: whitesmoke;
-    
+.form .inputBox input[type="submit"]:hover{
+	opacity: 0.4;
 }
 
-#email{
-   width: 100%;
+.forget{
+	margin-top: 5px;
+	color: #fff;
 }
-
-#password{
-    width: 100%;
-}
-
-main {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    padding: 0;
-}
-
-#top-container {
-    background-color: transparent;
-}
-
-.datadiv {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    flex-wrap: nowrap;
-}
-
-#foother {
-    font-family: "Roboto", sans-serif;
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-content: center;
-    justify-content: space-between;
-    align-items: center;
-    height: 150px;
-}
-
-#rememberdiv {
-    display: flex;
-    justify-content: flex-start;
-    width: 100%;
-}
-
-#aforgot {
-    font-size: 10px;
-    margin: 25px 0px;
-    color: #78797A;
-    text-decoration: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#aforgot:hover {
-    color:blue;
-    text-decoration: underline;
-}
-
-#notaccount {
-    margin: 15px 0px;
-    color: white;
-    text-decoration: none;
-}
-
-#notaccount:hover {
-    color: #E3E6F2;
-    text-decoration: underline;
-}
-
-#formbtn {
-    width: 100%;
-    height: 44px;
-    border-radius: 5px;
-    color: white;
-    background-color: #7197C2;
-    border: solid #7197C2 3px;
-    padding: 10px 50px;   
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    font-size: 15px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-}
-
-.lastbtn {
-    border-radius: 30px;
-    color: white;
-    text-align: center;
-    background-color: transparent;
-    border: solid white 3px;
-    padding: 10px 50px;
+.forget a{
+    color: #fff;
+    font-weight: 600;
 }

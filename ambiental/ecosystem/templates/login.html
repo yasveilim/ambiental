@@ -2,56 +2,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Login</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    <title>Primera plantilla</title>
 </head>
 <body>
-    <main>
-
-        <div id="top-container">
-            <div id="registerheader">
-                <img src="{% static 'logo2.png' %}" id="image">
-            </div>
-            <div id="welcome">
-                <h3 id="estamos">¡Bienvenido a SICMA!</h3>
-            </div>
-    
-            <div id="registerbody">
-                
-                <div id="form-container">
-                    <div id="form-title">
-                        <h3 id="register">Registro</h3>
-                    </div>
-                    
-                    <form >
-                        <div class="datadiv">
-                            <label for="email">Correo electrónico</label>
-                            <input id='email' type="text">
-                        </div>
-                        <div class="datadiv">
-                            <label for="password">Contraseña</label>
-                            <input id='password' type="text">
-
-                            <div id="rememberdiv">
-                                <input id='remember' type="checkbox">
-                                <label for="remember">Guardar información</label>
-                            </div>
-                        </div>
-
-                        <div id="form-buttom">
-                            <button id="formbtn">Iniciar sesión</button>
-                            <a id="aforgot" href="{% url 'forgotpassword' %}">¿Olvidaste tu contraseña?</a>
-                        </div>
-                    </form>
-                </div>
-                <div id="foother">
-                   <button class="lastbtn">Crear nueva cuenta</button>
-                </div>
-            </div>
-
-        </div>
-    </main>
+	<section>
+		<div class="color"></div>
+		<div class="color"></div>
+		<div class="color"></div>
+		<div class="box">
+            <div class="container">
+			 	<div class="form">
+                    <h2>¡Bienvenido a SICMA!</h2>
+			 		<h2>Iniciar Sesión</h2>
+			 		<form >
+			 			<div class="inputBox">
+			 				<input type="text" placeholder="Correo electronico"/>
+			 			</div>
+			 			<div class="inputBox">
+			 				<input type="password" placeholder="Contraseña"/>
+			 			</div>
+			 			<div class="inputBox">
+			 				<input type="submit" value="Iniciar sesion" />
+			 			</div>
+			 			<p class="forget">
+			 				Has olvidado tu contraseña? <a href="recuperar.html">Recuperar contraseña</a>
+			 			</p>
+			 			<p class="forget">
+			 				No tienes una cuenta? <a href="registrarse.html">Crear Cuenta</a>
+			 			</p>
+			 		</form>
+			 	</div>
+			 </div>
+		</div>
+	</section>
 </body>
 </html>
