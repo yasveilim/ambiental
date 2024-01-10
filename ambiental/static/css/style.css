@@ -11,26 +11,27 @@
     background: linear-gradient(0.25turn, #3f87a6, #f69d3c);
  }
 
- section{
+.form-section {
  	display: flex;
+	flex-direction: column;
  	justify-content: center;
  	align-items: center;
  	min-height: 100vh;
     background: linear-gradient(0.25turn, #3f87a6, #f69d3c);
  }
 
- section .color{
+.form-section .color{
  	position: absolute;
  	filter: blur(150px);
  }
 
- section .color:nth-child(1){
+.form-section .color:nth-child(1){
     top: -350px;
     width: 600px;
     height: 600px;
 }
 
- section .color:nth-child(2){
+.form-section .color:nth-child(2){
  	top: 150px;
     left: -125px;
     width: 120px;
@@ -38,7 +39,7 @@
     z-index: 2;
  }
 
- section .color:nth-child(3){
+.form-section .color:nth-child(3){
  	bottom: 50px;
  	right: 100px;
  	width: 300px;
