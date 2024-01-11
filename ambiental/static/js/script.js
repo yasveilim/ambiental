@@ -5,11 +5,13 @@ document.getElementById("btn_open").addEventListener("click", open_close_menu);
 var side_menu = document.getElementById("menu_side");
 var body = document.getElementById("body");
 
-// side_menu.classList.toggle("menu__side_close");
+side_menu.classList.add("menu__side_close");
 
 //Evento para mostrar y ocultar menú
 function open_close_menu(){
     body.classList.toggle("body_move");
+    
+    side_menu.classList.toggle("menu__side_close");
     side_menu.classList.toggle("menu__side");
     side_menu.classList.toggle("menu__side_move");
 }
