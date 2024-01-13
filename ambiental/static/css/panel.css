@@ -13,6 +13,16 @@ body {
     transition: margin-left 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
+.contenido_ventana{
+    background-color: violet;
+    width: 80%;
+    height: 70vh;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
 main {
     padding: 20px;
 }
