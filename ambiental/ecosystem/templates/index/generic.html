@@ -1,5 +1,46 @@
 {% extends "index/indexbase.html" %}
+{% load static %}
+{% block content_head %}
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="{% static 'css/cartamaterial.css' %}" />
+{% endblock content_head%}
 
+
+{% load static %}
 {% block content %}
     <h2>{{ category }}</h2>
+    <section class="form-section">
+        <div class="box">
+            <div class="container">
+                <div class="form">
+                    <div class="contenedor_carta_materiales">
+                        <select class="selector_documentos" name="select">
+                            <option value="value1">Value 1</option>
+                            <option value="value2" selected>Value 2</option>
+                            <option value="value3">Value 3</option>
+                        </select>
+
+                        <div class="contenedor_izq_der">
+                            <div class="cont_izquierda">
+                                <img class="material_imagen" src="{% static 'agua.jpg' %}">
+                                <div class="botones_material">
+                                    <button class="boton_cargar">Cargar</button>
+                                    <button class="boton_ver">Ver</button>
+                                </div>
+                            </div>
+
+                            <div class="cont_derecha">
+                                <ion-icon name="cloud-outline"></ion-icon>
+                                <textarea id="texto_material" name="" rows="4" cols="40"> </textarea>
+                            </div>
+                        </div>
+                        <span class="materiales_nota">
+                            <p>Nota: Recuerde subir los documentos</p>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock content %}
