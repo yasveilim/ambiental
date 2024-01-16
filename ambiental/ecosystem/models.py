@@ -4,6 +4,8 @@ from django.db import models
 class AmbientalBook(models.Model):
     material = models.CharField(max_length=50)
     document_name = models.CharField(max_length=50)
+    is_critical = models.BooleanField(default=False)
+    category = models.CharField(max_length=50) 
     note = models.TextField()
 
 class AmbientalBookProps(models.Model):
