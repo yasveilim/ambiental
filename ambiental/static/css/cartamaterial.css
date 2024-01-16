@@ -13,10 +13,10 @@ body{
 .form-section {
     display: flex;
    flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     min-height: 100vh;
-   background: linear-gradient(0.25turn, #3f87a6, #f69d3c);
+
 }
 
 .form-section .color{
