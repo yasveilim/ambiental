@@ -15,8 +15,18 @@ class Index(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['category'] = self.kwargs.get('site')
-        context['imgmaterial'] = 'agua.jpg'
+        site = self.kwargs.get('site')
+        context['category'] = site
+
+        match site:
+            case "water":
+                context['imgmaterial'] = 'agua.jpg'
+            case "air-noise":
+                context['imgmaterial'] = 'aire.jpg'
+            case "waste":
+                context['imgmaterial'] = 'residuos.jpg'
+            case "recnat-risks":
+                context['imgmaterial'] = 'riesgos.jpg'
         return context
     
 
