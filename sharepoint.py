@@ -8,6 +8,7 @@ import os
 
 WORKSHEETS = ['CRITICAS', 'AIRE Y RUIDO', 'AYR1.2', 'AGUA', 'RESIDUOS', 'RECNAT Y RIESGO', 'OTROS', r'% de Avance']
 MATERIALS = [x for x in WORKSHEETS if x not in ['AYR1.2', r'% de Avance']]
+ADVANCE_WORKSHEET = r'% de Avance'
 
 
 def load_workbook(account: Account, filepath: str) -> WorkBook:
@@ -102,7 +103,7 @@ def autenticate() -> Account:
 def read_sicma_db(account: Account):
     workbook = load_workbook(account, 'root:sites/Ambiental:/Requerimientos de informacion V22 NDA1.xlsx')
     print(workbook)
-    print(read_all_cells(workbook))
+    print(read_all_cells(workbook, 'CRITICAS'))
 
 
 def main():
