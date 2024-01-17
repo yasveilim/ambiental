@@ -1,23 +1,10 @@
 from O365 import Account, FileSystemTokenBackend
 from O365.excel import WorkBook
+import typing as t
 
-def modify_exel(file_instance):
-    excel_file = WorkBook(file_instance)  # my_file_instance should be an instance of File.
 
-    ws = excel_file.get_worksheet('my_worksheet')
-    cella1 = ws.get_range('A1')
-    cella1.values = 35
-    cella1.update()
 
-def read_exel(excel_file):
-    #excel_file = WorkBook(file_instance)  # my_file_instance should be an instance of File.
-
-    ws = excel_file.get_worksheet('CRITICAS')
-    cella1 = ws.get_range('B13:K33')
-    print(ws, cella1.values)
-    # cella1 = ws.get_range('A1')
-    # cella1.values = 35
-    # cella1.update()
+materials = ['CRITICAS', 'AIRE Y RUIDO', 'AYR1.2', 'AGUA', 'RESIDUOS', 'RECNAT Y RIESGO', 'OTROS', r'% de Avance']
 
 
 def load_workbook(account, filepath: str) -> WorkBook:
@@ -33,57 +20,19 @@ def load_workbook(account, filepath: str) -> WorkBook:
     file_obj = document_library.get_item_by_path(filepath)
     workbook = WorkBook(file_obj)
     return workbook
+
+
+def read_all_cells(excel_file):
+    worksheets = excel_file.get_worksheets()
+    worksheet_names = [worksheet.name for worksheet in worksheets]
+    print(worksheet_names)
     
-
-def read_by_id(drive, item_id):
-    # item_id = 'D1ED06591598D29B!30531'  # Reemplaza con el ID real del archivo Excel
-
-    # Descarga del archivo Excel para trabajar con él localmente
-    excel_file = drive.get_item(item_id)
-    excel_file.download('archivo_local.xlsx')
-
-    # Aquí puedes agregar el código para modificar el archivo Excel usando una librería como 'openpyxl'
-    # Por ejemplo, para agregar una nueva fila con contenido al final de una hoja existente:
-    from openpyxl import load_workbook
-
-    wb = load_workbook('archivo_local.xlsx')
-    ws = wb.active  # Asume que trabajamos con la primera hoja
-
-    # Agrega contenido a la nueva fila (reemplaza 'Nuevo Contenido' con el contenido real que deseas agregar)
-    ws.append(['Nombre', 'Apellidos', 'Edad', 'Dirección', 'Tel', 'Email'])
-
-    # Guarda los cambios en el archivo local
-    wb.save('archivo_local.xlsx')
-
-    # Sube el archivo modificado de vuelta a OneDrive
-    excel_file.upload('archivo_local.xlsx')
-
-    print("El archivo Excel ha sido actualizado y subido a OneDrive exitosamente.")
-
-
-def ls_drive_folder(my_drive):
-    # get some folders:
-    root_folder = my_drive.get_root_folder()
-    attachments_folder = my_drive.get_special_folder('attachments')
-
-    # iterate over the first 25 items on the root folder
-    for item in root_folder.get_items(limit=100):
-        print(f"Nombre: {item.name}: ID: {item.object_id}")
-
-        if item.is_folder:
-            print(list(item.get_items(2)))  # print the first to element on this folder.
-
-        elif item.is_file:
-        
-            if item.is_photo:
-                print(item.camera_model)  # print some metadata of this photo
-        
-            elif item.is_image:
-                print(item.dimensions)  # print the image dimensions
-        
-            else:
-                # regular file:
-                print(item.mime_type)
+    ws = excel_file.get_worksheet('CRITICAS')
+    used_range = ws.get_used_range()
+    #print(used_range.values)
+    #cells = used_range.get_all_cells()
+    for cell in used_range.values:
+        print(cell)
 
 
 def main():
@@ -108,10 +57,7 @@ def main():
     #sharepoint = account.sharepoint()
     #drive = storage.get_default_drive()
     print(workbook)
-    print(read_exel(workbook))
-
-    #ls_drive_folder(drive)
-
+    print(read_all_cells(workbook))
 
 if __name__ == '__main__':
     main()
