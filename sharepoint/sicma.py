@@ -19,6 +19,8 @@ def read_sicma_db(account: Account):
     # ['AIRE', 1, 'Licencia Ambiental Única o Licencia de funcionamiento (Actualizada)', 1, '', 1, '', '', '', '']
     # ['', 3, 'Cédula de operación (Últimos 2 años). Incluir constancia de recepción, respaldo y diagramas. Incluye reporte RETC', 1, '', 1, '', '', '', ''] 
     # 3) Procesar los datos en forma de diccionario para generar la siguiente estructura:
+    #4) Cuando a la derecha todos los campos están vacios esto indica que es una nota
+    #5) A veces se inicia en la segunda columna
     x = [
         {
             'material': 'AIRE',
@@ -32,8 +34,12 @@ def read_sicma_db(account: Account):
             'documents': []
         }
     ]
-    for row in sharepoint.read_all_cells(workbook, 'CRITICAS'):
-        print(row)
+    
+    for sheet in MATERIALS:
+        # for row in sharepoint.read_all_cells(workbook, sheet):
+        all_cells= sharepoint.read_all_cells(workbook, sheet)
+        cell11= all_cells[11]
+        print(cell11)
 
 
 def main():
