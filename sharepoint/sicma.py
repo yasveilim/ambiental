@@ -7,6 +7,13 @@ WORKSHEETS = ['CRITICAS', 'AIRE Y RUIDO', 'AYR1.2', 'AGUA', 'RESIDUOS', 'RECNAT 
 MATERIALS = [x for x in WORKSHEETS if x not in ['AYR1.2', r'% de Avance']]
 ADVANCE_WORKSHEET = r'% de Avance'
 
+def basesection(material: str):
+    return{
+        'material': material,
+        'documents': []
+    }
+
+
 def read_sicma_db(account: Account):
     workbook = sharepoint.load_workbook(account, 'root:sites/Ambiental:/Requerimientos de informacion V22 NDA1.xlsx')
     #print(workbook)
@@ -35,13 +42,27 @@ def read_sicma_db(account: Account):
         }
     ]
     
+    result= {}
+    
     for sheet in MATERIALS:
-        # for row in sharepoint.read_all_cells(workbook, sheet):
+        material= ""
         all_cells= sharepoint.read_all_cells(workbook, sheet)
-        cell11= all_cells[11]
-        print(cell11)
+        for row in all_cells[11:]:
+            # cell11= all_cells[11]
+            # print(all_cells)
+            # exit()
+            cell1_as_list =  row[1].split(" ")
+            cell1_is_material = all(map(lambda c: c.isalpha(), cell1_as_list))
+            cell0_isnot_material = len(row[0]) == 0
+            if cell0_isnot_material and cell1_is_material:
+                material = row[1]
+            elif not cell0_isnot_material:
+                material = row[0]  
+            current_section= result.get(material) or basesection(material) 
 
-
+# ['AIRE', 1, 1, 'Licencia Ambiental Única o Licencia de funcionamiento (Actualizada)', 1, 1, '', 0, '', '', '']
+# ['', 'RESIDUOS PELIGROSOS', 1, 1, 'Registro como empresa generadora de residuos peligrosos (Actualizado)', 1, 1, 1, 0, '', '', '']
+# ['AGUA', 1, 'SOLO PARA ABASTECIMIENTO A TRAVES DE POZO PROFUNDO', '', '', '', '', '', '', '', '']
 def main():
     load_dotenv()
     client_id = os.getenv('CLIENT_ID')
