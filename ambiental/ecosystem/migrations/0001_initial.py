@@ -15,7 +15,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AmbientalBook',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('material', models.CharField(max_length=50)),
                 ('document_name', models.CharField(max_length=50)),
                 ('is_critical', models.BooleanField(default=False)),
@@ -26,12 +27,15 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AmbientalBookProps',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('archive', models.FileField(upload_to='uploads/')),
                 ('comment', models.TextField()),
-                ('advance', models.CharField(choices=[('delivered', 'DELIVERED'), ('pending', 'PENDING'), ('na', 'NA')], default='pending', max_length=9)),
+                ('advance', models.CharField(choices=[('delivered', 'DELIVERED'), (
+                    'pending', 'PENDING'), ('na', 'NA')], default='pending', max_length=9)),
                 ('essential_in_cloud', models.BooleanField(default=True)),
-                ('book', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='ecosystem.ambientalbook')),
+                ('book', models.ForeignKey(
+                    on_delete=django.db.models.deletion.CASCADE, to='ecosystem.ambientalbook')),
             ],
         ),
     ]

@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 
 ERROR_MESSAGE_EMAIL = "Email error"
 ERROR_MESSAGE_USER = "Username error"
-ERROR_MESSAGE_PASSWORD = "Password error" 
+ERROR_MESSAGE_PASSWORD = "Password error"
+
 
 class CreateUserForm(forms.ModelForm):
     username = forms.CharField(max_length=30)
@@ -12,4 +13,4 @@ class CreateUserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username','password','email')
+        fields = ('username', 'password', 'email')

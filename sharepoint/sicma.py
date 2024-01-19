@@ -2,8 +2,10 @@ from dotenv import load_dotenv
 import os
 from . import sharepoint
 from O365 import Account
+import typing as t
 
-WORKSHEETS = ['CRITICAS', 'AIRE Y RUIDO', 'AYR1.2', 'AGUA', 'RESIDUOS', 'RECNAT Y RIESGO', 'OTROS', r'% de Avance']
+WORKSHEETS = ['CRITICAS', 'AIRE Y RUIDO', 'AYR1.2', 'AGUA',
+              'RESIDUOS', 'RECNAT Y RIESGO', 'OTROS', r'% de Avance']
 MATERIALS = [x for x in WORKSHEETS if x not in ['AYR1.2', r'% de Avance']]
 ADVANCE_WORKSHEET = r'% de Avance'
 
@@ -20,59 +22,49 @@ ADVANCE_WORKSHEET = r'% de Avance'
 }
 """
 
+
+def extract_row(current_docuements: dict, row: t.List[str], doc_index: int, material_idx: int, material: str):
+
+    if not any(row[doc_index:]):
+        return 'continue'
+
+    if len(row[material_idx]) > 0:
+        material = row[material_idx]
+
+    current_material = current_docuements.get(material)
+    if not current_material:
+        current_docuements[material] = []
+        current_material = current_docuements[material]
+
+    current_material.append(row[doc_index])
+
+    return material
+
+
 def read_sicma_db(account: Account):
-    workbook = sharepoint.load_workbook(account, 'root:sites/Ambiental:/Requerimientos de informacion V22 NDA1.xlsx')
-    # print(workbook)
-
-    # 1) Convertir este archivo en un modulo.
-    # 2) Ignorar todas las celdas hasta (guiate del indice):
-    #   ['MATERIA', 'ID+', 'DOCUMENTO', 'INDISPENSABLE SUBIR A LA NUBE PREVIO A LA AUDITORÍA', 'AVANCE', '', '', 'ARCHIVOS', 'COMENTARIOS', '']
-    # Verifica si para las hojas de interes el indice es el mismo que en la hoja de 'CRITICAS'
-
-    # ['AIRE', 1, 'Licencia Ambiental Única o Licencia de funcionamiento (Actualizada)', 1, '', 1, '', '', '', '']
-    # ['', 3, 'Cédula de operación (Últimos 2 años). Incluir constancia de recepción, respaldo y diagramas. Incluye reporte RETC', 1, '', 1, '', '', '', ''] 
-    # 3) Procesar los datos en forma de diccionario para generar la siguiente estructura:
-    # 4) Cuando a la derecha todos los campos están vacios esto indica que es una nota
-    # 5) A veces se inicia en la segunda columna
-    _x = [
-        {
-            'material': 'AIRE',
-            'documents': [
-                ['Licencia Ambiental Única o Licencia de funcionamiento (Actualizada)', True, 'pending', '', ''],
-                [
-                    'Cédula de operación (Últimos 2 años). Incluir constancia de recepción, respaldo y diagramas. Incluye reporte RETC',
-                    True, 'pending', '', '']
-            ]
-        },
-        {
-            'material': 'RUIDO',
-            'documents': []
-        }
-    ]
+    workbook = sharepoint.load_workbook(
+        account, 'root:sites/Ambiental:/Requerimientos de informacion V22 NDA1.xlsx')
 
     result = {}
-
-    for sheet in MATERIALS[:1]:
+    for sheet in MATERIALS[:2]:
         current_docuements = {}
         material = ''
         all_cells = sharepoint.read_all_cells(workbook, sheet)
         # print('-' * 10, sheet, '-' * 10)
 
         for row in all_cells[11:]:
+            # print(row)
+            # continue
+            match sheet:
+                case 'CRITICAS': doc_index = 2
+                case 'AIRE Y RUIDO': doc_index = 3
+                case _: continue # TODO: raise on unknown sheet
 
-            if not any(row[2:]):
-                continue  # Is a note
-
-            if len(row[0]) > 0:
-                material = row[0]
+            extract_row(
+                current_docuements,
+                row,
                 
-            current_material = current_docuements.get(material)
-            if not current_material:
-                current_docuements[material] = []
-                current_material = current_docuements[material]
-
-            current_material.append(row[2])
-
+            )
 
         result[sheet] = current_docuements
 

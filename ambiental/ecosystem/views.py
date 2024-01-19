@@ -17,20 +17,20 @@ class Login(generic.TemplateView):
 # class Signup(generic.TemplateView):
 #     template_name = 'signup.html'
 
-class Signup(generic.CreateView): # ecosystem:
+
+class Signup(generic.CreateView):  # ecosystem:
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
     model = User
     form_class = CreateUserForm
 
- 
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.set_password(self.object.password)
         self.object.save()
-        
+
         return HttpResponseRedirect(self.get_success_url())
-    
+
     def form_invalid(self, form):
         # NOTA: toasts
         # https://blog.benoitblanchon.fr/django-htmx-toasts/
@@ -56,20 +56,19 @@ class Index(generic.TemplateView):
             case "recnat-risks":
                 context['imgmaterial'] = 'riesgos.jpg'
         return context
-    
 
     def get_template_names(self):
         slug = self.kwargs.get('site')
 
         if slug == 'advance':
             return ['index/advance.html']
-        
+
         elif slug == 'others':
             return ['index/others.html']
-            
+
         else:
             return ['index/generic.html']
-        
+
 
 class ForgotPassword(generic.TemplateView):
     template_name = 'forgotpassword.html'

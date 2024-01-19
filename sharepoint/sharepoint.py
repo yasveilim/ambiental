@@ -4,6 +4,7 @@ import typing as t
 
 SHAREPOINT_SCOPES = ['basic', 'onedrive_all', 'sharepoint', 'sharepoint_dl']
 
+
 def load_workbook(account: Account, filepath: str) -> WorkBook:
     """
     Loads a workbook from a SharePoint document library.
@@ -55,7 +56,6 @@ def get_worksheets_names(workbook: WorkBook) -> t.List[str]:
     return worksheet_names
 
 
-
 def read_all_cells(excel_file: WorkBook, worksheet: str) -> t.List[t.List[str]]:
     """
     Reads all the cells in the specified worksheet of the given Excel file.
@@ -75,7 +75,7 @@ def read_all_cells(excel_file: WorkBook, worksheet: str) -> t.List[t.List[str]]:
 
 
 def autenticate(client_id: str,  client_secret: t.Optional[str]) -> Account:
- 
+
     credentials = (client_id, client_secret)
     token_backend = FileSystemTokenBackend(
         token_path='.', token_filename='o365_token.json'
@@ -84,7 +84,5 @@ def autenticate(client_id: str,  client_secret: t.Optional[str]) -> Account:
 
     if not account.is_authenticated:
         account.authenticate(scopes=SHAREPOINT_SCOPES)
-    
+
     return account
-
-
