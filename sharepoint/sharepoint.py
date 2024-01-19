@@ -2,6 +2,7 @@ from O365 import Account, FileSystemTokenBackend
 from O365.excel import WorkBook
 import typing as t
 
+SHAREPOINT_SCOPES = ['basic', 'onedrive_all', 'sharepoint', 'sharepoint_dl']
 
 def load_workbook(account: Account, filepath: str) -> WorkBook:
     """
@@ -82,9 +83,7 @@ def autenticate(client_id: str,  client_secret: t.Optional[str]) -> Account:
     account = Account(credentials, token_backend=token_backend)
 
     if not account.is_authenticated:
-        account.authenticate(
-            scopes=['basic', 'onedrive_all', 'sharepoint', 'sharepoint_dl']
-        )
+        account.authenticate(scopes=SHAREPOINT_SCOPES)
     
     return account
 

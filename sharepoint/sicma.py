@@ -57,7 +57,8 @@ def read_sicma_db(account: Account):
             if cell0_isnot_material and cell1_is_material:
                 material = row[1]
             elif not cell0_isnot_material:
-                material = row[0]  
+                material = row[0]
+                
             current_section= result.get(material) or basesection(material) 
 
 # ['AIRE', 1, 1, 'Licencia Ambiental Única o Licencia de funcionamiento (Actualizada)', 1, 1, '', 0, '', '', '']
