@@ -1,7 +1,8 @@
 from dotenv import load_dotenv
 import os
 from . import sharepoint, autenticate
-from O365 import Account, Message
+from dataclasses import dataclass, field
+from O365 import Account
 import typing as t
 
 WORKSHEETS = ['CRITICAS', 'AIRE Y RUIDO', 'AYR1.2', 'AGUA',
@@ -21,34 +22,36 @@ def calculate_advance(delivered: str | int, pending: str | int):
     return advance
 
 
-def extract_row(
-        current_docuements: dict,
-        row: t.List[str],
-        doc_index: int,
-        material_idx: int,
-        material: str
-) -> t.Optional[str]:
+@dataclass
+class DataExtractor:
+    current_docuements: t.Dict = field(default_factory=dict)
+    doc_index: int = 0
+    material_idx: int = 0
+    material: str = ""
 
-    if not any(row[doc_index:]):
-        return None
+    def extract_row(self, row: t.List[str]) -> t.Optional[str]:
 
-    if len(row[material_idx]) > 0:
-        material = row[material_idx]
+        if not any(row[self.doc_index:]):
+            return None
 
-    current_material = current_docuements.get(material)
-    if not current_material:
-        current_docuements[material] = []
-        current_material = current_docuements[material]
+        if len(row[self.material_idx]) > 0:
+            self.material = row[self.material_idx]
 
-    current_material.append({
-        'name': row[doc_index],
-        'essential_cloud': bool(row[doc_index + 1]),
-        'advance': calculate_advance(row[doc_index + 2], row[doc_index + 3]),
-        # ARCHIVES
-        'comments': row[-2]
-    })
+        if not self.current_docuements.get(self.material):
+            self.current_docuements[self.material] = []
 
-    return material
+        current_material = self.current_docuements[self.material]
+
+        current_material.append({
+            'name': row[self.doc_index],
+            'essential_cloud': bool(row[self.doc_index + 1]),
+            'advance': calculate_advance(
+                row[self.doc_index + 2], row[self.doc_index + 3]),
+            'archives': row[-3],
+            'comments': row[-2]
+        })
+
+        return self.material
 
 
 def read_sicma_db(account: Account):
@@ -56,31 +59,28 @@ def read_sicma_db(account: Account):
         account, 'root:sites/Ambiental:/Requerimientos de informacion V22 NDA1.xlsx')
 
     result = {}
-    for sheet in MATERIALS[:2]:
-        current_docuements = {}
-        material = ''
+    for sheet in MATERIALS[:4]:
+        data_extractor = DataExtractor()
         all_cells = sharepoint.read_all_cells(workbook, sheet)
         print('-' * 10, sheet, '-' * 10)
 
         for row in all_cells[11:]:
             print(row)
             # continue
-            material_idx = 0
+
             match sheet:
                 case 'CRITICAS':
-                    doc_index = 2
-                case 'AIRE Y RUIDO':
-                    doc_index = 3
+                    data_extractor.doc_index = 2
+                case 'AIRE Y RUIDO' | 'AGUA':
+                    data_extractor.doc_index = 3
+                case 'RESIDUOS':
+                    data_extractor.doc_index = 4
+                    data_extractor.material_idx = 1
                 case _: continue  # TODO: raise on unknown sheet
 
-            extract_data = extract_row(
-                current_docuements, row, doc_index, material_idx, material
-            )
+            data_extractor.extract_row(row)
 
-            if extract_data:
-                material = extract_data
-
-        result[sheet] = current_docuements
+        result[sheet] = data_extractor.current_docuements
 
     import json
     # >>> your_json = '["foo", {"bar": ["baz", null, 1.0, 2]}]'
