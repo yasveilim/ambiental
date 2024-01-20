@@ -1,31 +1,25 @@
-from O365 import Account, FileSystemTokenBackend
-from O365.excel import WorkBook
+from O365 import Account
+from O365.excel import WorkBook, WorkSheet
+import typing as t
 
-ONEDRIVE_SCOPES = [
+SCOPES = [
     'basic',
     'onedrive_all'
 ]
 
 
 def get_file(account: Account, file_id: str):
-    # here we get the storage instance that handles all the storage options.
     storage = account.storage()
+    _drives = storage.get_drives()
 
-    # list all the drives:
-    drives = storage.get_drives()
-
-    # get the default drive
     my_drive = storage.get_default_drive()  # or get_drive('drive-id')
-
-    # get the file by its ID
     file = my_drive.get_item(file_id)
 
-    # return the file instance
     return file
 
 
-def get_range(worksheet, range, values):
-    celda1 = worksheet.get_range('A1')
+def set_range(worksheet: WorkSheet, cell_range: str, values: t.Any):
+    celda1 = worksheet.get_range(cell_range)
     celda1.values = values
     celda1.update()
 
@@ -34,7 +28,7 @@ def modify_exel(file):
 
     excel_file = WorkBook(file)
     ws = excel_file.get_worksheet('Hoja1')
-    get_range(ws, 'A1', 37 + 2)
+    set_range(ws, 'A1', 37 + 2)
 
 
 def ls_storage(folder):

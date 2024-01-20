@@ -20,10 +20,11 @@ def load_workbook(account: Account, filepath: str) -> WorkBook:
         ValueError: If the filepath is not in the correct format.
 
     Example:
-        >>> account = autenticate()
+        >>> from sharepoint import autenticate
+        >>> myaccount = autenticate()
         >>> # site example: "https://domain.sharepoint.com/sites/Ambiental/file.xlsx"
-        >>> site = 'root:sites/Ambiental:/file.xlsx'
-        >>> workbook = load_workbook(account, site)
+        >>> mysite = 'root:sites/Ambiental:/file.xlsx'
+        >>> _workbook = load_workbook(account, site)
     """
 
     parent, site, filepath = filepath.split(':')
