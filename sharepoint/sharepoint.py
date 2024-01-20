@@ -1,8 +1,8 @@
-from O365 import Account, FileSystemTokenBackend
+from O365 import Account
 from O365.excel import WorkBook
 import typing as t
 
-SHAREPOINT_SCOPES = ['basic', 'onedrive_all', 'sharepoint', 'sharepoint_dl']
+SCOPES = ['basic', 'onedrive_all', 'sharepoint', 'sharepoint_dl']
 
 
 def load_workbook(account: Account, filepath: str) -> WorkBook:
@@ -72,17 +72,3 @@ def read_all_cells(excel_file: WorkBook, worksheet: str) -> t.List[t.List[str]]:
     used_range = ws.get_used_range()
 
     return used_range.values
-
-
-def autenticate(client_id: str,  client_secret: t.Optional[str]) -> Account:
-
-    credentials = (client_id, client_secret)
-    token_backend = FileSystemTokenBackend(
-        token_path='.', token_filename='o365_token.json'
-    )
-    account = Account(credentials, token_backend=token_backend)
-
-    if not account.is_authenticated:
-        account.authenticate(scopes=SHAREPOINT_SCOPES)
-
-    return account

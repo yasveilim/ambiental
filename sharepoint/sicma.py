@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 import os
-from . import sharepoint
-from O365 import Account
+from . import sharepoint, autenticate
+from O365 import Account, Message
 import typing as t
 
 WORKSHEETS = ['CRITICAS', 'AIRE Y RUIDO', 'AYR1.2', 'AGUA',
@@ -92,14 +92,12 @@ def read_sicma_db(account: Account):
     return result
 
 
-# ['AIRE', 1, 1, 'Licencia Ambiental Única o Licencia de funcionamiento (Actualizada)', 1, 1, '', 0, '', '', '']
-# ['', 'RESIDUOS PELIGROSOS', 1, 1, 'Registro como empresa generadora de residuos peligrosos (Actualizado)', 1, 1, 1, 0, '', '', '']
-# ['AGUA', 1, 'SOLO PARA ABASTECIMIENTO A TRAVES DE POZO PROFUNDO', '', '', '', '', '', '', '', '']
 def main():
     load_dotenv()
     client_id = os.getenv('CLIENT_ID')
     client_secret = None  # os.getenv('CLIENT_SECRET')
-    account = sharepoint.autenticate(client_id, client_secret)
+
+    account = autenticate(client_id, client_secret, sharepoint.SCOPES)
     read_sicma_db(account)
 
 
