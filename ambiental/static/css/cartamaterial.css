@@ -1,4 +1,4 @@
-*{
+* {
 	margin: 0;
 	padding: 0;
 	font-family: roboto;
@@ -30,7 +30,7 @@ body{
 
 .box .square {
     position: absolute;
-    backdrop-filter:blur(5px);
+    backdrop-filter: blur(5px);
     box-shadow: 0 25px 45px rgba(0,0,0,0.1);
     border: 1px solid rgba(255,255,255,0.5);
     border-right: 1px solid rgba(255,255,255,0.2);
@@ -38,7 +38,7 @@ body{
     background: rgba(255,255,255,0.1);
     border-radius: 10px; 
     animation:animate 10s linear infinite;
-    animation-delay:calc(-1s * var(--i));
+    animation-delay: calc(-1s * var(--i));
 }
 
 .container{

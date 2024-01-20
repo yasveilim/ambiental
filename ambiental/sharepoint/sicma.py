@@ -106,7 +106,7 @@ def main():
     client_secret = None  # os.getenv('CLIENT_SECRET')
 
     account = autenticate(client_id, client_secret, sharepoint.SCOPES)
-    read_sicma_db(account)
+    return read_sicma_db(account)
 
 
 if __name__ == '__main__':

@@ -1,11 +1,13 @@
-from typing import Any
-from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
+import typing as t
+from sharepoint.sicma import main as sicma_main
+from django.http import HttpResponseRedirect  # HttpRequest, HttpResponse,
+# from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 from .forms import CreateUserForm
 from django.contrib.auth.models import User
 
+SICMA_AZURE_DB = sicma_main()
 
 class Home(generic.TemplateView):
     template_name = 'home.html'
@@ -45,16 +47,26 @@ class Index(generic.TemplateView):
         context = super().get_context_data(**kwargs)
         site = self.kwargs.get('site')
         context['category'] = site
+        print(SICMA_AZURE_DB)
 
+        # ['AIRE Y RUIDO', 'AGUA', 'RESIDUOS', 'RECNAT Y RIESGO', 'OTROS']
         match site:
             case "water":
+
                 context['imgmaterial'] = 'agua.jpg'
             case "air-noise":
+
                 context['imgmaterial'] = 'aire.jpg'
             case "waste":
+
                 context['imgmaterial'] = 'residuos.jpg'
             case "recnat-risks":
+
                 context['imgmaterial'] = 'riesgos.jpg'
+            case "others":
+
+                context['imgmaterial'] = 'others.jpg'
+
         return context
 
     def get_template_names(self):

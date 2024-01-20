@@ -1,5 +1,6 @@
 from O365 import Account, FileSystemTokenBackend
 import typing as t
+from pathlib import Path
 
 
 def autenticate(
@@ -30,9 +31,10 @@ def autenticate(
         (which holds the required access scopes).
      5. It finally returns the authenticated Account instance.
     """
+    current_dir = Path(__file__).resolve().parent
     credentials = (client_id, client_secret)
     token_backend = FileSystemTokenBackend(
-        token_path='.', token_filename='o365_token.json'
+        token_path=current_dir, token_filename='o365_token.json'
     )
     account = Account(credentials, token_backend=token_backend)
 
