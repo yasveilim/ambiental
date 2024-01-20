@@ -1,4 +1,398 @@
 {
-    "CRITICAS": {},
-    "AIRE Y RUIDO": {}
+    "CRITICAS": {
+        "AIRE": [
+            {
+                "name": "Licencia Ambiental \u00danica o Licencia de funcionamiento (Actualizada)",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "C\u00e9dula de operaci\u00f3n (\u00daltimos 2 a\u00f1os). Incluir constancia de recepci\u00f3n, respaldo y diagramas. Incluye reporte RETC",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "An\u00e1lisis de emisiones (\u00daltimos 2 a\u00f1os y a\u00f1o actual si aplica)",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Acreditaci\u00f3n de EMA y de Aprobaci\u00f3n de PROFEPA del laboratorio que realiza los an\u00e1lisis",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            }
+        ],
+        "RUIDO": [
+            {
+                "name": "Estudios de ruido perimetral",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Acreditaci\u00f3n de EMA del laboratorio que realiza los estudios",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Aprobaci\u00f3n de PROFEPA del laboratorio que realiza los estudios (s\u00f3lo si es de competencia federal en materia de emisiones)",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Titulo de Concesi\u00f3n (incluye evidencia de cumplimiento a los volumenes autorizados)",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Contrato de la red municipal",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Contrato de Suministro entre la empresa y el Parque Industrial o tercero",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Titulo de concesion para descarga de agua (incluye evidencia de cumplimiento a los volumenes autorizados de descarga)",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Titulo de concesi\u00f3n de zona federal (Si aplica)",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Permiso de descarga de aguas residuales (Actualizado)",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Contrato de servicios (descarga y tratamiento) entre la empresa y el Parque Industrial o tercero",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "An\u00e1lisis de descarga de aguas residuales (\u00daltimos 2 a\u00f1os y actual si aplica)",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Acreditaci\u00f3n de EMA y Aprobaci\u00f3n de CONAGUA del laboratorio que realiza los an\u00e1lisis  ",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            }
+        ],
+        "RESIDUOS PELIGROSOS": [
+            {
+                "name": "Registro como empresa generadora de residuos peligrosos (Actualizado)",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Plan de manejo de residuos peligrosos (Aprobado y cumplimiento de condicionantes)",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "C\u00e9dula de Operaci\u00f3n Anual de los \u00faltimos 2 a\u00f1os (Grandes generadores), secciones 4.1, 4.2 y 4.4 llenadas correctamente y en su totalidad. Incluir constancia de recepci\u00f3n, respaldo y diagramas. ",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Autorizaciones de las empresas que realizan todas las etapas de manejo de RPE: transporte, acopio, transporte 2 y destino final.",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "An\u00e1lisis de aceite diel\u00e9ctrico (incluyendo BPCs), incluir la Acreditaci\u00f3n de EMA y Aprobaci\u00f3n de PROFEPA del laboratorio",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            }
+        ],
+        "RESIDUOS DE MANEJO ESPECIAL": [
+            {
+                "name": "Registro como generador de residuos de manejo especial y solidos urbanos actualizado (Resolutivo y cumplimiento de condicionantes)",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Registro del Plan de manejo de residuos urbanos y de manejo especial actualizado (Resolutivo y cumplimiento de condicionantes)",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "C\u00e9dula de Operaci\u00f3n Anual Estatal o Reporte de generaci\u00f3n anual de residuos de manejo especial. Incluir acuse de ingreso y respaldo.",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Autorizaciones de las empresas que realizan todas las etapas de manejo de RME y RSU: transporte, acopio, transporte 2 y destino final.",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            }
+        ],
+        "RECURSOS NATURALES": [
+            {
+                "name": "Resoluci\u00f3n de Impacto ambiental ",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Documentaci\u00f3n  referente al cumplimiento a las condicionantes de la autorizaci\u00f3n de Impacto. La capacidad instalada coincide con la LF o LAU? Se cumple con la capacidad instalada?",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            }
+        ],
+        "RIESGO AMBIENTAL": [
+            {
+                "name": "Dictamen de verificaci\u00f3n de  Instalaciones de Gas Natural conforme a la NOM-002-SECRE-2010 y/o la NOM-003-SECRE-2010. Incluyendo la acreditaci\u00f3n de la empresa que realiz\u00f3 la evaluaci\u00f3n (\u00daltimos dos a\u00f1os y actual si aplica).",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Registro de Medici\u00f3n de Tierras F\u00edsicas para Almac\u00e9n de Sustancias Qu\u00edmicas, Residuos Peligrosos, Materia prima y Producto terminado  (\u00e1reas con sustancias con riesgo por uso de sustancias qu\u00edmicas inflamables) NOM-022-STPS-2015 (\u00daltimos dos a\u00f1os y actual si aplica) Incluir atenci\u00f3n a recomendaciones del Estudio. ",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Dict\u00e1menes de operaci\u00f3n de Instalaciones de almacenamento y uso de Gas L.P. conforme a la NOM-003-SEDG y/o la NOM-004-SEDG-2004. Incluir acreditaci\u00f3n de la Unidad de Inspecci\u00f3n que realiz\u00f3 los dictamenes (\u00daltimos dos a\u00f1os y actual si aplica).",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Estudio de Riesgo Ambiental Federal (Constancia de Ingreso) y/o Estatal (Resolutivo y cumplimiento de condicionantes)",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Programa para la Prevenci\u00f3n de Accidentes (PPA) y su dictamen. Incluir evidencia de implementaci\u00f3n de actividades del PPA.",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Programa de Protecci\u00f3n Civil y su dictamen o VoBo (\u00daltimos dos a\u00f1os y actual)",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            }
+        ],
+        "SUELO Y SUBSUELO": [
+            {
+                "name": "Licencia y/o Constancia de uso de suelo",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Aviso de accidente de derrame (Si aplica)",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            }
+        ],
+        "SISTEMA DE GESTI\u00d3N AMBIENTAL": [
+            {
+                "name": "Procedimiento de Identificaci\u00f3n y Jerarquizaci\u00f3n de Aspectos Ambientales Significativos",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Resultado de evaluaci\u00f3n de la Identificaci\u00f3n y Jerarquizaci\u00f3n de Aspectos Ambientales Significativos (actualizado)",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            },
+            {
+                "name": "Procedimiento y Matriz de cumplimiento legal ambiental",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "comments": ""
+            }
+        ]
+    },
+    "AIRE Y RUIDO": {
+        "AIRE": [
+            {
+                "name": "Licencia Ambiental \u00danica o Licencia de funcionamiento (Actualizada)",
+                "essential_cloud": true,
+                "advance": "DELIVERED",
+                "comments": ""
+            },
+            {
+                "name": "Cumplimiento a condicionantes de la Licencia Ambiental \u00danica o Licencia de Funcionamiento. La capacidad instalada coincide con la Autorizaci\u00f3n de Impacto?  Se cumple con la capacidad instalada?",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "comments": ""
+            },
+            {
+                "name": "C\u00e9dula de operaci\u00f3n (\u00daltimos 2 a\u00f1os). Incluir constancia de recepci\u00f3n, respaldo y diagramas. Incluye reporte RETC",
+                "essential_cloud": true,
+                "advance": "DELIVERED",
+                "comments": ""
+            },
+            {
+                "name": "An\u00e1lisis de emisiones (\u00daltimos 2 a\u00f1os y a\u00f1o actual si aplica)",
+                "essential_cloud": true,
+                "advance": "DELIVERED",
+                "comments": ""
+            },
+            {
+                "name": "Acreditaci\u00f3n de EMA y de Aprobaci\u00f3n de PROFEPA del laboratorio que realiza los an\u00e1lisis",
+                "essential_cloud": true,
+                "advance": "DELIVERED",
+                "comments": ""
+            },
+            {
+                "name": "Inventario de volumenes de emisiones atmosf\u00e9ricas anuales y memorias de c\u00e1lculo correspondientes (\u00daltimos 2 a\u00f1os y actual)",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "comments": ""
+            },
+            {
+                "name": "Validaci\u00f3n de cumplimiento de las chimeneas con la NMX-AA-009-1993-SCFI Por la Auditada o Laboratorio \n(Ver pesta\u00f1a AYR1.2)",
+                "essential_cloud": false,
+                "advance": "NA",
+                "comments": ""
+            },
+            {
+                "name": "Bit\u00e1coras de operaci\u00f3n de equipos que generan emisiones y equipos de control. Para equipos de calentamiendo indirecto deben cumplir con lo requerido en el punto 5.2 de la NOM-085-SEMARNAT-2011 (\u00daltimos 2 a\u00f1os y actual)",
+                "essential_cloud": false,
+                "advance": "NA",
+                "comments": ""
+            },
+            {
+                "name": "Programa de mantenimiento preventivo/correctivo de los equipos de generaci\u00f3n de emisiones contaminantes y  equipos de control (\u00daltimos 2 a\u00f1os y actual)",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "comments": ""
+            },
+            {
+                "name": "Registros de cumplimiento al Programa de mantenimiento preventivo/correctivo de los equipos de generaci\u00f3n de emisiones contaminantes y  equipos de control (\u00daltimos 2 a\u00f1os y actual)",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "comments": ""
+            },
+            {
+                "name": "Aviso a la Autoridad de paros programados o falla de equipos de control de emisiones atmosf\u00e9ricas",
+                "essential_cloud": false,
+                "advance": "NA",
+                "comments": ""
+            },
+            {
+                "name": "Evidencia de Capacitaci\u00f3n del personal que opera los equipos de generaci\u00f3n de emisiones contaminantes y equipos de control (\u00daltimos 2 a\u00f1os y actual)",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "comments": "LISTA DE ASISTENCIA"
+            },
+            {
+                "name": "Certificados o comprobantes de verificaci\u00f3n de veh\u00edculos utilitarios /  fuentes m\u00f3viles (\u00daltimos 2 a\u00f1os y actual)",
+                "essential_cloud": false,
+                "advance": "PENDING",
+                "comments": "Pendiente estudios"
+            },
+            {
+                "name": "Estimaci\u00f3n y/o medici\u00f3n de la suma anual de emisiones directas e indirectas de gases o compuestos de efecto invernadero para determinar aplicabilidad del RENE (\u00daltimos 2 a\u00f1os)",
+                "essential_cloud": false,
+                "advance": "PENDING",
+                "comments": "Complementar con la dimensi\u00f3n del patio"
+            },
+            {
+                "name": "Permiso para la combusti\u00f3n a cielo abierto",
+                "essential_cloud": false,
+                "advance": "NA",
+                "comments": ""
+            },
+            {
+                "name": "Hoja de seguridad del gas refrigerante utilizado en proceso y/o servicios y listado de equipos o procesos en los que se utiliza",
+                "essential_cloud": false,
+                "advance": "PENDING",
+                "comments": "Listado de los equipos o procesos en los que se utiliza "
+            },
+            {
+                "name": "Actividades de autorregulaci\u00f3n para reducir las emisiones a la atm\u00f3sfera",
+                "essential_cloud": false,
+                "advance": "PENDING",
+                "comments": "Desarrollo de la Actividad "
+            },
+            {
+                "name": "Indicadores de desempen\u0303o ambiental especi\u0301ficos en materia de atm\u00f3sfera que evidencie la mejora y estrategias de minimizacion de emisiones al aire",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "comments": ""
+            }
+        ],
+        "RUIDO": [
+            {
+                "name": "Estudios de ruido perimetral",
+                "essential_cloud": true,
+                "advance": "DELIVERED",
+                "comments": ""
+            },
+            {
+                "name": "Certificado de calibraci\u00f3n del equipo que realiza la medici\u00f3n",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "comments": ""
+            },
+            {
+                "name": "Acreditaci\u00f3n de EMA del laboratorio que realiza los estudios",
+                "essential_cloud": true,
+                "advance": "DELIVERED",
+                "comments": ""
+            },
+            {
+                "name": "Aprobaci\u00f3n de PROFEPA del laboratorio que realiza los estudios (s\u00f3lo si es de competencia federal en materia de emisiones)",
+                "essential_cloud": true,
+                "advance": "DELIVERED",
+                "comments": ""
+            },
+            {
+                "name": "Indicadores de desempen\u0303o ambiental especi\u0301ficos en materia de ruido que evidencie la mejora ",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "comments": ""
+            },
+            {
+                "name": "Actividades de autorregulaci\u00f3n (mejora del desempe\u00f1o ambiental, indicadores particulares)",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "comments": ""
+            }
+        ]
+    }
 }

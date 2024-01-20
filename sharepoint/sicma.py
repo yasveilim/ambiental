@@ -9,24 +9,28 @@ WORKSHEETS = ['CRITICAS', 'AIRE Y RUIDO', 'AYR1.2', 'AGUA',
 MATERIALS = [x for x in WORKSHEETS if x not in ['AYR1.2', r'% de Avance']]
 ADVANCE_WORKSHEET = r'% de Avance'
 
-# Parse db result example
-"""
-{
-    # Category
-    'CRITICAS': {
-        # material: [documents]
-        'AIRE':  [],
-        'RUIDO': []
 
-    }
-}
-"""
+def calculate_advance(delivered: str | int, pending: str | int):
+    if delivered:
+        advance = 'DELIVERED'
+    elif pending:
+        advance = 'PENDING'
+    else:
+        advance = 'NA'
+
+    return advance
 
 
-def extract_row(current_docuements: dict, row: t.List[str], doc_index: int, material_idx: int, material: str):
+def extract_row(
+        current_docuements: dict,
+        row: t.List[str],
+        doc_index: int,
+        material_idx: int,
+        material: str
+) -> t.Optional[str]:
 
     if not any(row[doc_index:]):
-        return 'continue'
+        return None
 
     if len(row[material_idx]) > 0:
         material = row[material_idx]
@@ -36,7 +40,13 @@ def extract_row(current_docuements: dict, row: t.List[str], doc_index: int, mate
         current_docuements[material] = []
         current_material = current_docuements[material]
 
-    current_material.append(row[doc_index])
+    current_material.append({
+        'name': row[doc_index],
+        'essential_cloud': bool(row[doc_index + 1]),
+        'advance': calculate_advance(row[doc_index + 2], row[doc_index + 3]),
+        # ARCHIVES
+        'comments': row[-2]
+    })
 
     return material
 
@@ -50,21 +60,25 @@ def read_sicma_db(account: Account):
         current_docuements = {}
         material = ''
         all_cells = sharepoint.read_all_cells(workbook, sheet)
-        # print('-' * 10, sheet, '-' * 10)
+        print('-' * 10, sheet, '-' * 10)
 
         for row in all_cells[11:]:
-            # print(row)
+            print(row)
             # continue
+            material_idx = 0
             match sheet:
-                case 'CRITICAS': doc_index = 2
-                case 'AIRE Y RUIDO': doc_index = 3
-                case _: continue # TODO: raise on unknown sheet
+                case 'CRITICAS':
+                    doc_index = 2
+                case 'AIRE Y RUIDO':
+                    doc_index = 3
+                case _: continue  # TODO: raise on unknown sheet
 
-            extract_row(
-                current_docuements,
-                row,
-                
+            extract_data = extract_row(
+                current_docuements, row, doc_index, material_idx, material
             )
+
+            if extract_data:
+                material = extract_data
 
         result[sheet] = current_docuements
 
