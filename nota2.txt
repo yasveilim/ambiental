@@ -1124,5 +1124,574 @@
                 "comments": ""
             }
         ]
+    },
+    "RECNAT Y RIESGO": {
+        "RECURSOS NATURALES": [
+            {
+                "name": "Procesos o actividades  que explotan recursos naturales  (ecosistemas o biodiversidad) tales como pezca, caza, construcci\u00f3n de caminos, brechas y puentes, etc.",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Reporte de tratamiento fito-sanitario de embalaje de madera, tarimas o para comercio internacional (ejemplos de \u00faltimos 2 a\u00f1os y actual) y Autorizaci\u00f3n del responsable del tratamiento",
+                "essential_cloud": false,
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "FALTAN"
+            },
+            {
+                "name": "Certificados de reembarque forestal de las tarimas de madera (ejemplos de \u00faltimos 2 a\u00f1os y actual)",
+                "essential_cloud": false,
+                "advance": "PENDING",
+                "archives": "PENDIENTE EJEMPLOS 2021",
+                "comments": "OK 2023, Y 2022"
+            },
+            {
+                "name": "Facturas de compra de madera/tarimas (ejemplos de \u00faltimos 2 a\u00f1os y actual)",
+                "essential_cloud": false,
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "FALTAN"
+            },
+            {
+                "name": "En caso de tener especies enlistadas en la NOM-059-SEMARNAT-2010, presentar listado de especies y Autorizaci\u00f3n de la UMA. ",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "FALTA PROCEDIMIENTO DE MANEJO",
+                "comments": "OK LISTADO, PENDIENTE PROCEDIMIENTO DE MANEJO"
+            },
+            {
+                "name": "Resoluci\u00f3n de Impacto ambiental ",
+                "essential_cloud": true,
+                "advance": "DELIVERED",
+                "archives": "PENDIENTE HOJA DE NOTIFICACION DE RECIBIDO",
+                "comments": "OK REVISADA, PENDIENTE HOJA DE NOTIFICACION"
+            },
+            {
+                "name": "Documentaci\u00f3n  referente al cumplimiento a las condicionantes de la autorizaci\u00f3n de Impacto. La capacidad instalada coincide con la LF o LAU? Se cumple con la capacidad instalada?",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "archives": "PENDIENTE OFICIO DE NOTIFICACI\u00d3N A LA PROFEPA DE LA RESOLUCI\u00d3N QUE SE OBTUVO",
+                "comments": "OK 1ER REPORTE SEM DE CUMP DE T Y C"
+            },
+            {
+                "name": "Indicadores de desempen\u0303o ambiental especi\u0301ficos en materia de recursos naturales que evidencie la mejora ",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Actividades de autorregulaci\u00f3n (mejora del desempe\u00f1o ambiental, indicadores particulares)",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            }
+        ],
+        "RIESGO AMBIENTAL Y ATENCI\u00d3N A EMERGENCIAS AMBIENTALES": [
+            {
+                "name": "Listado de sustancias qu\u00edmicas utilizadas en todas las \u00e1reas, que indique cantidad m\u00e1xima de almacenamiento, tipo de contenedor y Hojas de Datos de Seguridad.",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "ESTUDIO NOM 005"
+            },
+            {
+                "name": "Listado de Tanques de Almacenamiento de Sustancias Qu\u00edmicas (Capacidad de almacenamiento )",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Pruebas de espesores y radiografiado de tanques de almacenamiento de sustancias peligrosas (Si aplica) ",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Programa y evidencias de mantenimiento de tuber\u00edas, diques y  tanques de almacenamiento de materiales peligrosos (\u00faltimos 2 a\u00f1os y actual).",
+                "essential_cloud": false,
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "REVISADO"
+            },
+            {
+                "name": "Programa y evidencia de mantenimiento de almacenes de materiales peligrosos. Incluye condiciones del suelo (\u00daltimos dos a\u00f1os y actual).",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "OK"
+            },
+            {
+                "name": "Dictamen de verificaci\u00f3n de  Instalaciones de Gas Natural conforme a la NOM-002-SECRE-2010 y/o la NOM-003-SECRE-2010. Incluyendo la acreditaci\u00f3n de la empresa que realiz\u00f3 la evaluaci\u00f3n (\u00daltimos dos a\u00f1os y actual si aplica).",
+                "essential_cloud": true,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Listado de recipientes sujetos a presi\u00f3n (No. de construcci\u00f3n, capacidad, condiciones de operaci\u00f3n, localizaci\u00f3n). ",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Autorizaci\u00f3n STPS de tanques sujetos a presi\u00f3n que manejen sustancias peligrosas",
+                "essential_cloud": false,
+                "advance": "PENDING",
+                "archives": "FALTA EL RESTO DE AUTORIZACIONES STPS",
+                "comments": "EN EN LISTADO HAY APROXIMADAMENTE 30 RSP CATEGORIA III, PERO SOLO NOS COMPARTIERON AUTORIZACION STPS DE 8"
+            },
+            {
+                "name": "Si los RSP contienen sustancias peligrosas: Calibraci\u00f3n de v\u00e1lvulas de seguridad, bit\u00e1coras de operaci\u00f3n y mantenimiento y los Dictamenes emitidos por una UV.",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Registro de Medici\u00f3n de Tierras F\u00edsicas para Almac\u00e9n de Sustancias Qu\u00edmicas, Residuos Peligrosos, Materia prima y Producto terminado  (\u00e1reas con sustancias con riesgo por uso de sustancias qu\u00edmicas inflamables) NOM-022-STPS-2015 (\u00daltimos dos a\u00f1os y actual si aplica) Incluir atenci\u00f3n a recomendaciones del Estudio. ",
+                "essential_cloud": true,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "REVISADO 2021, 2022, 2023"
+            },
+            {
+                "name": "Calibraci\u00f3n de equipos de Medici\u00f3n de Tierras Fisicas y/o Acreditaci\u00f3n de Unidad de Verificaci\u00f3n que realiz\u00f3 las mediciones conforme a NOM-022-STPS-2015 (\u00daltimos dos a\u00f1os y actual si aplica)",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "OK 2021, 2022, 20023"
+            },
+            {
+                "name": "Estudio de riesgo potencial de sustancias qu\u00edmicas conforme a la NOM-005-STPS-1998 (actualizado). Incluir atenci\u00f3n a recomendaciones del Estudio. ",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "REVISADO"
+            },
+            {
+                "name": "Dict\u00e1menes de operaci\u00f3n de Instalaciones de almacenamento y uso de Gas L.P. conforme a la NOM-003-SEDG y/o la NOM-004-SEDG-2004. Incluir acreditaci\u00f3n de la Unidad de Inspecci\u00f3n que realiz\u00f3 los dictamenes (\u00daltimos dos a\u00f1os y actual si aplica).",
+                "essential_cloud": true,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Procedimiento de carga y descarga de sustancias peligrosas y/o combustibles",
+                "essential_cloud": false,
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "CARGA DE DIESEL A SOLDADORAS"
+            },
+            {
+                "name": "Registros de capacitaci\u00f3n en materia de riesgo ambiental (Manejo de sustancias qu\u00edmicas, Colores e identificaci\u00f3n, Sistema Globalmente Armonizado, Se\u00f1alizaci\u00f3n, NOM-018-STPS-2015, etc.) (\u00daltimos dos a\u00f1os y actual)",
+                "essential_cloud": false,
+                "advance": "PENDING",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Estudio de riesgo por incendio conforme a la NOM-002-STPS-2010 y/o su dictamen por la autoridad correspondiente. Incluir atenci\u00f3n a recomendaciones del Estudio. ",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "REVISADO"
+            },
+            {
+                "name": "Estudio de Riesgo Ambiental Federal (Constancia de Ingreso) y/o Estatal (Resolutivo y cumplimiento de condicionantes)",
+                "essential_cloud": true,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "RECIBIDO, CARP 27"
+            },
+            {
+                "name": "Programa para la Prevenci\u00f3n de Accidentes (PPA) y su dictamen. Incluir evidencia de implementaci\u00f3n de actividades del PPA.",
+                "essential_cloud": true,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "RECIBIDO CARP 27, EN REVISION MEDIDAS DE CUMP"
+            },
+            {
+                "name": "Seguro ambiental en caso de realizar Actividades Altamente Riesgosas",
+                "essential_cloud": false,
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "ESPECIFICAR SI SE INCLUYE LA INSTALACION DEL KM 10.5 EN LA POLIZA DE SEGURO, YA QUE NO APARECE EN LAS INSTALACIONES ASEGURADAS"
+            },
+            {
+                "name": "Programa de Protecci\u00f3n Civil y su dictamen o VoBo (\u00daltimos dos a\u00f1os y actual)",
+                "essential_cloud": true,
+                "advance": "DELIVERED",
+                "archives": "NO SE HA SUBIDO",
+                "comments": "REVISADO 2023, 2022, 2021"
+            },
+            {
+                "name": "Procedimiento para la atenci\u00f3n de fuga de materiales peligrosos y/o combustibles",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Procedimiento para la atenci\u00f3n de derrame de materiales peligrosos y/o combustibles",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "REVISADO"
+            },
+            {
+                "name": "Procedimiento para la atenci\u00f3n de incendio y/o explosi\u00f3n.",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "FALTA SUBIR",
+                "comments": "REVISADO"
+            },
+            {
+                "name": "Registros y listas de verificaci\u00f3n de carga y descarga de sustancias peligrosas (\u00daltimos 2 a\u00f1os y actual)",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Programa anual de revisi\u00f3n a las instalaciones el\u00e9ctricas de las \u00e1reas del centro de trabajo y evidencias de la revisi\u00f3n (\u00daltimos 2 a\u00f1os y actual)",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Registros de revisi\u00f3n/mantenimiento de las instalaciones de gas licuado de petr\u00f3leo y/o natural (\u00daltimos 2 a\u00f1os y actual)",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "C\u00e1lculo del volumen total de gas natural o gas L.P. que fluye por las tuber\u00edas.",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Registros de verificaci\u00f3n/mantenimiento de extintores, raisers,  hidrantes (\u00daltimos dos a\u00f1os y actual)",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "OK EXTINTORES"
+            },
+            {
+                "name": "Listado de equipos de atenci\u00f3n de emergencias (derrames, fugas, explosiones) ",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Registro de mantenimiento de equipos para atenci\u00f3n de fugas y derrames (\u00daltimos dos a\u00f1os y actual)",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "OK KIT VS DERRAMES"
+            },
+            {
+                "name": "Registros de mantenimiento de Bombas contra incendio (jockey, diesel, el\u00e9ctrica), indicar cu\u00e1ntas se tienen (\u00daltimos dos a\u00f1os y actual)",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Registros de verificaci\u00f3n/mantenimiento de alarmas y detectores (\u00daltimos 2 a\u00f1os y actual)",
+                "essential_cloud": false,
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "FALTAN"
+            },
+            {
+                "name": "Plano de localizaci\u00f3n de sistemas de emergencia que incluya los puntos indicados en el 5.2 de la NOM-002-STPS-2010",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "OK"
+            },
+            {
+                "name": "Acreditaci\u00f3n al Sistema de Administraci\u00f3n y Seguridad en el trabajo otorgada por Secretar\u00eda de Trabajo y Previsi\u00f3n Social (en caso de estar suscrito al Programa de autogesti\u00f3n de la STPS)",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "En caso de tener Actividades Altamente Riesgosas, escenarios y reportes de simulacros de la sustancia altamente riesgosa, conforme a ERA/PPA, incluir evidencia de atenci\u00f3n de recomendaciones de reportes (\u00daltimos dos a\u00f1os y actual si aplica).",
+                "essential_cloud": false,
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "NO SE TIENE EVIDENCIA DE SIMULACROS DE EMERGENCIAS RELACIONADAS CON ACETILENO, QUE ES LA PRINCIPAL SUSTANCIA DEL PPA"
+            },
+            {
+                "name": "En caso de ser grado de riesgo de incendio ALTO, escenarios y reportes de 2 simulacros de incendio anuales, incluir evidencia de atenci\u00f3n de recomendaciones de reportes  (\u00daltimos dos a\u00f1os y actual si aplica).",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "FALTA EVIDENCIA DE ATENCION A RECOMENDACIONES DEL SIMULACRO MARZO 2022, QUE YA SE HAYAN REALIZADO",
+                "comments": "RECIBIDOS 2021, 2022, PROGRAMA 2023"
+            },
+            {
+                "name": "Capacitaci\u00f3n de brigadistas con base en la NOM-002-STPS-2010, (respuesta a emergencias, primeros auxilios, manejo de extintores, incendio, etc.) (\u00daltimos dos a\u00f1os y actual)",
+                "essential_cloud": false,
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "OK INCENDIO, PENDIENTES LAS OTRAS BRIGADAS"
+            },
+            {
+                "name": "Evidencia de la evaluaci\u00f3n y mejora continua de las acciones o medidas establecidas en la administraci\u00f3n del riesgo ambiental (Actividades de autorregulaci\u00f3n)",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            }
+        ]
+    },
+    "OTROS": {
+        "GENERALES": [
+            {
+                "name": "F-SAC-15-01 INFO PLAN",
+                "essential_cloud": false,
+                "advance": "PENDING",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Producci\u00f3n Anual por producto (\u00faltimos 2 a\u00f1os y lo que va del a\u00f1o actual)",
+                "essential_cloud": false,
+                "advance": "PENDING",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "N\u00famero de empleados adminsitrativos y operativos (\u00faltimos 2 a\u00f1os y actual)",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "ok n\u00famero de empleados"
+            },
+            {
+                "name": "Listado de materias primas y consumo anual (\u00daltimos dos a\u00f1os).",
+                "essential_cloud": false,
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "pendiente consumibles qu\u00edmicos 2023"
+            },
+            {
+                "name": "En caso de ser Refrendo, historial de Certificado de Industrial Limpia: fecha de expedici\u00f3n de certificados anteriores",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "En caso de ser Refrendo, \u00faltimo Certificado de Industria Limpia (acuse de recibido) ",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "Ok acuse 2018"
+            }
+        ],
+        "SUELO": [
+            {
+                "name": "Licencia y/o Constancia de uso de suelo",
+                "essential_cloud": true,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "Ok licencias"
+            },
+            {
+                "name": "Aviso de accidente de derrame (Si aplica)",
+                "essential_cloud": true,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Programa de remediaci\u00f3n (Si aplica)",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Procedimiento o Plan de emergencias para derrames, infiltraciones, descargas o vertidos accidentales de\nmateriales peligrosos o residuos peligrosos.",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": "Ok procedimiento de derrames "
+            },
+            {
+                "name": "Bit\u00e1cora de generaci\u00f3n de residuos de la remediaci\u00f3n ",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Estudio de evaluaci\u00f3n de riesgo ambiental, por contaminaci\u00f3n de suelo. ",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Acreditaci\u00f3n del laboratorio que realiza los an\u00e1lisis.",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Indicadores de desempen\u0303o ambiental especi\u0301ficos en materia de suelo que evidencie la mejora ",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Actividades de autorregulaci\u00f3n (mejora del desempe\u00f1o ambiental, indicadores particulares)",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            }
+        ],
+        "ENERG\u00cdA": [
+            {
+                "name": "Registro de consumos de energ\u00eda el\u00e9ctrica y de combustibles en la instalaci\u00f3n (\u00daltimos 2 a\u00f1os y lo que va del a\u00f1o actual)",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Registro por nivel de \u00e1rea de los consumos de energ\u00eda el\u00e9ctrica y de combustibles por \u00e1rea equipo, forma, fuente y tipo de energ\u00eda, consumo y eficiencia. ",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Proyectos para disminuir el consumo de energ\u00eda el\u00e9ctrica y combustibles o evitar p\u00e9rdidas energ\u00e9ticas. Incluir evidencia de implementaci\u00f3n en los \u00faltimos dos a\u00f1os y resultados obtenidos medibles si aplica.",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "AMPLIAR DESCRIPCION"
+            },
+            {
+                "name": "Programas o equipos de sensibilizaci\u00f3n  para el ahorro y consumo eficiente de energ\u00eda y consumo de combustible",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Programas de cogeneraci\u00f3n de energ\u00eda",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Programas de uso de energ\u00eda renovable",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "PANELES SOLARES, AMPLIAR"
+            },
+            {
+                "name": "Capacitaci\u00f3n en sensibilizaci\u00f3n  para el ahorro y consumo eficiente de energ\u00eda y consumo de combustible (Ultimos 2 a\u00f1os)",
+                "essential_cloud": false,
+                "advance": "PENDING",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Indicadores de desempen\u0303o ambiental especi\u0301ficos en materia de energ\u00eda que evidencie la mejora ",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Evidencia de implementaci\u00f3n de las acciones declaradas para la administraci\u00f3n de los aspectos ambientales en materia de energ\u00eda",
+                "essential_cloud": false,
+                "advance": "NA",
+                "archives": "",
+                "comments": ""
+            }
+        ],
+        "SISTEMA DE GESTI\u00d3N AMBIENTAL": [
+            {
+                "name": "Sistema de gesti\u00f3n o administraci\u00f3n ambiental: Listado de Procedimientos  del sistema",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "Ok listado de procedimientos"
+            },
+            {
+                "name": "Pol\u00edtica Ambiental",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Objetivos y metas (orientados a mantener o mejorar su desempe\u00f1o ambiental)",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Procedimiento de Identificaci\u00f3n y Jerarquizaci\u00f3n de Aspectos Ambientales Significativos",
+                "essential_cloud": true,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Resultado de evaluaci\u00f3n de la Identificaci\u00f3n y Jerarquizaci\u00f3n de Aspectos Ambientales Significativos (actualizado)",
+                "essential_cloud": true,
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "actualizar las resultados, ya que su \u00faltima actualizaci\u00f3n es del  01 de marzo del 2022"
+            },
+            {
+                "name": "Procedimiento y Matriz de cumplimiento legal ambiental",
+                "essential_cloud": true,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Programa de Capacitaci\u00f3n Ambiental (\u00daltimos 2 a\u00f1os y actual)",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": ""
+            },
+            {
+                "name": "Certificado de ISO 14001:2015 vigente",
+                "essential_cloud": false,
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": ""
+            }
+        ]
     }
 }

@@ -59,24 +59,24 @@ def read_sicma_db(account: Account):
         account, 'root:sites/Ambiental:/Requerimientos de informacion V22 NDA1.xlsx')
 
     result = {}
-    for sheet in MATERIALS[:4]:
+    for sheet in MATERIALS:
         data_extractor = DataExtractor()
         all_cells = sharepoint.read_all_cells(workbook, sheet)
-        print('-' * 10, sheet, '-' * 10)
 
         for row in all_cells[11:]:
-            print(row)
-            # continue
 
             match sheet:
                 case 'CRITICAS':
                     data_extractor.doc_index = 2
-                case 'AIRE Y RUIDO' | 'AGUA':
+                case 'AIRE Y RUIDO' | 'AGUA' | 'RECNAT Y RIESGO' | 'OTROS':
                     data_extractor.doc_index = 3
                 case 'RESIDUOS':
                     data_extractor.doc_index = 4
                     data_extractor.material_idx = 1
-                case _: continue  # TODO: raise on unknown sheet
+                case _: raise ValueError(
+                    f'The {sheet} material is unknown and it has not been '
+                    'possible to assign an accurate extraction strategy.'
+                )
 
             data_extractor.extract_row(row)
 
