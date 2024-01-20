@@ -28,27 +28,31 @@ class DataExtractor:
     doc_index: int = 0
     material_idx: int = 0
     material: str = ""
+    critical_materials: t.List[str] = field(default_factory=list)
 
     def extract_row(self, row: t.List[str]) -> t.Optional[str]:
 
-        if not any(row[self.doc_index:]):
-            return None
-
         if len(row[self.material_idx]) > 0:
             self.material = row[self.material_idx]
+
+        if not any(row[self.doc_index:]):
+            return None
 
         if not self.current_docuements.get(self.material):
             self.current_docuements[self.material] = []
 
         current_material = self.current_docuements[self.material]
 
+        name = row[self.doc_index]
+
         current_material.append({
-            'name': row[self.doc_index],
+            'name': name,
             'essential_cloud': bool(row[self.doc_index + 1]),
             'advance': calculate_advance(
                 row[self.doc_index + 2], row[self.doc_index + 3]),
             'archives': row[-3],
-            'comments': row[-2]
+            'comments': row[-2],
+            'is_critical': name in self.critical_materials
         })
 
         return self.material
@@ -59,11 +63,15 @@ def read_sicma_db(account: Account):
         account, 'root:sites/Ambiental:/Requerimientos de informacion V22 NDA1.xlsx')
 
     result = {}
+    critical_materials = []
     for sheet in MATERIALS:
         data_extractor = DataExtractor()
+        data_extractor.critical_materials = critical_materials
         all_cells = sharepoint.read_all_cells(workbook, sheet)
 
         for row in all_cells[11:]:
+            if sheet == 'AGUA':
+                pass
 
             match sheet:
                 case 'CRITICAS':
@@ -80,15 +88,15 @@ def read_sicma_db(account: Account):
 
             data_extractor.extract_row(row)
 
+        if sheet == 'CRITICAS':
+            cc = data_extractor.current_docuements.values()
+            for critica in cc:
+                critical_materials += [x['name'] for x in critica]
+
+            continue
+
         result[sheet] = data_extractor.current_docuements
 
-    import json
-    # >>> your_json = '["foo", {"bar": ["baz", null, 1.0, 2]}]'
-    # >>> parsed = json.loads(your_json)
-    # >>> print(json.dumps(parsed, indent=4))
-    # parsed = json.loads(result)
-    with open('nota2.txt', mode='w', encoding='utf-8') as file:
-        print(json.dumps(result, indent=4), file=file)
     return result
 
 

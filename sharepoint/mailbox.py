@@ -12,10 +12,10 @@ def send_email(account: Account, to: str, subject: str, body: str):
 
     Parameters:
 
-    account (O365.Account): The sender's Office 365 account.
-    to (str): The email address of the recipient.
-    subject (str): The subject of the email.
-    body (str): The content of the email.
+        account (O365.Account): The sender's Office 365 account.
+        to (str): The email address of the recipient.
+        subject (str): The subject of the email.
+        body (str): The content of the email.
 
     The function does not return a value.
     """
