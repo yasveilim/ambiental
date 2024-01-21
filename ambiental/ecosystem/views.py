@@ -52,19 +52,19 @@ class Index(generic.TemplateView):
         # ['AIRE Y RUIDO', 'AGUA', 'RESIDUOS', 'RECNAT Y RIESGO', 'OTROS']
         match site:
             case "water":
-
+                context['book'] = SICMA_AZURE_DB['AGUA']
                 context['imgmaterial'] = 'agua.jpg'
             case "air-noise":
-
+                context['book'] = SICMA_AZURE_DB['AIRE Y RUIDO']
                 context['imgmaterial'] = 'aire.jpg'
             case "waste":
-
+                context['book'] = SICMA_AZURE_DB['RESIDUOS']
                 context['imgmaterial'] = 'residuos.jpg'
             case "recnat-risks":
-
+                context['book'] = SICMA_AZURE_DB['RECNAT Y RIESGO']
                 context['imgmaterial'] = 'riesgos.jpg'
             case "others":
-
+                context['book'] = SICMA_AZURE_DB['OTROS']
                 context['imgmaterial'] = 'others.jpg'
 
         return context
@@ -74,10 +74,6 @@ class Index(generic.TemplateView):
 
         if slug == 'advance':
             return ['index/advance.html']
-
-        elif slug == 'others':
-            return ['index/others.html']
-
         else:
             return ['index/generic.html']
 

@@ -16,9 +16,13 @@
                 <div class="form">
                     <div class="contenedor_carta_materiales">
                         <select class="selector_documentos" name="select">
-                            <option value="value1">Value 1</option>
-                            <option value="value2" selected>Value 2</option>
-                            <option value="value3">Value 3</option>
+                            {% for key, value in book.items %}
+                             <option value={{ key }}>{{ key }}</option>
+                            {% endfor %}
+                        </select>
+
+                        <select class="selector_documentos" name="select">
+
                         </select>
 
                         <div class="contenedor_izq_der">
@@ -31,7 +35,10 @@
                             </div>
 
                             <div class="cont_derecha">
-                                <ion-icon name="cloud-outline"></ion-icon>
+                                <div>
+                                    <ion-icon name="cloud-outline"></ion-icon>
+                                    <i class="fa-solid fa-house-chimney-crack"></i>
+                                </div>
                                 <textarea id="texto_material" name="" rows="4" cols="40"> </textarea>
                             </div>
                         </div>
