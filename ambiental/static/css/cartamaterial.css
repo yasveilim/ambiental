@@ -6,7 +6,7 @@
 
 body{
     overflow: hidden;
-    background: linear-gradient(0.25turn, #3f87a6, #f69d3c);
+    background: white
 }
 
 
@@ -60,7 +60,7 @@ body{
 	position: relative;
 	width: 100%;
 	height: 100%;
-	padding: 30px;
+	padding: 20px;
 }
 
 .material_imagen{

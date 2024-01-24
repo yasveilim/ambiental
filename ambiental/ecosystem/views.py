@@ -15,6 +15,10 @@ class Home(generic.TemplateView):
 
 class Login(generic.TemplateView):
     template_name = 'login.html'
+    
+class Nuevo(generic.TemplateView):
+    template_name = 'nuevo.html'
+
 
 # class Signup(generic.TemplateView):
 #     template_name = 'signup.html'
