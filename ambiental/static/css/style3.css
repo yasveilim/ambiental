@@ -49,9 +49,9 @@
 
 .options .option {
     display: flex;
-    height: 55px;
+    height: 50px;
     cursor: pointer;
-    padding: 0 16px;
+    padding: 0 13px;
     border-radius: 8px;
     align-items: center;
     background: #fff;
@@ -62,11 +62,11 @@
 }
 
 .option i {
-    font-size: 25px;
+    font-size: 20px;
     margin-right: 12px;
 }
 
 .option .option-text {
-    font-size: 18px;
+    font-size: 14px;
     color: #333;
 }

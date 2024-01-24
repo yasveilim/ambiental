@@ -51,7 +51,7 @@ class Index(generic.TemplateView):
         context = super().get_context_data(**kwargs)
         site = self.kwargs.get('site')
         context['category'] = site
-        print(SICMA_AZURE_DB)
+        # print(SICMA_AZURE_DB)
 
         # ['AIRE Y RUIDO', 'AGUA', 'RESIDUOS', 'RECNAT Y RIESGO', 'OTROS']
         match site:

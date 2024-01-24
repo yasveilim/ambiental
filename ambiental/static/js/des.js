@@ -1,15 +1,18 @@
-const optionMenu = document.querySelector(".select-menu"),
-       selectBtn = optionMenu.querySelector(".select-btn"),
-       options = optionMenu.querySelectorAll(".option"),
-       sBtn_text = optionMenu.querySelector(".sBtn-text");
+const OPTION_MENU = document.querySelector(".select-menu"),
+       SELECT_BTN = OPTION_MENU.querySelector(".select-btn"),
+       OPTIONS    = OPTION_MENU.querySelectorAll(".option"),
+       SBTN_TEXT  = OPTION_MENU.querySelector(".sBtn-text");
 
-selectBtn.addEventListener("click", () => optionMenu.classList.toggle("active"));       
+SELECT_BTN.addEventListener("click", () => OPTION_MENU.classList.toggle("active"));       
 
-options.forEach(option =>{
-    option.addEventListener("click", ()=>{
+OPTIONS.forEach(option => {
+    option.addEventListener("click", ()=> {
         let selectedOption = option.querySelector(".option-text").innerText;
-        sBtn_text.innerText = selectedOption;
+        SBTN_TEXT.innerText = selectedOption;
 
-        optionMenu.classList.remove("active");
+        OPTION_MENU.classList.remove("active");
     });
 });
+
+console.log(OPTIONS[0])
+OPTIONS[0].click()
