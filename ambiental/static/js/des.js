@@ -6,6 +6,7 @@ ALL_OPTION_MENU.forEach(optionMenu => {
         options = optionMenu.querySelectorAll(".option"),
         sbtnText  = optionMenu.querySelector(".sBtn-text");
 
+
     selectBtn.addEventListener("click", () => optionMenu.classList.toggle("active"));       
 
     options.forEach(option => {
