@@ -21,7 +21,7 @@
                     <div class="contenedor_carta_materiales">
                         <div class="select-menu">
                             <div class="select-btn">
-                                <span class="sBtn-text">Select your option</span>
+                                <span class="sBtn-text">Select your material</span>
                                 <i class="bx bx-chevron-down"></i>
                             </div>
                     
@@ -37,9 +37,25 @@
                             </ul>
                         </div>
 
-                        <select class="selector_documentos" name="select">
-
-                        </select>
+                        {% for material, document_list in book.items %}
+                            <div class="select-menu">
+                                <div class="select-btn">
+                                    <span class="sBtn-text">Select your document</span>
+                                    <i class="bx bx-chevron-down"></i>
+                                </div>
+                        
+                                <ul class="options">
+                                    
+                                    {% for document in document_list %}
+                                        <li class="option">
+                                            <!-- <i class="bx bxl-github" style="color: #171515;"></i> -->
+                                            <span class="option-text">{{ document.name }}</span>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            
+                        {% endfor %}
 
                         <div class="contenedor_izq_der">
                             <div class="cont_izquierda">
