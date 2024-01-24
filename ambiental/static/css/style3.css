@@ -44,17 +44,21 @@
     display: block;
     position: fixed;
     width: 380px;
+    max-height: 400px;
     z-index: 2;
+    overflow-y: scroll;
 }
+
 
 .options .option {
     display: flex;
-    height: 50px;
+    /* height: 50px; */
     cursor: pointer;
     padding: 0 13px;
     border-radius: 8px;
     align-items: center;
     background: #fff;
+    border-bottom: solid 2px gray;
 }
 
 .options .option:hover {
@@ -69,4 +73,8 @@
 .option .option-text {
     font-size: 14px;
     color: #333;
+}
+
+.select-menu-hidden {
+    display: none;
 }
