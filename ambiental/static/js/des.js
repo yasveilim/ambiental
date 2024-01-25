@@ -14,5 +14,4 @@ OPTIONS.forEach(option => {
     });
 });
 
-console.log(OPTIONS[0])
 OPTIONS[0].click()
