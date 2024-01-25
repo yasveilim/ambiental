@@ -4,8 +4,9 @@ from django.http import HttpResponseRedirect  # HttpRequest, HttpResponse,
 # from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
-from .forms import CreateUserForm
+from . import forms
 from django.contrib.auth.models import User
+from . import models
 
 SICMA_AZURE_DB = sicma_main()
 
@@ -20,15 +21,11 @@ class Nuevo(generic.TemplateView):
     template_name = 'nuevo.html'
 
 
-# class Signup(generic.TemplateView):
-#     template_name = 'signup.html'
-
-
 class Signup(generic.CreateView):  # ecosystem:
     success_url = reverse_lazy('login')
     template_name = 'signup.html'
     model = User
-    form_class = CreateUserForm
+    form_class = forms.CreateUserForm
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -82,5 +79,24 @@ class Index(generic.TemplateView):
             return ['index/generic.html']
 
 
-class ForgotPassword(generic.TemplateView):
+#class ForgotPassword(generic.TemplateView):
+#    template_name = 'forgotpassword.html'
+
+class ForgotPassword(generic.CreateView):
+    # success_url = reverse_lazy('login')
     template_name = 'forgotpassword.html'
+    model = models.RestorePasswordRequest
+    form_class = forms.RestorePasswordForm
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.set_password(self.object.password)
+        self.object.save()
+
+        return HttpResponseRedirect(self.get_success_url())
+
+    def form_invalid(self, form):
+        # NOTA: toasts
+        # https://blog.benoitblanchon.fr/django-htmx-toasts/
+        # print('I am here, in invalid', form.errors)
+        return super().form_invalid(form)
