@@ -27,7 +27,4 @@ ALL_OPTION_MENU.forEach(optionMenu => {
     options[0].click()
 });
 
-<<<<<<< HEAD
 OPTIONS[0].click()
-=======
->>>>>>> 88cfd10acbe8e9ae82906c0962ea284c7712e6bc
