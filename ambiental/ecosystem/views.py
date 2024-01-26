@@ -1,6 +1,7 @@
 import typing as t
+from typing import Any
 from sharepoint.sicma import main as sicma_main
-from django.http import HttpResponseRedirect  # HttpRequest, HttpResponse,
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect  # HttpRequest, HttpResponse,
 # from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
@@ -79,24 +80,36 @@ class Index(generic.TemplateView):
             return ['index/generic.html']
 
 
-#class ForgotPassword(generic.TemplateView):
-#    template_name = 'forgotpassword.html'
-
 class ForgotPassword(generic.CreateView):
-    # success_url = reverse_lazy('login')
+    success_url = reverse_lazy('') # reverse_lazy('forgotpassword')
     template_name = 'forgotpassword.html'
     model = models.RestorePasswordRequest
     form_class = forms.RestorePasswordForm
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
-        self.object.set_password(self.object.password)
-        self.object.save()
+        print('the email is: ', self.object.email)
+        # self.object.set_password(self.object.password)
+        # self.object.save()
 
         return HttpResponseRedirect(self.get_success_url())
 
     def form_invalid(self, form):
+        print('I am here, in invalid', [form.errors])
         # NOTA: toasts
         # https://blog.benoitblanchon.fr/django-htmx-toasts/
         # print('I am here, in invalid', form.errors)
         return super().form_invalid(form)
+
+
+class ForgotPasswordUpdate(generic.UpdateView):
+    template_name = 'forgotpassword.html'
+    model = models.RestorePasswordRequest
+    form_class = forms.ResetcodePasswordForm
+
+    def post(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
+        form_class = self.get_form_class()
+        form = self.get_form(form_class)
+
+        print('I am here, in post', form, [form.errors])
+        return super().post(request, *args, **kwargs)

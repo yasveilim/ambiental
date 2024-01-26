@@ -4,8 +4,8 @@ from django.db import models
 
 class RestorePasswordRequest(models.Model):
     email = models.EmailField()
-    password = models.CharField(max_length=50)
-    reset_code = models.CharField(max_length=6)
+    password = models.CharField(max_length=50, null=True)
+    reset_code = models.CharField(max_length=6, null=True)
 
 class AmbientalBook(models.Model):
     material = models.CharField(max_length=50)
