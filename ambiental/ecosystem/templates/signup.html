@@ -19,27 +19,27 @@
             <div class="container">
 				
 				<div class="form">
-					<h2>Iniciar Sesión</h2>
+					<h2>Iniciar sesión</h2>
                     <!-- username password email -->
 			 		<form action="{% url 'signup' %}" method="POST">
                         {% csrf_token %}
                         <div class="inputBox">
-                            <input name="username" type="text" placeholder="Correo Nombre"/>
+                            <input name="username" type="text" placeholder="Nombre"/>
                         </div>
 			 			<div class="inputBox">
-			 				<input name="email" type="text" placeholder="Correo electronico"/>
+			 				<input name="email" type="text" placeholder="Correo electrónico"/>
 			 			</div>
 			 			<div class="inputBox">
 			 				<input name="password" type="password" placeholder="Contraseña"/>
 			 			</div>
 			 			<div class="inputBox">
-			 				<input type="submit" value="Iniciar sesion" />
+			 				<input type="submit" value="Iniciar sesión" />
 			 			</div>
 			 			<p class="forget">
 			 				¿Has olvidado tu contraseña? <a href="recuperar.html">Recuperar contraseña</a>
 			 			</p>
 			 			<p class="forget">
-			 				¿No tienes una cuenta? <a href="registrarse.html">Crear Cuenta</a>
+			 				¿No tienes una cuenta? <a href="registrarse.html">Crear cuenta</a>
 			 			</p>
 			 		</form>
 			 	</div>
