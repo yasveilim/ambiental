@@ -17,7 +17,7 @@
 			 	<div class="form">
 			 		<h2>Recuperar contraseña</h2>
 			 		<!-- <form id="forgotPasswordForm"> -->
-					<form id="forgotPasswordForm" action="{% url 'forgotresetcode' %}" method="POST">
+					<form id="forgotPasswordForm" action="{% url 'forgotresetcode' pk=0 %}" method="POST">
 						{% csrf_token %}
 
 			 			<div class="inputBox">
