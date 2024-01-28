@@ -106,7 +106,7 @@ class ForgotPassword(generic.CreateView):
         send_email(SICMA_AZURE_DB.account,
                    self.object.email,
                    'Código de recuperación de contraseña',
-                   form_obj.resetcode)
+                   str(form_obj.resetcode))
 
         # send_email(account: Account, to: str, subject: str, body: str):
         # self.object.set_password(self.object.password)

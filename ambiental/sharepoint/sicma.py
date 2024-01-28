@@ -102,11 +102,11 @@ def read_sicma_db(account: Account):
 
 class SicmaDB:
 
-    def __init__(self, account: Account):
+    def __init__(self):
         load_dotenv()  # TODO: Move this line and create main function
         client_id = os.getenv('CLIENT_ID')
         client_secret = None  # os.getenv('CLIENT_SECRET')
 
         self.account = autenticate(client_id, client_secret, sharepoint.SCOPES)
-        self.data = read_sicma_db(account)
+        self.data = read_sicma_db(self.account)
 
