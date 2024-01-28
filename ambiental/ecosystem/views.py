@@ -1,4 +1,4 @@
-import typing as t
+# import typing as t
 from typing import Any
 from sharepoint.sicma import main as sicma_main
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect  # HttpRequest, HttpResponse,
@@ -17,7 +17,8 @@ class Home(generic.TemplateView):
 
 class Login(generic.TemplateView):
     template_name = 'login.html'
-    
+
+
 class Nuevo(generic.TemplateView):
     template_name = 'nuevo.html'
 
@@ -81,13 +82,31 @@ class Index(generic.TemplateView):
 
 
 class ForgotPassword(generic.CreateView):
-    success_url = reverse_lazy('') # reverse_lazy('forgotpassword')
+    #success_url = reverse_lazy('forgotresetcode')  # reverse_lazy('forgotpassword')
     template_name = 'forgotpassword.html'
-    model = models.RestorePasswordRequest
+    model = User# models.RestorePasswordRequest
     form_class = forms.RestorePasswordForm
 
+    # def get_success_url(self):
+    #     #reverse_lazy('forgotresetcode', kwargs={'pk': self.object.email})
+    #     print("it is url: ", self.success_url.format(pk=self.object.id))
+    #     mysuper = super().get_success_url()
+    #     print('the super is: ', mysuper)
+    #     return mysuper
+    def get_success_url(self):
+        """Return the URL to redirect to after processing a valid form."""
+        success_url = reverse_lazy('forgotresetcode', kwargs={'pk': self.object.id})
+
+        #if success_url:
+        #    url = success_url.format(**self.object.__dict__)
+        print('the success url is: ', str(success_url))
+        return success_url
+
     def form_valid(self, form):
-        self.object = form.save(commit=False)
+        form_obj = form.save(commit=False)
+
+
+        self.object = User.objects.get(email=form_obj.email)
         print('the email is: ', self.object.email)
         # self.object.set_password(self.object.password)
         # self.object.save()
@@ -103,9 +122,13 @@ class ForgotPassword(generic.CreateView):
 
 
 class ForgotPasswordUpdate(generic.UpdateView):
-    template_name = 'forgotpassword.html'
+    template_name = 'forgotresetcode.html'
     model = models.RestorePasswordRequest
     form_class = forms.ResetcodePasswordForm
+
+    def get(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
+        print('I am here, in get', kwargs)
+        return super().get(request, *args, **kwargs)
 
     def post(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
         form_class = self.get_form_class()

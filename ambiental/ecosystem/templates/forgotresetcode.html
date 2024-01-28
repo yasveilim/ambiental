@@ -17,11 +17,11 @@
 			 	<div class="form">
 			 		<h2>Recuperar contraseña</h2>
 			 		<!-- <form id="forgotPasswordForm"> -->
-					<form id="forgotPasswordForm" action="{% url 'forgotpassword' %}" method="POST">
+					<form id="forgotPasswordForm" action="{% url 'forgotresetcode' %}" method="POST">
 						{% csrf_token %}
 
 			 			<div class="inputBox">
-			 				<input type="email" id="email" name="email" placeholder="Correo electrónico"/>
+			 				<input type="number" id="resetcode" name="resetcode" placeholder="Numero de recuperacion"/>
 			 			</div>
 			 			<div class="inputBox">
 			 				<input type="submit" value="Enviar" />

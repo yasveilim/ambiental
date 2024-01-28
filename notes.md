@@ -10,7 +10,7 @@
 
 
 # Cosas por hacer
-- Terminar forgotpassword
+- Terminar forgotpassword [ ]
 - Tarjetas de materiales
 - Sistema de autenticacion
 - Tarjetas de materiales, apartado de avances
