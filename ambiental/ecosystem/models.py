@@ -1,11 +1,11 @@
 from django.db import models
 
-# Create your models here.
 
 class RestorePasswordRequest(models.Model):
     email = models.EmailField()
-    password = models.CharField(max_length=50, null=True)
+    # password = models.CharField(max_length=50, null=True)
     reset_code = models.CharField(max_length=6, null=True)
+
 
 class AmbientalBook(models.Model):
     material = models.CharField(max_length=50)

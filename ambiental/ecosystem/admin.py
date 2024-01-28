@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import AmbientalBook, AmbientalBookProps
+from . import models
 
 # Register your models here.
-admin.site.register(AmbientalBook)
-admin.site.register(AmbientalBookProps)
+admin.site.register(models.RestorePasswordRequest)
+admin.site.register(models.AmbientalBook)
+admin.site.register(models.AmbientalBookProps)

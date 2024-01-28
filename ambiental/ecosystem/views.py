@@ -87,7 +87,7 @@ class Index(generic.TemplateView):
 
 
 class ForgotPassword(generic.CreateView):
-    template_name = 'forgotpassword.html'
+    template_name = 'forgotpassword/index.html'
     model = User  # models.RestorePasswordRequest
     form_class = forms.RestorePasswordForm
 
@@ -100,13 +100,14 @@ class ForgotPassword(generic.CreateView):
     def form_valid(self, form):
         form_obj = form.save(commit=False)
         self.object = get_object_or_404(User, email=form_obj.email)
-        form_obj.resetcode = utils.generate_reset_code()
-        print('the email is: ', self.object.email, " - ", form_obj.resetcode)
+        form_obj.reset_code = utils.generate_reset_code()
+        print("form_obj is: ", type(form_obj), " - ", form_obj.id)
+        print('the email is: ', self.object.email, " - ", form_obj.reset_code)
         form_obj.save()
         send_email(SICMA_AZURE_DB.account,
                    self.object.email,
                    'Código de recuperación de contraseña',
-                   str(form_obj.resetcode))
+                   str(form_obj.reset_code))
 
         # send_email(account: Account, to: str, subject: str, body: str):
         # self.object.set_password(self.object.password)
@@ -123,7 +124,7 @@ class ForgotPassword(generic.CreateView):
 
 
 class ForgotPasswordUpdate(generic.UpdateView):
-    template_name = 'forgotresetcode.html'
+    template_name = 'forgotpassword/resetcode.html'
     model = models.RestorePasswordRequest
     form_class = forms.ResetcodePasswordForm
 
