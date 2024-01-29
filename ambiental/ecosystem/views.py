@@ -1,4 +1,5 @@
 # import typing as t
+import json
 from typing import Any
 
 from django.contrib.auth.models import User
@@ -8,9 +9,9 @@ from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic.edit import BaseUpdateView
+
 from sharepoint.mailbox import send_email
 from sharepoint.sicma import SicmaDB
-
 from . import models, utils, forms
 
 SICMA_AZURE_DB = SicmaDB()
@@ -133,8 +134,8 @@ class ForgotPasswordUpdate(generic.UpdateView):
         return super(BaseUpdateView, self).get(request, *args, **kwargs)
 
     def post(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
-        form_class = self.get_form_class()
-        form = self.get_form(form_class)
+        print('I am here, in post', kwargs)
+        reset_code_instance = get_object_or_404(models.RestorePasswordRequest, reset_code=kwargs['pk'])
+        _user_owner = get_object_or_404(User, email=reset_code_instance.email)
 
-        print('I am here, in post', form, [form.errors])
-        return super().post(request, *args, **kwargs)
+        return HttpResponse(json.dumps({'status': 'Ok'}), content_type="application/json")

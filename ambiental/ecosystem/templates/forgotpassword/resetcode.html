@@ -34,7 +34,30 @@
 	</section>
 
 	<script>
+		const forgotPasswordForm = document.getElementById("forgotPasswordForm");
 
+		function replaceLastNumber(url, newNumber) {
+		 	var regex = /\d+\/?$/;
+
+		 	var nuevaURL = url.replace(regex, newNumber);
+
+			return nuevaURL + '/';
+		}
+
+		// Example usage:
+		// var originalUrl = 'http://127.567854.0.1:8000/forgot-password/0/';
+		//var newNumber = 5;
+		//var newUrl = replaceLastNumber(originalUrl, newNumber);
+		//console.log(newUrl); // Output: http://127.567854.0.1:8000/forgot-password/5/
+
+
+		forgotPasswordForm.addEventListener("submit", function(event){
+			event.preventDefault();
+
+			forgotPasswordForm.action = replaceLastNumber(forgotPasswordForm.action, forgotPasswordForm.resetcode.value);
+			// console.log(forgotPasswordForm.action);
+			console.log(forgotPasswordForm.submit());
+		});
 	</script>
 	
 </body>
