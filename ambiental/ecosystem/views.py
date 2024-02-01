@@ -1,14 +1,21 @@
-import typing as t
-from sharepoint.sicma import main as sicma_main
-from django.http import HttpResponseRedirect  # HttpRequest, HttpResponse,
+# import typing as t
+import json
+from typing import Any
+
+from django.contrib.auth.models import User
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect  # HttpRequest, HttpResponse,
+from django.shortcuts import get_object_or_404
 # from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
-from . import forms
-from django.contrib.auth.models import User
-from . import models
+from django.views.generic.edit import BaseUpdateView
 
-SICMA_AZURE_DB = sicma_main()
+from sharepoint.mailbox import send_email
+from sharepoint.sicma import SicmaDB
+from . import models, utils, forms
+
+SICMA_AZURE_DB = SicmaDB()
+
 
 class Home(generic.TemplateView):
     template_name = 'home.html'
@@ -16,7 +23,8 @@ class Home(generic.TemplateView):
 
 class Login(generic.TemplateView):
     template_name = 'login.html'
-    
+
+
 class Nuevo(generic.TemplateView):
     template_name = 'nuevo.html'
     
@@ -51,24 +59,24 @@ class Index(generic.TemplateView):
         context = super().get_context_data(**kwargs)
         site = self.kwargs.get('site')
         context['category'] = site
-        # print(SICMA_AZURE_DB)
+        # print(SICMA_AZURE_DB.data)
 
         # ['AIRE Y RUIDO', 'AGUA', 'RESIDUOS', 'RECNAT Y RIESGO', 'OTROS']
         match site:
             case "water":
-                context['book'] = SICMA_AZURE_DB['AGUA']
+                context['book'] = SICMA_AZURE_DB.data['AGUA']
                 context['imgmaterial'] = 'agua.jpg'
             case "air-noise":
-                context['book'] = SICMA_AZURE_DB['AIRE Y RUIDO']
+                context['book'] = SICMA_AZURE_DB.data['AIRE Y RUIDO']
                 context['imgmaterial'] = 'aire.jpg'
             case "waste":
-                context['book'] = SICMA_AZURE_DB['RESIDUOS']
+                context['book'] = SICMA_AZURE_DB.data['RESIDUOS']
                 context['imgmaterial'] = 'residuos.jpg'
             case "recnat-risks":
-                context['book'] = SICMA_AZURE_DB['RECNAT Y RIESGO']
+                context['book'] = SICMA_AZURE_DB.data['RECNAT Y RIESGO']
                 context['imgmaterial'] = 'riesgos.jpg'
             case "others":
-                context['book'] = SICMA_AZURE_DB['OTROS']
+                context['book'] = SICMA_AZURE_DB.data['OTROS']
                 context['imgmaterial'] = 'others.jpg'
 
         return context
@@ -82,24 +90,55 @@ class Index(generic.TemplateView):
             return ['index/generic.html']
 
 
-#class ForgotPassword(generic.TemplateView):
-#    template_name = 'forgotpassword.html'
-
 class ForgotPassword(generic.CreateView):
-    # success_url = reverse_lazy('login')
-    template_name = 'forgotpassword.html'
-    model = models.RestorePasswordRequest
+    template_name = 'forgotpassword/index.html'
+    model = User  # models.RestorePasswordRequest
     form_class = forms.RestorePasswordForm
 
+    def get_success_url(self):
+        """Return the URL to redirect to after processing a valid form."""
+
+        success_url = reverse_lazy('forgotresetcode', kwargs={'pk': self.object.id})
+        return success_url
+
     def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.set_password(self.object.password)
-        self.object.save()
+        form_obj = form.save(commit=False)
+        self.object = get_object_or_404(User, email=form_obj.email)
+        form_obj.reset_code = utils.generate_reset_code()
+        print("form_obj is: ", type(form_obj), " - ", form_obj.id)
+        print('the email is: ', self.object.email, " - ", form_obj.reset_code)
+        form_obj.save()
+        send_email(SICMA_AZURE_DB.account,
+                   self.object.email,
+                   'Código de recuperación de contraseña',
+                   str(form_obj.reset_code))
+
+        # send_email(account: Account, to: str, subject: str, body: str):
+        # self.object.set_password(self.object.password)
+        # self.object.save()
 
         return HttpResponseRedirect(self.get_success_url())
 
     def form_invalid(self, form):
+        print('I am here, in invalid', [form.errors])
         # NOTA: toasts
         # https://blog.benoitblanchon.fr/django-htmx-toasts/
         # print('I am here, in invalid', form.errors)
         return super().form_invalid(form)
+
+
+class ForgotPasswordUpdate(generic.UpdateView):
+    template_name = 'forgotpassword/resetcode.html'
+    model = models.RestorePasswordRequest
+    form_class = forms.ResetcodePasswordForm
+
+    def get(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
+        self.object = get_object_or_404(User, id=kwargs['pk'])
+        return super(BaseUpdateView, self).get(request, *args, **kwargs)
+
+    def post(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
+        print('I am here, in post', kwargs)
+        reset_code_instance = get_object_or_404(models.RestorePasswordRequest, reset_code=kwargs['pk'])
+        _user_owner = get_object_or_404(User, email=reset_code_instance.email)
+
+        return HttpResponse(json.dumps({'status': 'Ok'}), content_type="application/json")

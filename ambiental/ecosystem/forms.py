@@ -16,11 +16,18 @@ class CreateUserForm(forms.ModelForm):
         model = User
         fields = ('username', 'password', 'email')
 
+
 class RestorePasswordForm(forms.ModelForm):
-    email = forms.CharField(max_length=20)
-    password = forms.CharField(max_length=20, widget=forms.PasswordInput())
+    email = forms.CharField(max_length=50)
+
+    class Meta:
+        model = models.RestorePasswordRequest
+        fields = ('email',)
+
+
+class ResetcodePasswordForm(forms.ModelForm):
     resetcode = forms.CharField(max_length=6)
 
     class Meta:
         model = models.RestorePasswordRequest
-        fields = ('email', 'password', 'reset_code')
+        fields = ('resetcode',)

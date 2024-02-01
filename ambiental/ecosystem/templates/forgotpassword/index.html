@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Recuperar contraseña</title>
+    <link rel="stylesheet" href="{% static 'css/forgotpassword.css' %}" />
+</head>
+<body>
+	<section class="form-section">
+		<div class="color"></div>
+		<div class="color"></div>
+		<div class="color"></div>
+		<div class="box">
+			 <div class="container">
+			 	<div class="form">
+			 		<h2>Recuperar contraseña</h2>
+			 		<!-- <form id="forgotPasswordForm"> -->
+					<form id="forgotPasswordForm" action="{% url 'forgotpassword' %}" method="POST">
+						{% csrf_token %}
+
+			 			<div class="inputBox">
+			 				<input type="email" id="email" name="email" placeholder="Correo electrónico"/>
+			 			</div>
+			 			<div class="inputBox">
+			 				<input type="submit" value="Enviar" />
+			 			</div>
+			 			<p class="forget"> Ya tienes una cuenta? <a href="/login">Iniciar sesión</a> </p>
+			 		</form>
+			 	</div>
+			 </div>
+		</div>
+	</section>
+
+	<script>
+
+	</script>
+	
+</body>
+</html>
