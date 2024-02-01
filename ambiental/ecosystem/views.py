@@ -19,6 +19,9 @@ class Login(generic.TemplateView):
     
 class Nuevo(generic.TemplateView):
     template_name = 'nuevo.html'
+    
+class Prueba(generic.TemplateView):
+    template_name = 'prueba.html'
 
 
 class Signup(generic.CreateView):  # ecosystem:

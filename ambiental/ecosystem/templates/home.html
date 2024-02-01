@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style2.css' %}" />
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
     <title>Inicio</title>
     <!-- Enlaces a hojas de estilo CSS o scripts JavaScript van aquí -->
 </head>
@@ -25,7 +26,65 @@
         </div>
     </header>
 
-   <div class="categoria">
-   </div>
+   <nav class="categoria">
+    <a href="#">Inicio</a>
+   </nav>
+
+   <section class="content">
+
+        <h2 class="Productos">Productos</h2>
+
+        <div class="box-container">
+
+            <div class="box">
+                <i class="fa-solid fa-water" title="Agua"></i>
+                <h3>Lorem</h3>
+                <p>Hola</p>
+            </div>
+
+            <div class="box">
+                <i class="fa-solid fa-water" title="Agua"></i>
+                <h3>Lorem</h3>
+                <p>Hola</p>
+            </div>
+
+            <div class="box">
+                <i class="fa-solid fa-water" title="Agua"></i>
+                <h3>Lorem</h3>
+                <p>Hola</p>
+            </div>
+        </div>
+
+   </section>
+
+    <sectionn class="about">
+
+        <h2 class="About">nosotros</h2>
+        <p>Hola</p>
+        <a href="#" class="btn">Saber más</a>
+    </section>
+
+    <sectionn class="price">
+
+    <article class="contain">
+        <h2 class="Precio">Precio</h2>
+        <p>Hola</p>
+
+        <a href="#" class="btn">Saber precio</a>
+
+    </article>
+    
+    </section>
+
+    <sectionn class="content_contact">
+        <h2 class="title">Contacto</h2>
+        <p>84783794</p>
+        <figure class="map">
+            <img src="{% static 'logo2.png' %}" height="220px" width="30%" id="image">
+        </figure>
+    </section>
+
+
+
 </body>
 </html>
