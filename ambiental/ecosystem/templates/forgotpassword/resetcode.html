@@ -6,6 +6,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Recuperar contraseña</title>
     <link rel="stylesheet" href="{% static 'css/forgotpassword.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/saber-toast.css' %}" />
+
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+	<script src="{% static 'js/validation.js' %}"></script>
+
 </head>
 <body>
 	<section class="form-section">
@@ -19,10 +25,12 @@
 			 		<!-- <form id="forgotPasswordForm"> -->
 					<form id="forgotPasswordForm" action="{% url 'forgotresetcode' pk=0 %}" method="POST">
 						{% csrf_token %}
+						<div id="inputs-area">
+							<div class="inputBox">
+								<input type="number" id="resetcode" name="resetcode" placeholder="Numero de recuperacion"/>
+							</div>
+						</div>
 
-			 			<div class="inputBox">
-			 				<input type="number" id="resetcode" name="resetcode" placeholder="Numero de recuperacion"/>
-			 			</div>
 			 			<div class="inputBox">
 			 				<input type="submit" value="Enviar" />
 			 			</div>
@@ -36,6 +44,30 @@
 	<script>
 		const forgotPasswordForm = document.getElementById("forgotPasswordForm");
 
+		function defaultSaberToastSuccess(title, text) {
+			saberToast.success({
+				title: title,
+				text: text,
+				delay: 200,
+				duration: 2600,
+				rtl: true,
+				position: "bottom-right"
+			});
+		}
+
+		function defaultSaberToastError(title, text) {
+			saberToast.error({
+				title: title,
+				text: text,
+				delay: 200,
+				duration: 2600,
+				rtl: true,
+				position: "bottom-right"
+			});
+		}
+
+	
+				
 		function replaceLastNumber(url, newNumber) {
 		 	var regex = /\d+\/?$/;
 
@@ -50,15 +82,137 @@
 		//var newUrl = replaceLastNumber(originalUrl, newNumber);
 		//console.log(newUrl); // Output: http://127.567854.0.1:8000/forgot-password/5/
 
+		function createInputArea(inputName, inputLabel) {
+			let passwordInputDiv = document.createElement("div");
+			passwordInputDiv.classList.add("inputBox");
+
+			let passwordInput = document.createElement("input");
+			passwordInput.type = "password";
+			passwordInput.id = inputName;
+			passwordInput.name = inputName;
+			passwordInput.placeholder = inputLabel;
+
+			passwordInputDiv.appendChild(passwordInput);
+			return passwordInputDiv;
+		}
+
+		function changePage() {
+			const hiddenInput = document.createElement("input");
+			hiddenInput.type = "hidden";
+			hiddenInput.name = "_method";
+			hiddenInput.id = "_method";
+			hiddenInput.value = "put";
+
+			forgotPasswordForm.appendChild(hiddenInput);
+			
+			let inputsArea = document.getElementById("inputs-area");
+			inputsArea.innerHTML = "";
+			let passwordInputDiv = createInputArea("password", "Tu nueva clave");
+			let rePasswordInputDiv = createInputArea("repeatpassword", "Repita la clave");
+
+			inputsArea.appendChild(passwordInputDiv);
+			inputsArea.appendChild(rePasswordInputDiv);
+
+			
+						
+		}
+
+		
+
+		//  headers: {'X-CSRFToken': csrftoken},
+		function sendResetCode(event) {
+			forgotPasswordForm.action = replaceLastNumber(forgotPasswordForm.action, forgotPasswordForm.resetcode.value);
+
+			
+			axios.post(forgotPasswordForm.action, new FormData(forgotPasswordForm))
+			.then(response => {
+				defaultSaberToastSuccess("Exito", "El código de recuperación es correcto");
+				console.log(response.data);
+				changePage();
+				// forgotPasswordForm.removeEventListener("submit", firstSubmit);
+				console.log(forgotPasswordForm);
+			})
+			.catch(error => {
+				defaultSaberToastError("Error de recuperación", "Sucedio un error al enviar el código de recuperación. Por favor, intente de nuevo.");
+				console.error(error);
+			});
+		}
+
+		function sendNewPassword(event) {
+			let password = document.getElementById("password").value;
+			let repeatpassword = document.getElementById("repeatpassword").value;
+			let validationStatus = validatePassword(password, repeatpassword);
+
+			switch (validationStatus) {
+				case "Different":
+					defaultSaberToastError("Error de contraseña", "Las contraseñas no coinciden");
+					return;
+				
+				case "Short":
+					defaultSaberToastError("Error de contraseña", "La contraseña debe tener al menos 8 caracteres");
+					return;
+				
+				case "NoCapital":
+					defaultSaberToastError("Error de contraseña", "La contraseña debe tener al menos dos letras mayúsculas");
+					return;
+				/*
+				case "NoSpecial":
+					defaultSaberToastError("Error de contraseña", "La contraseña debe tener al menos un caracter especial");
+					return;
+				*/
+				case "InvalidCharacters":
+					defaultSaberToastError("Error de contraseña", "La contraseña no debe tener algun caracter especial");
+					return;
+			
+				default:
+					break;
+			}
+			
+
+
+
+			let csrftoken = Cookies.get('csrftoken');
+			let config = {
+				headers:  {
+					'X-CSRFToken': csrftoken
+				},
+			};
+			axios.put(`${forgotPasswordForm.action}${password}/`, new FormData(forgotPasswordForm), config)
+			.then(response => {
+				defaultSaberToastSuccess("Exito", "La contraseña ha sido cambiada con éxito");
+				
+				console.log(response.data);
+				// forgotPasswordForm.removeEventListener("submit", firstSubmit);
+				console.log(forgotPasswordForm);
+			})
+			.catch(error => {
+				defaultSaberToastError("Error de recuperación",
+				"Sucedio un error al aptualizar la contraseña. Por favor, intente de nuevo.");
+				console.error(error);
+			});
+			
+		}
+
 
 		forgotPasswordForm.addEventListener("submit", function(event){
 			event.preventDefault();
 
-			forgotPasswordForm.action = replaceLastNumber(forgotPasswordForm.action, forgotPasswordForm.resetcode.value);
+			let formMethod = document.getElementById("_method");
+			
+
+			if (formMethod) {
+				sendNewPassword(event);
+			} else {
+				sendResetCode(event);
+			}
+			
+
+			
+			
 			// console.log(forgotPasswordForm.action);
-			console.log(forgotPasswordForm.submit());
+			// console.log(forgotPasswordForm.submit());
 		});
 	</script>
-	
+	<script src="{% static 'js/saber-toast.js' %}"></script>
 </body>
 </html>

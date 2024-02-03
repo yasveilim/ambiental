@@ -105,9 +105,8 @@ class ForgotPassword(generic.CreateView):
         form_obj = form.save(commit=False)
         self.object = get_object_or_404(User, email=form_obj.email)
         form_obj.reset_code = utils.generate_reset_code()
-        print("form_obj is: ", type(form_obj), " - ", form_obj.id)
-        print('the email is: ', self.object.email, " - ", form_obj.reset_code)
         form_obj.save()
+        
         send_email(SICMA_AZURE_DB.account,
                    self.object.email,
                    'Código de recuperación de contraseña',
@@ -127,6 +126,7 @@ class ForgotPassword(generic.CreateView):
         return super().form_invalid(form)
 
 
+
 class ForgotPasswordUpdate(generic.UpdateView):
     template_name = 'forgotpassword/resetcode.html'
     model = models.RestorePasswordRequest
@@ -137,8 +137,16 @@ class ForgotPasswordUpdate(generic.UpdateView):
         return super(BaseUpdateView, self).get(request, *args, **kwargs)
 
     def post(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
-        print('I am here, in post', kwargs)
         reset_code_instance = get_object_or_404(models.RestorePasswordRequest, reset_code=kwargs['pk'])
-        _user_owner = get_object_or_404(User, email=reset_code_instance.email)
+        get_object_or_404(User, email=reset_code_instance.email)
 
-        return HttpResponse(json.dumps({'status': 'Ok'}), content_type="application/json")
+        return HttpResponse(json.dumps({'status': 'Ok'}), content_type="application/json", status=200)
+    
+    def put(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
+        reset_code_instance = get_object_or_404(models.RestorePasswordRequest, reset_code=kwargs['pk'])
+        user_owner = get_object_or_404(User, email=reset_code_instance.email)
+        user_owner.set_password(kwargs['pwd'])
+        user_owner.save()
+        
+    
+        return HttpResponse(json.dumps({'status': 'Ok'}), content_type="application/json", status=200)
