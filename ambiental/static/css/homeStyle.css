@@ -71,7 +71,8 @@ body {
 }
 
 .navbar a:hover {
-    background: #979393;
+    /* background: #979393; */
+    opacity: 0.3;
 }
 
 .header {
@@ -208,11 +209,7 @@ p {
 
 .pie-pagina{
     width: 100%;
-<<<<<<< HEAD
     background-color: #1783db;
-=======
-    background-color: #59676e;
->>>>>>> dc6da423d86bd5f170b0d728e94a9f09574e2cc4
 }
 
 .pie-pagina .grupo-1{
