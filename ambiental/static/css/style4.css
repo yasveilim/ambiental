@@ -23,7 +23,7 @@ body {
     justify-content: space-between;
     height: 63px;
     width: 100%;
-    background: #fff;
+    background: #1783db;
     position: fixed;
     z-index: 100;
 }
@@ -101,11 +101,11 @@ p {
     display: inline-block;
     margin-top: 15px;
     padding: 10px 40px;
-    border: 2px solid #9c27b0;
+    border: 2px solid #1783db;
     color: black;
     font-weight: bold;
     text-decoration: none;
-    background: #9c27b0;
+    background: #1783db;
 }
 
 .btn:hover {
@@ -158,14 +158,14 @@ p {
     text-align: center;
     border-radius: 50%;
     color: #171717;
-    background: #9c27b0;
+    background: #1783db;
     font-size: 2rem;
     margin: 1rem 0;
 }
 
 .box-container .box h3 {
     font-size: 20px;
-    color: #9c27b0;
+    color: #1783db;
 }
 
 .box-container .box p {
@@ -186,7 +186,7 @@ p {
 
 .contact {
     padding-top: 20px;
-    background: #9c27b0;
+    background: #1783db;
     padding-bottom: 0;
 }
 
@@ -208,7 +208,11 @@ p {
 
 .pie-pagina{
     width: 100%;
+<<<<<<< HEAD
+    background-color: #1783db;
+=======
     background-color: #59676e;
+>>>>>>> dc6da423d86bd5f170b0d728e94a9f09574e2cc4
 }
 
 .pie-pagina .grupo-1{
