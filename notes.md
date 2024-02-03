@@ -10,9 +10,11 @@
 
 
 # Cosas por hacer
-- Terminar forgotpassword [ ]
+- Terminar forgotpassword [X]
 - Tarjetas de materiales
 - Sistema de autenticacion
+- Sistema de administracion
+- Llenado de db nativa
 - Tarjetas de materiales, apartado de avances
 - Estudiar responsive junto a Monica
-- Mejorar el responsive 
+- Mejorar el responsive
