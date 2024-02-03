@@ -29,4 +29,5 @@ urlpatterns = [
     path('index/', views.Index.as_view(), name="index_no_site"),
     path('forgot-password/', views.ForgotPassword.as_view(), name="forgotpassword"),
     path('forgot-password/<int:pk>/', views.ForgotPasswordUpdate.as_view(), name="forgotresetcode"),
+    path('forgot-password/<int:pk>/<slug:pwd>/', views.ForgotPasswordUpdate.as_view(), name="forgotresetcode_pwd"),
 ]
