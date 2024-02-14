@@ -3,7 +3,8 @@ import json
 from typing import Any
 
 from django.contrib.auth.models import User
-from django.http import HttpRequest, HttpResponse, HttpResponseRedirect  # HttpRequest, HttpResponse,
+# HttpRequest, HttpResponse,
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 # from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -23,13 +24,6 @@ class Home(generic.TemplateView):
 
 class Login(generic.TemplateView):
     template_name = 'login.html'
-
-
-class Nuevo(generic.TemplateView):
-    template_name = 'nuevo.html'
-    
-class Prueba(generic.TemplateView):
-    template_name = 'prueba.html'
 
 
 class Signup(generic.CreateView):  # ecosystem:
@@ -98,7 +92,8 @@ class ForgotPassword(generic.CreateView):
     def get_success_url(self):
         """Return the URL to redirect to after processing a valid form."""
 
-        success_url = reverse_lazy('forgotresetcode', kwargs={'pk': self.object.id})
+        success_url = reverse_lazy('forgotresetcode', kwargs={
+                                   'pk': self.object.id})
         return success_url
 
     def form_valid(self, form):
@@ -126,7 +121,6 @@ class ForgotPassword(generic.CreateView):
         return super().form_invalid(form)
 
 
-
 class ForgotPasswordUpdate(generic.UpdateView):
     template_name = 'forgotpassword/resetcode.html'
     model = models.RestorePasswordRequest
@@ -137,15 +131,16 @@ class ForgotPasswordUpdate(generic.UpdateView):
 
     def post(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
         # Validate reset code
-        get_object_or_404(models.RestorePasswordRequest, reset_code=kwargs['pk'])
+        get_object_or_404(models.RestorePasswordRequest,
+                          reset_code=kwargs['pk'])
 
         return HttpResponse(json.dumps({'status': 'Ok'}), content_type="application/json", status=200)
-    
+
     def put(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
-        reset_code_instance = get_object_or_404(models.RestorePasswordRequest, reset_code=kwargs['pk'])
+        reset_code_instance = get_object_or_404(
+            models.RestorePasswordRequest, reset_code=kwargs['pk'])
         user_owner = get_object_or_404(User, email=reset_code_instance.email)
         user_owner.set_password(kwargs['pwd'])
         user_owner.save()
-        
-    
+
         return HttpResponse(json.dumps({'status': 'Ok'}), content_type="application/json", status=200)

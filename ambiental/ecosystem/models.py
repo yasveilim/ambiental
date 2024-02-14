@@ -1,5 +1,5 @@
 from django.db import models
-
+import django.contrib.auth.models as User
 
 class RestorePasswordRequest(models.Model):
     email = models.EmailField()
@@ -7,8 +7,12 @@ class RestorePasswordRequest(models.Model):
     reset_code = models.CharField(max_length=6, null=True)
 
 
+class AmbientalBookMaterial(models.Model):
+    name = models.CharField(max_length=50)
+
+
 class AmbientalBook(models.Model):
-    material = models.CharField(max_length=50)
+    material = models.ForeignKey(AmbientalBookMaterial, on_delete=models.CASCADE)
     document_name = models.CharField(max_length=50)
     is_critical = models.BooleanField(default=False)
     category = models.CharField(max_length=50)
@@ -16,6 +20,7 @@ class AmbientalBook(models.Model):
 
 
 class AmbientalBookProps(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     book = models.ForeignKey(AmbientalBook, on_delete=models.CASCADE)
     ADVANCE_STATUS = [
         ("delivered", "DELIVERED"),
@@ -23,7 +28,7 @@ class AmbientalBookProps(models.Model):
         ("na", "NA")
     ]
     archive = models.FileField(upload_to='uploads/')
-    comment = models.TextField()
+    comment = models.TextField(default="")
     advance = models.CharField(
         max_length=9, choices=ADVANCE_STATUS, default="pending")
     essential_in_cloud = models.BooleanField(default=True)

@@ -109,4 +109,3 @@ class SicmaDB:
 
         self.account = autenticate(client_id, client_secret, sharepoint.SCOPES)
         self.data = read_sicma_db(self.account)
-
