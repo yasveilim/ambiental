@@ -19,12 +19,13 @@
 				
 				<div class="form">
 					<h2>Iniciar Sesión</h2>
-			 		<form >
+			 		<form action="{% url 'login' %}" method="post">
+			 			{% csrf_token %}
 			 			<div class="inputBox">
-			 				<input type="text" placeholder="Correo electronico"/>
+			 				<input type="email" name="email" id="email" placeholder="Correo electronico"/>
 			 			</div>
 			 			<div class="inputBox">
-			 				<input type="password" placeholder="Contraseña"/>
+			 				<input type="password" name="password" id="password" placeholder="Contraseña"/>
 			 			</div>
 			 			<div class="inputBox">
 			 				<input type="submit" name="submit" value="Iniciar sesion" />

@@ -1,7 +1,7 @@
 # import typing as t
 import json
 from typing import Any
-
+from django.core.exceptions import ImproperlyConfigured
 from django.contrib.auth.models import User
 # HttpRequest, HttpResponse,
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
@@ -22,8 +22,38 @@ class Home(generic.TemplateView):
     template_name = 'home.html'
 
 
-class Login(generic.TemplateView):
+# class Login(generic.TemplateView):
+#     template_name = 'login.html'
+
+class Login(generic.CreateView):
+    success_url = reverse_lazy('index', site= 'air-noise') # NOTE: Correct this soon
     template_name = 'login.html'
+    model = User
+    form_class = forms.LoginUserForm
+
+
+    def get_success_url(self):
+        """Return the URL to redirect to after processing a valid form."""
+        
+        if self.success_url:
+            url = self.success_url.format({'site': 'air-noise'})
+        else:
+            try:
+                url = self.object.get_absolute_url()
+            except AttributeError:
+                raise ImproperlyConfigured(
+                    "No URL to redirect to.  Either provide a url or define"
+                    " a get_absolute_url method on the Model."
+                )
+        return url
+        
+
+    def form_valid(self, form):
+        legit_url = self.get_success_url()
+        return HttpResponseRedirect(legit_url)
+
+    def form_invalid(self, form):
+        return super().form_invalid(form)
 
 
 class Signup(generic.CreateView):  # ecosystem:

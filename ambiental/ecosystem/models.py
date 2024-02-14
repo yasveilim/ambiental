@@ -20,7 +20,7 @@ class AmbientalBook(models.Model):
 
 
 class AmbientalBookProps(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, null=True) # NOTE: This can not be null
     book = models.ForeignKey(AmbientalBook, on_delete=models.CASCADE)
     ADVANCE_STATUS = [
         ("delivered", "DELIVERED"),
