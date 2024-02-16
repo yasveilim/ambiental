@@ -4,11 +4,10 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Signup</title>
+	<title>Sicma | Signup</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 </head>
 <body class="contenido">
-	<section>
 	<section class="form-section">
 		<div class="principal">
 			<img src="{% static 'logo2.png' %}" id="image">
@@ -19,27 +18,26 @@
             <div class="container">
 				
 				<div class="form">
-					<h2>Iniciar sesión</h2>
-                    <!-- username password email -->
-			 		<form action="{% url 'signup' %}" method="POST">
-                        {% csrf_token %}
-                        <div class="inputBox">
-                            <input name="username" type="text" placeholder="Nombre"/>
-                        </div>
+					<h2>Iniciar Sesión</h2>
+			 		<form action="{% url 'login' %}" method="post">
+			 			{% csrf_token %}
 			 			<div class="inputBox">
-			 				<input name="email" type="text" placeholder="Correo electrónico"/>
+			 				<input type="email" name="email" id="email" placeholder="Correo electronico"/>
 			 			</div>
 			 			<div class="inputBox">
-			 				<input name="password" type="password" placeholder="Contraseña"/>
+			 				<input type="password" name="password" id="password" placeholder="Contraseña"/>
 			 			</div>
+						 <div class="inputBox">
+							<input type="repassword" name="repassword" id="repassword" placeholder="Repita Contraseña"/>
+						</div>
 			 			<div class="inputBox">
-			 				<input type="submit" value="Iniciar sesión" />
+			 				<input type="submit" name="submit" value="Iniciar sesion" />
 			 			</div>
 			 			<p class="forget">
-			 				¿Has olvidado tu contraseña? <a href="recuperar.html">Recuperar contraseña</a>
+			 				¿Has olvidado tu contraseña? <a href="{% url 'forgotpassword' %}">Recuperar contraseña</a>
 			 			</p>
 			 			<p class="forget">
-			 				¿No tienes una cuenta? <a href="registrarse.html">Crear cuenta</a>
+			 				¿No tienes una cuenta? <a href="{% url 'login' %}">Crear Cuenta</a>
 			 			</p>
 			 		</form>
 			 	</div>
