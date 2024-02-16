@@ -6,6 +6,7 @@ ERROR_MESSAGE_EMAIL = "Email error"
 ERROR_MESSAGE_USER = "Username error"
 ERROR_MESSAGE_PASSWORD = "Password error"
 
+
 class LoginUserForm(forms.ModelForm):
     email = forms.EmailField(max_length=100)
     password = forms.CharField(max_length=20, widget=forms.PasswordInput())
@@ -13,6 +14,7 @@ class LoginUserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('email', 'password')
+
 
 class CreateUserForm(forms.ModelForm):
     username = forms.CharField(max_length=30)
