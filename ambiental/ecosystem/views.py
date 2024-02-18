@@ -26,15 +26,14 @@ class Home(generic.TemplateView):
 #     template_name = 'login.html'
 
 class Login(generic.CreateView):
-    success_url = reverse_lazy('index', site= 'air-noise') # NOTE: Correct this soon
+    success_url = reverse_lazy('index', kwargs={'site': 'air-noise'})
     template_name = 'login.html'
     model = User
     form_class = forms.LoginUserForm
 
-
     def get_success_url(self):
         """Return the URL to redirect to after processing a valid form."""
-        
+
         if self.success_url:
             url = self.success_url.format({'site': 'air-noise'})
         else:
@@ -46,7 +45,6 @@ class Login(generic.CreateView):
                     " a get_absolute_url method on the Model."
                 )
         return url
-        
 
     def form_valid(self, form):
         legit_url = self.get_success_url()
