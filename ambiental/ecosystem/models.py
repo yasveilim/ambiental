@@ -1,5 +1,5 @@
 from django.db import models
-import django.contrib.auth.models as User
+from django.contrib.auth.models import User
 
 
 class RestorePasswordRequest(models.Model):
@@ -23,7 +23,7 @@ class AmbientalBook(models.Model):
 
 class AmbientalBookProps(models.Model):
     # NOTE: This can not be null
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     book = models.ForeignKey(AmbientalBook, on_delete=models.CASCADE)
     ADVANCE_STATUS = [
         ("delivered", "DELIVERED"),
