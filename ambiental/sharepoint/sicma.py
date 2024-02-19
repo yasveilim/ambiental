@@ -4,6 +4,8 @@ from . import sharepoint, autenticate
 from dataclasses import dataclass, field
 from O365 import Account
 import typing as t
+from datetime import datetime
+from O365.drive import Folder
 
 WORKSHEETS = ['CRITICAS', 'AIRE Y RUIDO', 'AYR1.2', 'AGUA',
               'RESIDUOS', 'RECNAT Y RIESGO', 'OTROS', r'% de Avance']
@@ -58,9 +60,8 @@ class DataExtractor:
         return self.material
 
 
-def read_sicma_db(account: Account):
-    workbook = sharepoint.load_workbook(
-        account, 'root:sites/Ambiental:/Requerimientos de informacion V22 NDA1.xlsx')
+def read_sicma_db(account: Account, dbpath: str):
+    workbook = sharepoint.load_workbook(account, dbpath)
 
     result = {}
     critical_materials = []
@@ -103,9 +104,25 @@ def read_sicma_db(account: Account):
 class SicmaDB:
 
     def __init__(self):
-        load_dotenv()  # TODO: Move this line and create main function
+        load_dotenv()
         client_id = os.getenv('CLIENT_ID')
         client_secret = None  # os.getenv('CLIENT_SECRET')
-
+        self.site_path = 'root:sites/Ambiental:'
         self.account = autenticate(client_id, client_secret, sharepoint.SCOPES)
-        self.data = read_sicma_db(self.account)
+
+        db_book = self.site_path_fmt(
+            "Requerimientos de informacion V22 NDA1.xlsx")
+        self.data = read_sicma_db(self.account, db_book)
+
+    # /{USUARIO}/Informacion IL {Año}/{MATERIAL}/Libros
+    def create_material_folder(self, username: str, material: str) -> Folder:
+        # NOTE: year is not an argument because I don't know if it is generated
+        # based on the current year or another base.
+
+        return sharepoint.make_dir(
+            username, str(datetime.now().year), material
+        )
+
+    def site_path_fmt(self, *args):
+        path_chucks = '/'.join(args)
+        return f"{self.site_path}/{path_chucks}"

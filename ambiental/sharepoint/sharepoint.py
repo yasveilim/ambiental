@@ -40,7 +40,7 @@ def load_workbook(account: Account, filepath: str) -> WorkBook:
 
     return workbook
 
-# /{USUARIO}/Informacion IL {Año}/{MATERIAL}/Libros
+
 def make_dir(account: Account, qdirpath: str) -> Folder:
     """
     Create a SharePoint directory and the required parent directories.
@@ -62,7 +62,7 @@ def make_dir(account: Account, qdirpath: str) -> Folder:
         >>> mysite = 'root:sites/Ambiental:/path/to/target'
         >>> _folder = make_dir(account, mysite)
     """
-     
+
     parent, site, dirpath = qdirpath.split(':')
     path_chucks = dirpath.split('/')[1:]
 
@@ -74,18 +74,18 @@ def make_dir(account: Account, qdirpath: str) -> Folder:
     for chuck in path_chucks:
         query = [*root_folder.search(chuck)]
         chuck_exists = len(query) == 1
-        
+
         if len(query) > 1:
-            raise ValueError(f"The search returned more than one result {query}")
-        
+            raise ValueError(
+                f"The search returned more than one result {query}")
+
         if not chuck_exists:
             new_dir = root_folder.create_child_folder(chuck)
             root_folder = new_dir
         else:
             root_folder = query[0]
-    
+
     return root_folder
-    
 
 
 def get_worksheets_names(workbook: WorkBook) -> t.List[str]:
