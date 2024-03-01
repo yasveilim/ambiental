@@ -14,6 +14,7 @@ from django.views.generic.edit import BaseUpdateView
 from sharepoint.mailbox import send_email
 from sharepoint.sicma import SicmaDB
 from . import models, utils, forms
+from django.contrib.auth import authenticate, login
 
 SICMA_AZURE_DB = SicmaDB()
 
@@ -46,8 +47,23 @@ class Login(generic.CreateView):
                 )
         return url
 
-    def form_valid(self, form):
+    def form_valid(self, form: forms.LoginUserForm):
         legit_url = self.get_success_url()
+        user = authenticate(
+            self.request,
+            email=form['email'],
+            password=form['password']
+        )
+
+        if user is not None:
+            print('User is loged', user.name)
+            # login(request, user)
+        
+        else:
+            print('User is not loged')
+
+        # self.request.session['AmbientalToken'] = 'mini'
+
         return HttpResponseRedirect(legit_url)
 
     def form_invalid(self, form):
