@@ -1,4 +1,5 @@
 from O365 import Account
+from O365.drive import Folder
 from O365.excel import WorkBook
 import typing as t
 
@@ -24,7 +25,7 @@ def load_workbook(account: Account, filepath: str) -> WorkBook:
         >>> myaccount = autenticate()
         >>> # site example: "https://domain.sharepoint.com/sites/Ambiental/file.xlsx"
         >>> mysite = 'root:sites/Ambiental:/file.xlsx'
-        >>> _workbook = load_workbook(account, site)
+        >>> _workbook = load_workbook(account, mysite)
     """
 
     parent, site, filepath = filepath.split(':')
@@ -38,6 +39,53 @@ def load_workbook(account: Account, filepath: str) -> WorkBook:
     workbook = WorkBook(file_obj)
 
     return workbook
+
+
+def make_dir(account: Account, qdirpath: str) -> Folder:
+    """
+    Create a SharePoint directory and the required parent directories.
+
+    Args:
+        account: The SharePoint account.
+        qdirpath (str): The path to the target directory in the library system.
+
+    Returns:
+        Folder: The taget directory.
+
+    Raises:
+        ValueError: If the qdirpath is not in the correct format.
+
+    Example:
+        >>> from sharepoint import autenticate
+        >>> myaccount = autenticate()
+        >>> # taget directory example: "https://domain.sharepoint.com/sites/Ambiental/path/to/target"
+        >>> mysite = 'root:sites/Ambiental:/path/to/target'
+        >>> _folder = make_dir(account, mysite)
+    """
+
+    parent, site, dirpath = qdirpath.split(':')
+    path_chucks = dirpath.split('/')[1:]
+
+    sp = account.sharepoint()
+    main_dir = sp.get_site(parent, site)
+    doc_library = main_dir.get_document_library('.')
+    root_folder = doc_library.get_root_folder()
+
+    for chuck in path_chucks:
+        query = [*root_folder.search(chuck)]
+        chuck_exists = len(query) == 1
+
+        if len(query) > 1:
+            raise ValueError(
+                f"The search returned more than one result {query}")
+
+        if not chuck_exists:
+            new_dir = root_folder.create_child_folder(chuck)
+            root_folder = new_dir
+        else:
+            root_folder = query[0]
+
+    return root_folder
 
 
 def get_worksheets_names(workbook: WorkBook) -> t.List[str]:
