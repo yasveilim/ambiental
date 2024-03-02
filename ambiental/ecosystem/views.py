@@ -14,7 +14,8 @@ from django.views.generic.edit import BaseUpdateView
 from sharepoint.mailbox import send_email
 from sharepoint.sicma import SicmaDB
 from . import models, utils, forms
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import redirect
 
 SICMA_AZURE_DB = SicmaDB()
 
@@ -23,8 +24,14 @@ class Home(generic.TemplateView):
     template_name = 'home.html'
 
 
-# class Login(generic.TemplateView):
-#     template_name = 'login.html'
+class Logout(generic.RedirectView):
+    pattern_name = "home"
+
+    def get(self, request, *args, **kwargs):
+        logout(request)
+
+        return super().get(request, *args, **kwargs)
+
 
 class Login(generic.CreateView):
     success_url = reverse_lazy('index', kwargs={'site': 'air-noise'})
@@ -49,20 +56,21 @@ class Login(generic.CreateView):
 
     def form_valid(self, form: forms.LoginUserForm):
         legit_url = self.get_success_url()
-        user = authenticate(
-            self.request,
-            email=form['email'],
-            password=form['password']
-        )
-
-        if user is not None:
-            print('User is loged', user.name)
-            # login(request, user)
+        user_base = get_object_or_404(User, email=form['email'].value())
         
-        else:
-            print('User is not loged')
+        if not self.request.user.is_authenticated:
+            
+            user = authenticate(
+                self.request,
+                username=user_base.username,
+                password=form['password'].value()
+            )
 
-        # self.request.session['AmbientalToken'] = 'mini'
+            if user is not None:
+                login(self.request, user)
+            
+            else:
+                return redirect('/')
 
         return HttpResponseRedirect(legit_url)
 
@@ -126,6 +134,12 @@ class Index(generic.TemplateView):
             return ['index/advance.html']
         else:
             return ['index/generic.html']
+        
+    def dispatch(self, request, *args, **kwargs):
+        if not self.request.user.is_authenticated:
+            return redirect('/')
+        
+        return super().dispatch(request, *args, **kwargs)
 
 
 class ForgotPassword(generic.CreateView):
