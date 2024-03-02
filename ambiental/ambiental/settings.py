@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Nativas
-    'ecosystem'
+    'ecosystem',
+    'unstable'
 ]
 
 MIDDLEWARE = [
