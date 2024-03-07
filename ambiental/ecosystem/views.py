@@ -27,6 +27,9 @@ class Home(generic.TemplateView):
     template_name = 'home.html'
 
 
+class Prueba(generic.TemplateView):
+    template_name = 'prueba.html'
+
 class Logout(generic.RedirectView):
     pattern_name = "home"
 

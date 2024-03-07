@@ -21,6 +21,7 @@ from ecosystem import views
 # endpoints
 urlpatterns = [
     path('', views.Home.as_view(), name="home"),
+    path('prueba/', views.Prueba.as_view(), name="prueba"),
     path('login/', views.Login.as_view(), name="login"),
     path('logout/', views.Logout.as_view(), name="logout"),
     path('signup/', views.Signup.as_view(), name="signup"),
