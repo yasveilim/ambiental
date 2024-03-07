@@ -76,11 +76,6 @@
 			return nuevaURL + '/';
 		}
 
-		// Example usage:
-		// var originalUrl = 'http://127.567854.0.1:8000/forgot-password/0/';
-		//var newNumber = 5;
-		//var newUrl = replaceLastNumber(originalUrl, newNumber);
-		//console.log(newUrl); // Output: http://127.567854.0.1:8000/forgot-password/5/
 
 		function createInputArea(inputName, inputLabel) {
 			let passwordInputDiv = document.createElement("div");
@@ -111,9 +106,7 @@
 			let rePasswordInputDiv = createInputArea("repeatpassword", "Repita la clave");
 
 			inputsArea.appendChild(passwordInputDiv);
-			inputsArea.appendChild(rePasswordInputDiv);
-
-			
+			inputsArea.appendChild(rePasswordInputDiv);			
 						
 		}
 
@@ -180,10 +173,6 @@
 			axios.put(`${forgotPasswordForm.action}${password}/`, new FormData(forgotPasswordForm), config)
 			.then(response => {
 				defaultSaberToastSuccess("Exito", "La contraseña ha sido cambiada con éxito");
-				
-				console.log(response.data);
-				// forgotPasswordForm.removeEventListener("submit", firstSubmit);
-				console.log(forgotPasswordForm);
 			})
 			.catch(error => {
 				defaultSaberToastError("Error de recuperación",
@@ -206,11 +195,6 @@
 				sendResetCode(event);
 			}
 			
-
-			
-			
-			// console.log(forgotPasswordForm.action);
-			// console.log(forgotPasswordForm.submit());
 		});
 	</script>
 	<script src="{% static 'js/saber-toast.js' %}"></script>

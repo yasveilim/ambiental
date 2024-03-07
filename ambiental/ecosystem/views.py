@@ -16,6 +16,9 @@ from sharepoint.sicma import SicmaDB
 from . import models, utils, forms
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
+from django.http import JsonResponse
+
+
 
 SICMA_AZURE_DB = SicmaDB()
 
@@ -60,6 +63,7 @@ class Login(generic.CreateView):
     def form_valid(self, form: forms.LoginUserForm):
         legit_url = self.get_success_url()
         user_base = get_object_or_404(User, email=form['email'].value())
+        print("Form valid / ", self.request.user, ' / ', self.request.user.is_authenticated)
         
         if not self.request.user.is_authenticated:
             
@@ -69,15 +73,17 @@ class Login(generic.CreateView):
                 password=form['password'].value()
             )
 
+            print("My user is: ", user)
             if user is not None:
                 login(self.request, user)
             
             else:
-                return redirect('/')
+                return JsonResponse({'message': 'Invalid user or password'}, status=404)
 
-        return HttpResponseRedirect(legit_url)
+        return JsonResponse({'message': 'Ok'}) # HttpResponseRedirect(legit_url)
 
     def form_invalid(self, form):
+        print("Form invalid")
         return super().form_invalid(form)
 
 

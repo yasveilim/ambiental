@@ -6,6 +6,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Sicma | Login</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+	<link rel="stylesheet" href="{% static 'css/saber-toast.css' %}" />
+
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
 </head>
 <body class="contenido">
 	<section class="form-section">
@@ -19,7 +23,7 @@
 				
 				<div class="form">
 					<h2>Iniciar Sesión</h2>
-			 		<form action="{% url 'login' %}" method="post">
+			 		<form id="loginForm" action="{% url 'login' %}" method="post">
 			 			{% csrf_token %}
 			 			<div class="inputBox">
 			 				<input type="email" name="email" id="email" placeholder="Correo electronico"/>
@@ -41,5 +45,57 @@
 			 </div>
 		</div>
 	</section>
+
+	<script>
+		const loginForm = document.querySelector("#loginForm");
+		//console.log('loginForm is: ', loginForm);
+		function defaultSaberToastSuccess(title, text) {
+			saberToast.success({
+				title: title,
+				text: text,
+				delay: 200,
+				duration: 2600,
+				rtl: true,
+				position: "bottom-right"
+			});
+		}
+
+		function defaultSaberToastError(title, text) {
+			saberToast.error({
+				title: title,
+				text: text,
+				delay: 200,
+				duration: 2600,
+				rtl: true,
+				position: "bottom-right"
+			});
+		}
+
+
+		loginForm.addEventListener("submit", function(event) {
+			event.preventDefault();
+			
+
+			let csrftoken = Cookies.get('csrftoken');
+			let config = {
+				headers:  {
+					'X-CSRFToken': csrftoken
+				},
+			};
+
+			axios.post(event.srcElement.action, new FormData(event.srcElement), config)
+			.then((response) => {
+				console.log(response.data);
+				defaultSaberToastSuccess("Exito", "Puede ingresar");
+				location.href = '/index/air-noise';
+			})
+			.catch((error) => {
+				defaultSaberToastError("Error", "No puede ingresar");
+				console.error(error);
+			});
+
+		});
+	</script>
+	<script src="{% static 'js/saber-toast.js' %}"></script>
 </body>
 </html>
