@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sidebar Menu for Admin Dashboard</title>
     <link rel="stylesheet" href="{% static 'css/vistaprueba.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/tabla.css' %}" />
     {% block content_head %}{% endblock content_head %}
 
     <!-- Fontawesome CDN Link -->
@@ -17,7 +18,8 @@
 
   <body>
     <nav class="sidebar">
-      <a href="#" class="logo">Usuario</a>
+
+      <p class="logo">Usuario</p>
 
       <div class="menu-content">
         <div class="options__menu">	
@@ -113,6 +115,28 @@
           <ul class="options"></ul>
         </div>
       </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Avance de la entrega</th><th>Null</th>
+          </tr>
+        </thead>
+  
+        <tr>
+          <td>Fecha de la entrega</td><td>Null</td>
+        </tr>
+        <tr>
+          <td>Nivel de desempeño ambiental</td><td>Null</td>
+        </tr>
+        <tr>
+          <td>Indispensable subir en la nube</td><td>Null</td>
+        </tr>
+        <tr>
+          <td>Comentarios</td><td>Null</td>
+        </tr>
+      </table>
+      
     </main>
 
   

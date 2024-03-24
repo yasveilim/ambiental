@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú lateral </title>
+	<link rel="stylesheet" href="{% static 'css/panel.css' %}" />
+    {% block content_head %}{% endblock content_head %}
+
+    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
+</head>
+<body id="body">
+    <header>
+        <div class="icon__menu">
+            <!-- <i class="fas fa-times" id="btn_open"></i> -->
+            <i class="fas fa-bars" id="btn_open"></i>
+        </div>
+    </header>
+    <div id="menu_side">
+
+        
+
+        <div class="options__menu">	
+
+            <a href="{% url 'index' site='air-noise' %}" {% if category == 'air-noise' %} class='selected'  {% endif %}>
+                <div class="option">
+       
+                    <i class="fa-solid fa-wind" title="Aire y ruído"></i>
+                    <h4>Aire y ruído</h4>
+                </div>
+            </a>
+
+            <a href="{% url 'index' site='water' %}" {% if category == 'water' %} class='selected'  {% endif %} >
+                <div class="option">
+                    <i class="fa-solid fa-water" title="Agua"></i>
+                    <h4>Agua</h4>
+                </div>
+            </a>
+            
+            <a href="{% url 'index' site='waste' %}" {% if category == 'waste' %} class='selected'  {% endif %}>
+                <div class="option">
+                   
+                    <i class="fa-solid fa-dumpster" title="Residuos"></i>
+                    <h4>Residuos</h4>
+                </div>
+            </a>
+
+            <a href="{% url 'index' site='recnat-risks' %}" {% if category == 'recnat-risks' %} class='selected'  {% endif %}>
+                <div class="option">
+                    
+                    <i class="fa-solid fa-tree" title="Recursos naturales y riesgo"></i>
+                    <h4>Recursos naturales y riesgo</h4>
+                </div>
+            </a>
+
+            <a href="{% url 'index' site='others' %}" {% if category == 'others' %} class='selected'  {% endif %}>
+                <div class="option">
+                    
+                    <i class="fa-solid fa-certificate" title="Otros"></i>
+                    <h4>Otros</h4>
+                </div>
+            </a>
+
+            <a href="{% url 'index' site='advance' %}" {% if category == 'advance' %} class='selected'  {% endif %}>
+                <div class="option">
+                   
+                    <i class="fa-solid fa-chart-simple" title="Avance"></i>
+                    <h4>Avance</h4>
+                </div>
+            </a>
+
+            <a href="{% url 'logout' %}">
+                <div class="option">
+                   
+                    <i class="fa fa-sign-out" title="Salir"></i>
+                    <h4>Salir</h4>
+                </div>
+            </a>
+
+        </div>
+
+    </div>
+
+    <main id="content">
+        {% block content %}{% endblock content %}
+    </main>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

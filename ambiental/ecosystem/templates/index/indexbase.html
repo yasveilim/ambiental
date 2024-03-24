@@ -1,30 +1,30 @@
 {% load static %}
 <!DOCTYPE html>
+<!-- YouTube or Website - CodingLab -->
 <html lang="en">
-<head>
-     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú lateral </title>
-	<link rel="stylesheet" href="{% static 'css/panel.css' %}" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidebar Menu for Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/vistaprueba.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/tabla.css' %}" />
     {% block content_head %}{% endblock content_head %}
 
-    <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
-</head>
-<body id="body">
-    <header>
-        <div class="icon__menu">
-            <!-- <i class="fas fa-times" id="btn_open"></i> -->
-            <i class="fas fa-bars" id="btn_open"></i>
-        </div>
-    </header>
-    <div id="menu_side">
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  </head>
 
-        
+  <body>
+    <nav class="sidebar">
 
+      <p class="logo">Usuario</p>
+
+      <div class="menu-content">
         <div class="options__menu">	
 
-            <a href="{% url 'index' site='air-noise' %}" {% if category == 'air-noise' %} class='selected'  {% endif %}>
+          <a href="{% url 'index' site='air-noise' %}" {% if category == 'air-noise' %} class='selected'  {% endif %}>
                 <div class="option">
        
                     <i class="fa-solid fa-wind" title="Aire y ruído"></i>
@@ -33,60 +33,116 @@
             </a>
 
             <a href="{% url 'index' site='water' %}" {% if category == 'water' %} class='selected'  {% endif %} >
-                <div class="option">
-                    <i class="fa-solid fa-water" title="Agua"></i>
-                    <h4>Agua</h4>
-                </div>
-            </a>
+              <div class="option">
+                  <i class="fa-solid fa-water" title="Agua"></i>
+                  <h4>Agua</h4>
+              </div>
+          </a>
+
+          <a href="{% url 'index' site='waste' %}" {% if category == 'waste' %} class='selected'  {% endif %}>
+            <div class="option">
+               
+                <i class="fa-solid fa-dumpster" title="Residuos"></i>
+                <h4>Residuos</h4>
+            </div>
+        </a>
+
+        <a href="{% url 'index' site='recnat-risks' %}" {% if category == 'recnat-risks' %} class='selected'  {% endif %}>
+          <div class="option">
+              
+              <i class="fa-solid fa-tree" title="Recursos naturales y riesgo"></i>
+              <h4>Recursos naturales y riesgo</h4>
+          </div>
+      </a>
+
+      <a href="{% url 'index' site='others' %}" {% if category == 'others' %} class='selected'  {% endif %}>
+        <div class="option">
             
-            <a href="{% url 'index' site='waste' %}" {% if category == 'waste' %} class='selected'  {% endif %}>
-                <div class="option">
-                   
-                    <i class="fa-solid fa-dumpster" title="Residuos"></i>
-                    <h4>Residuos</h4>
-                </div>
-            </a>
-
-            <a href="{% url 'index' site='recnat-risks' %}" {% if category == 'recnat-risks' %} class='selected'  {% endif %}>
-                <div class="option">
-                    
-                    <i class="fa-solid fa-tree" title="Recursos naturales y riesgo"></i>
-                    <h4>Recursos naturales y riesgo</h4>
-                </div>
-            </a>
-
-            <a href="{% url 'index' site='others' %}" {% if category == 'others' %} class='selected'  {% endif %}>
-                <div class="option">
-                    
-                    <i class="fa-solid fa-certificate" title="Otros"></i>
-                    <h4>Otros</h4>
-                </div>
-            </a>
-
-            <a href="{% url 'index' site='advance' %}" {% if category == 'advance' %} class='selected'  {% endif %}>
-                <div class="option">
-                   
-                    <i class="fa-solid fa-chart-simple" title="Avance"></i>
-                    <h4>Avance</h4>
-                </div>
-            </a>
-
-            <a href="{% url 'logout' %}">
-                <div class="option">
-                   
-                    <i class="fa fa-sign-out" title="Salir"></i>
-                    <h4>Salir</h4>
-                </div>
-            </a>
-
+            <i class="fa-solid fa-certificate" title="Otros"></i>
+            <h4>Otros</h4>
         </div>
+    </a>
 
+    <a href="{% url 'index' site='advance' %}" {% if category == 'advance' %} class='selected'  {% endif %}>
+      <div class="option">
+         
+          <i class="fa-solid fa-chart-simple" title="Avance"></i>
+          <h4>Avance</h4>
+      </div>
+  </a>
+
+  <a href="{% url 'logout' %}">
+    <div class="option">
+       
+        <i class="fa fa-sign-out" title="Salir"></i>
+        <h4>Salir</h4>
     </div>
+</a>
+        </div>
+      </div>
+    </nav>
 
-    <main id="content">
-        {% block content %}{% endblock content %}
+    <nav class="navbar">
+      <i class="fa-solid fa-bars" id="sidebar-close"></i>
+    </nav>
+
+    <main class="main">
+      
+      <div class="wrapper">
+        <div class="select-btn">
+          <span>Categoría</span>
+          <i class="uil uil-angle-down"></i>
+        </div>
+        <div class="content">
+          <div class="search">
+            <i class="uil uil-search"></i>
+            <input spellcheck="false" type="text" placeholder="Search">
+          </div>
+          <ul class="options"></ul>
+        </div>
+      </div>
+
+      <div class="name_document">
+        <div class="select-btn">
+          <span>DOCUMENTO</span>
+          <i class="uil uil-angle-down"></i>
+        </div>
+        <div class="content">
+          <div class="search">
+            <i class="uil uil-search"></i>
+            <input spellcheck="false" type="text" placeholder="Search">
+          </div>
+          <ul class="options"></ul>
+        </div>
+      </div>
+
+      <table class="wrapper">
+        <thead>
+          <tr>
+            <th>Avance de la entrega</th><th>Null</th>
+          </tr>
+        </thead>
+  
+        <tr>
+          <td>Fecha de la entrega</td><td>Null</td>
+        </tr>
+        <tr>
+          <td>Nivel de desempeño ambiental</td><td>Null</td>
+        </tr>
+        <tr>
+          <td>Indispensable subir en la nube</td><td>Null</td>
+        </tr>
+        <tr>
+          <td>Comentarios</td><td>Null</td>
+        </tr>
+      </table>
+      
     </main>
 
-    <script src="{% static 'js/script.js' %}"></script>
-</body>
+  
+    <script src="{% static 'js/script1.js' %}"></script>
+  </body>
 </html>
+
+
+
