@@ -17,6 +17,11 @@
   </head>
 
   <body>
+    <script>
+      let sectionName = "{{category}}";
+      // console.log('sectionName: ', sectionName);
+    </script>
+
     <nav class="sidebar">
 
       <p class="logo">Usuario</p>
@@ -87,56 +92,7 @@
     </nav>
 
     <main class="main">
-      
-      <div class="wrapper">
-        <div class="select-btn">
-          <span>Categoría</span>
-          <i class="uil uil-angle-down"></i>
-        </div>
-        <div class="content">
-          <div class="search">
-            <i class="uil uil-search"></i>
-            <input spellcheck="false" type="text" placeholder="Search">
-          </div>
-          <ul class="options"></ul>
-        </div>
-      </div>
-
-      <div class="name_document">
-        <div class="select-btn">
-          <span>DOCUMENTO</span>
-          <i class="uil uil-angle-down"></i>
-        </div>
-        <div class="content">
-          <div class="search">
-            <i class="uil uil-search"></i>
-            <input spellcheck="false" type="text" placeholder="Search">
-          </div>
-          <ul class="options"></ul>
-        </div>
-      </div>
-
-      <table class="wrapper">
-        <thead>
-          <tr>
-            <th>Avance de la entrega</th><th>Null</th>
-          </tr>
-        </thead>
-  
-        <tr>
-          <td>Fecha de la entrega</td><td>Null</td>
-        </tr>
-        <tr>
-          <td>Nivel de desempeño ambiental</td><td>Null</td>
-        </tr>
-        <tr>
-          <td>Indispensable subir en la nube</td><td>Null</td>
-        </tr>
-        <tr>
-          <td>Comentarios</td><td>Null</td>
-        </tr>
-      </table>
-      
+      {% block content %}{% endblock content %}
     </main>
 
   

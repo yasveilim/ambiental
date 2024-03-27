@@ -30,6 +30,7 @@ class Home(generic.TemplateView):
 class Prueba(generic.TemplateView):
     template_name = 'prueba.html'
 
+
 class Logout(generic.RedirectView):
     pattern_name = "home"
 
@@ -39,6 +40,7 @@ class Logout(generic.RedirectView):
         return super().get(request, *args, **kwargs)
 
 
+# material
 class Login(generic.CreateView):
     success_url = reverse_lazy('index', kwargs={'site': 'air-noise'})
     template_name = 'login.html'
@@ -187,6 +189,58 @@ class ForgotPassword(generic.CreateView):
         # print('I am here, in invalid', form.errors)
         return super().form_invalid(form)
 
+
+class Material(generic.View):
+
+    def get(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
+        return JsonResponse({
+            "water": "Agua",
+            "air-noise": "Aire y ruído",
+            "waste": "Residuos",
+            "recnat-risks": "RECNAT y riesgo"
+        })
+    
+    def dispatch(self, request, *args, **kwargs):
+        if not self.request.user.is_authenticated:
+            return redirect('/')
+        
+        return super().dispatch(request, *args, **kwargs)
+    
+
+class MaterialBook(generic.View):
+
+    def get(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
+        # "water" SICMA_AZURE_DB.data['AGUA']
+        #print(kwargs['material'], SICMA_AZURE_DB.data['AGUA'])
+
+        # TODO: Optimize this together with the other match.
+        material = ""
+        match kwargs['material']:
+            case "water": material = 'AGUA'
+            case "air-noise": material = 'AIRE Y RUIDO'
+            case "waste": material = 'RESIDUOS'
+            case "recnat-risks": material = 'RECNAT Y RIESGO'
+
+        # super(generic.View, self).get(request, *args, **kwargs)
+        message = { "error": [f"The material {material} does not exist"] }
+        material_document = SICMA_AZURE_DB.data.get(material) or message
+        return JsonResponse(material_document)
+    
+    def dispatch(self, request, *args, **kwargs):
+        if not self.request.user.is_authenticated:
+            return redirect('/')
+        
+        return super().dispatch(request, *args, **kwargs)
+    
+#from django.http import JsonResponse
+#from django.views import View
+
+# class MiVista(View):
+#     def get(self, request, *args, **kwargs):
+#         datos = {
+#             # Tus datos aquí
+#         }
+#         return JsonResponse(datos)
 
 class ForgotPasswordUpdate(generic.UpdateView):
     template_name = 'forgotpassword/resetcode.html'

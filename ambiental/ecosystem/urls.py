@@ -32,4 +32,9 @@ urlpatterns = [
          views.ForgotPasswordUpdate.as_view(), name="forgotresetcode"),
     path('forgot-password/<int:pk>/<slug:pwd>/',
          views.ForgotPasswordUpdate.as_view(), name="forgotresetcode_pwd"),
+
+    # Data request
+    path('api/material/', views.Material.as_view(), name="material"),
+    path('api/materialbook/<slug:material>', views.MaterialBook.as_view(), name="materialbook"),
+
 ]
