@@ -5,12 +5,16 @@ const menuItems = document.querySelectorAll(".submenu-item");
 const subMenuTitles = document.querySelectorAll(".submenu .menu-title");
 
 
+sidebarClose.addEventListener("click", () => {
+  
+  let tags = ['fa-xmark', 'fa-bars'];
+  if (sidebarClose.classList.contains('fa-bars')) {
+    tags = ['fa-bars', 'fa-xmark']; 
+  }
 
-console.log('sectionName: asd');
-console.log('sectionName: ', sectionName);
-// axios.get('https://google.com')
-
-sidebarClose.addEventListener("click", () => sidebar.classList.toggle("close"));
+  sidebarClose.classList.replace(tags[0], tags[1]);
+  return sidebar.classList.toggle("close");
+});
 
 menuItems.forEach((item, index) => {
   item.addEventListener("click", () => {
@@ -34,42 +38,59 @@ console.log(menuItems, subMenuTitles);
 
 function configOptionElement(className, materials) {
 
+  console.log('configOptionElement: ', className);
 
-  const wrapper = document.querySelector(className), // ".wrapper"
+  const wrapper = document.querySelector(className),
     selectBtn = wrapper.querySelector(".select-btn"),
     searchInp = wrapper.querySelector("input"),
     options = wrapper.querySelector(".options");
 
-  // let materials = [];
-  // ["Agua", "Aire y ruído", "Residuos", "RECNAT y riesgos", "Otros"];
-
-  function addMaterial(selectedCountry) {
-    options.innerHTML = "";
-    materials.forEach(material => {
-      let isSelected = material == selectedCountry ? "selected" : "";
-      let li = `<li onclick="updateName(this)" class="${isSelected}">${material}</li>`;
-      options.insertAdjacentHTML("beforeend", li);
-    });
-  }
-
-  function updateName(selectedLi) {
+  function updateName(event) {
+    console.log(event);
+    let selectedLi = event.srcElement;
     searchInp.value = "";
     addMaterial(selectedLi.innerText);
     wrapper.classList.remove("active");
     selectBtn.firstElementChild.innerText = selectedLi.innerText;
   }
 
+  function addMaterial(selectedCountry) {
+    options.innerHTML = "";
+    materials.forEach(material => {
+      let isSelected = material == selectedCountry ? "selected" : "";
+
+      let newOpt = document.createElement('li');
+      newOpt.onclick = updateName;
+      newOpt.className = `${isSelected}`;
+      newOpt.textContent = material;
+      // return `<li onclick="updateName(this)" class="${isSelected}">${data}</li>`;
+      options.appendChild(newOpt);
+      
+      
+      //let li = `<li onclick="updateName(this)" class="${isSelected}">${material}</li>`;
+      // options.insertAdjacentHTML("beforeend", li);
+    });
+  }
+
+  
+
   searchInp.addEventListener("keyup", () => {
-    console.log(" On keyup ");
-    let arr = [];
     let searchWord = searchInp.value.toLowerCase();
-    arr = materials.filter(data => {
+    
+    materials.filter(data => {
       return data.toLowerCase().startsWith(searchWord);
-    }).map(data => {
+    }).forEach(data => {
       let isSelected = data == selectBtn.firstElementChild.innerText ? "selected" : "";
-      return `<li onclick="updateName(this)" class="${isSelected}">${data}</li>`;
+      
+      let newOpt = document.createElement('li');
+      newOpt.onclick = updateName;
+      newOpt.className = `${isSelected}`;
+      newOpt.textContent = data;
+      
+      options.appendChild(newOpt);
     }).join("");
-    options.innerHTML = arr ? arr : `<p style="margin-top: 10px;">Oops! Country not found</p>`;
+
+    // options.innerHTML = arr ? arr : `<p style="margin-top: 10px;">Oops! Country not found</p>`;
   });
 
   selectBtn.addEventListener("click", () => wrapper.classList.toggle("active"));
@@ -80,10 +101,10 @@ axios.get('/api/material/').then((response) => {
   let materialNames = response.data;
   // console.log('myMaterials: ', Object.values(response.data));
   let materials = Object.values(materialNames);
-  configOptionElement(".wrapper", materials);
 
-  
-  // configOptionElement(".wrapper", materials);
+  configOptionElement("div.wrapper", materials);
+  console.log(materials);
+  configOptionElement("div.name_document", materials);
 
-  
+
 });
