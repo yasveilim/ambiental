@@ -36,7 +36,7 @@ subMenuTitles.forEach((title) => {
 
 console.log(menuItems, subMenuTitles);
 
-function configOptionElement(className, materials, callback) {
+function configOptionElement(className, itemNamesList, callback) {
 
   console.log('configOptionElement: ', className);
 
@@ -54,23 +54,20 @@ function configOptionElement(className, materials, callback) {
     selectBtn.firstElementChild.innerText = selectedLi.innerText;
   }
 
-  function addMaterial(selectedCountry) {
+  function addMaterial(selectedItem) {
     options.innerHTML = "";
     //console.log("Another item is selected", documentNames);
-    callback();
-    materials.forEach(material => {
-      let isSelected = material == selectedCountry ? "selected" : "";
+    callback(selectedItem);
+    itemNamesList.forEach(itemName => {
+      let isSelected = itemName == selectedItem ? "selected" : "";
 
       let newOpt = document.createElement('li');
       newOpt.onclick = updateName;
       newOpt.className = `${isSelected}`;
-      newOpt.textContent = material;
+      newOpt.textContent = itemName;
       // return `<li onclick="updateName(this)" class="${isSelected}">${data}</li>`;
       options.appendChild(newOpt);
       
-      
-      //let li = `<li onclick="updateName(this)" class="${isSelected}">${material}</li>`;
-      // options.insertAdjacentHTML("beforeend", li);
     });
   }
 
@@ -79,15 +76,16 @@ function configOptionElement(className, materials, callback) {
     let searchWord = searchInp.value.toLowerCase();
     document.querySelector(`${className} .options`).innerHTML = '';
 
-    materials.filter(data => {
-      return data.toLowerCase().startsWith(searchWord);
-    }).forEach(data => {
-      let isSelected = data == selectBtn.firstElementChild.innerText ? "selected" : "";
+    itemNamesList.filter(itemName => {
+      return itemName.toLowerCase().startsWith(searchWord);
+    }).forEach(filteredItemName => {
+      let isSelected = 
+        filteredItemName == selectBtn.firstElementChild.innerText ? "selected" : "";
       
       let newOpt = document.createElement('li');
       newOpt.onclick = updateName;
       newOpt.className = `${isSelected}`;
-      newOpt.textContent = data;
+      newOpt.textContent = filteredItemName;
       
       options.appendChild(newOpt);
     }).join("");
@@ -111,31 +109,29 @@ function invertObject(obj) {
   return Object.fromEntries(Object.entries(obj).map(([key, value]) => [value, key]));
 }
 
-
 axios.get('/api/material/').then((response) => {
   let materialNames = response.data;
   let materialsFromValues = invertObject(materialNames);
   let materials = Object.values(materialNames);
 
-  configOptionElement("div.wrapper", materials, () => {
-    
-    let materialSelectedText = document.querySelector(
-      'div.wrapper .select-btn span'
-    ).textContent;
-    
-    if (materialSelectedText === 'Categoría') {
+  configOptionElement("div.wrapper", materials, (selectedText) => {
+
+    if (!selectedText || selectedText === 'Categoría') {
       return;
     }
 
-    let materialSelectedName = materialsFromValues[materialSelectedText];
+    let materialSelectedName = materialsFromValues[selectedText];
     console.log('This is the selected material: ', materialSelectedName);
 
+    // TODO: Esto no funciona 1/2, y en ninguna o ocasion configOptionElement("div.name_document"...
+    // limpia el input
     axios.get(`/api/materialbook/${materialSelectedName}`).then((response) => {
+      console.log('My materialSelectedName is: ', materialSelectedName, response.data);
       
       let documentsData = response.data;
       let documentsNames = collectBookNames(documentsData);
 
-      configOptionElement("div.name_document", documentsNames, () => null);
+      configOptionElement("div.name_document", documentsNames, (selectedText) => null);
     });
   });
 });
