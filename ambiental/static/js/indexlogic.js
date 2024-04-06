@@ -36,7 +36,7 @@ subMenuTitles.forEach((title) => {
 
 console.log(menuItems, subMenuTitles);
 
-function configOptionElement(className, materials) {
+function configOptionElement(className, materials, callback) {
 
   console.log('configOptionElement: ', className);
 
@@ -56,6 +56,8 @@ function configOptionElement(className, materials) {
 
   function addMaterial(selectedCountry) {
     options.innerHTML = "";
+    //console.log("Another item is selected", documentNames);
+    callback();
     materials.forEach(material => {
       let isSelected = material == selectedCountry ? "selected" : "";
 
@@ -73,10 +75,10 @@ function configOptionElement(className, materials) {
   }
 
   
-
   searchInp.addEventListener("keyup", () => {
     let searchWord = searchInp.value.toLowerCase();
-    
+    document.querySelector(`${className} .options`).innerHTML = '';
+
     materials.filter(data => {
       return data.toLowerCase().startsWith(searchWord);
     }).forEach(data => {
@@ -97,14 +99,43 @@ function configOptionElement(className, materials) {
   addMaterial();
 }
 
+function collectBookNames(data) {
+  // Buscamos la primera clave en el objeto (puede ser 'AGUA' u otra)
+  const key = Object.keys(data)[0];
+  // Extraemos los nombres de los libros
+  const bookNames = data[key].map(book => book.name);
+  return bookNames;
+}
+
+function invertObject(obj) {
+  return Object.fromEntries(Object.entries(obj).map(([key, value]) => [value, key]));
+}
+
+
 axios.get('/api/material/').then((response) => {
   let materialNames = response.data;
-  // console.log('myMaterials: ', Object.values(response.data));
+  let materialsFromValues = invertObject(materialNames);
   let materials = Object.values(materialNames);
 
-  configOptionElement("div.wrapper", materials);
-  console.log(materials);
-  configOptionElement("div.name_document", materials);
+  configOptionElement("div.wrapper", materials, () => {
+    
+    let materialSelectedText = document.querySelector(
+      'div.wrapper .select-btn span'
+    ).textContent;
+    
+    if (materialSelectedText === 'Categoría') {
+      return;
+    }
 
+    let materialSelectedName = materialsFromValues[materialSelectedText];
+    console.log('This is the selected material: ', materialSelectedName);
 
+    axios.get(`/api/materialbook/${materialSelectedName}`).then((response) => {
+      
+      let documentsData = response.data;
+      let documentsNames = collectBookNames(documentsData);
+
+      configOptionElement("div.name_document", documentsNames, () => null);
+    });
+  });
 });
