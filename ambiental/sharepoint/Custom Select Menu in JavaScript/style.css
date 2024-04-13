@@ -15,7 +15,7 @@ body{
 }
 .wrapper{
   width: 370px;
-  margin: 85px auto 0;
+  margin: 75px auto 0;
 }
 .select-btn, li{
   display: flex;

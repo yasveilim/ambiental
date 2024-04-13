@@ -20,7 +20,6 @@ from django.http import JsonResponse
 import json
 
 
-
 SICMA_AZURE_DB = SicmaDB()
 
 
@@ -66,10 +65,11 @@ class Login(generic.CreateView):
     def form_valid(self, form: forms.LoginUserForm):
         legit_url = self.get_success_url()
         user_base = get_object_or_404(User, email=form['email'].value())
-        print("Form valid / ", self.request.user, ' / ', self.request.user.is_authenticated)
-        
+        print("Form valid / ", self.request.user,
+              ' / ', self.request.user.is_authenticated)
+
         if not self.request.user.is_authenticated:
-            
+
             user = authenticate(
                 self.request,
                 username=user_base.username,
@@ -79,11 +79,12 @@ class Login(generic.CreateView):
             print("My user is: ", user)
             if user is not None:
                 login(self.request, user)
-            
+
             else:
                 return JsonResponse({'message': 'Invalid user or password'}, status=404)
 
-        return JsonResponse({'message': 'Ok'}) # HttpResponseRedirect(legit_url)
+        # HttpResponseRedirect(legit_url)
+        return JsonResponse({'message': 'Ok'})
 
     def form_invalid(self, form):
         print("Form invalid")
@@ -114,13 +115,15 @@ def pretty_print_dict(d):
     with open('file.json', "w") as file:
         print(json.dumps(d, indent=4, sort_keys=True), file=file)
 
+
 def get_materal_from_category(category: str):
     match category:
-        case "water": return  SICMA_AZURE_DB.data['AGUA']
-        case "air-noise": return  SICMA_AZURE_DB.data['AIRE Y RUIDO']
-        case "waste": return  SICMA_AZURE_DB.data['RESIDUOS']
-        case "recnat-risks": return  SICMA_AZURE_DB.data['RECNAT Y RIESGO']
-        case "others": return  SICMA_AZURE_DB.data['OTROS']
+        case "water": return SICMA_AZURE_DB.data['AGUA']
+        case "air-noise": return SICMA_AZURE_DB.data['AIRE Y RUIDO']
+        case "waste": return SICMA_AZURE_DB.data['RESIDUOS']
+        case "recnat-risks": return SICMA_AZURE_DB.data['RECNAT Y RIESGO']
+        case "others": return SICMA_AZURE_DB.data['OTROS']
+
 
 class Index(generic.TemplateView):
     template_name = 'index/generic.html'
@@ -142,11 +145,11 @@ class Index(generic.TemplateView):
             return ['index/advance.html']
         else:
             return ['index/generic.html']
-        
+
     def dispatch(self, request, *args, **kwargs):
         if not self.request.user.is_authenticated:
             return redirect('/')
-        
+
         return super().dispatch(request, *args, **kwargs)
 
 
@@ -191,19 +194,20 @@ class Material(generic.View):
 
     def get(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
         category = self.kwargs.get('category')
-        
+
         materal = get_materal_from_category(category) or {}
 
         return JsonResponse({
-            "names": [x for  x in materal.keys()]
+            "names": [x for x in materal.keys()]
         })
-    
+
     def dispatch(self, request, *args, **kwargs):
         if not self.request.user.is_authenticated:
             return redirect('/')
-        
+
         return super().dispatch(request, *args, **kwargs)
-    
+
+
 class Category(generic.View):
 
     def get(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
@@ -213,42 +217,33 @@ class Category(generic.View):
             "waste": "Residuos",
             "recnat-risks": "RECNAT y riesgo"
         })
-    
+
     def dispatch(self, request, *args, **kwargs):
         if not self.request.user.is_authenticated:
             return redirect('/')
-        
+
         return super().dispatch(request, *args, **kwargs)
-    
+
 
 class MaterialBook(generic.View):
 
     def get(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
         materials = get_materal_from_category(kwargs['category']) or {}
-        
+
         materials_namesidx = {k: v for k, v in enumerate(materials.keys())}
         name = materials_namesidx.get(kwargs['material']) or ""
         material = materials.get(name) or []
-      
+
         return JsonResponse({
             "items": material
         })
-    
+
     def dispatch(self, request, *args, **kwargs):
         if not self.request.user.is_authenticated:
             return redirect('/')
-        
-        return super().dispatch(request, *args, **kwargs)
-    
-#from django.http import JsonResponse
-#from django.views import View
 
-# class MiVista(View):
-#     def get(self, request, *args, **kwargs):
-#         datos = {
-#             # Tus datos aquí
-#         }
-#         return JsonResponse(datos)
+        return super().dispatch(request, *args, **kwargs)
+
 
 class ForgotPasswordUpdate(generic.UpdateView):
     template_name = 'forgotpassword/resetcode.html'

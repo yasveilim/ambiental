@@ -1,9 +1,10 @@
-#import sharepoint
+# import sharepoint
 from sharepoint import autenticate, sharepoint, sicma
 from dotenv import load_dotenv
 import os
 
-# import 
+# import
+
 
 def main():
     load_dotenv()  # TODO: Move this line and create main function
@@ -18,4 +19,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main() 
+    main()

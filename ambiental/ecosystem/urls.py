@@ -35,7 +35,9 @@ urlpatterns = [
 
     # Data request
     path('api/category/', views.Category.as_view(), name="category"),
-    path('api/material/<slug:category>', views.Material.as_view(), name="material"),
-    path('api/materialbook/<slug:category>/<int:material>', views.MaterialBook.as_view(), name="materialbook"),
+    path('api/material/<slug:category>',
+         views.Material.as_view(), name="material"),
+    path('api/materialbook/<slug:category>/<int:material>',
+         views.MaterialBook.as_view(), name="materialbook"),
 
 ]

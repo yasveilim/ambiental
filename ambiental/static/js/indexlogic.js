@@ -35,6 +35,18 @@ subMenuTitles.forEach((title) => {
 });
 
 // console.log(menuItems, subMenuTitles);
+function titleCase(str) {
+  if ((str === null) || (str === ''))
+      return false;
+  else
+      str = str.toString();
+
+  return str.replace(/\w\S*/g,
+      function (txt) {
+          return txt.charAt(0).toUpperCase() +
+              txt.substr(1).toLowerCase();
+      });
+}
 
 function configOptionElement(className, itemNamesList, callback) {
 
@@ -52,22 +64,30 @@ function configOptionElement(className, itemNamesList, callback) {
     console.log(event);
     let selectedLi = event.srcElement;
     searchInp.value = "";
-    addMaterial(selectedLi.innerText);
+    addMaterial(selectedLi);
     wrapper.classList.remove("active");
-    selectBtn.firstElementChild.innerText = selectedLi.innerText;
+    selectBtn.firstElementChild.innerText = trimText(selectedLi.innerText);
   }
 
   function addMaterial(selectedItem) {
     options.innerHTML = "";
     //console.log("Another item is selected", documentNames);
-    callback(selectedItem, wrapper);
-    itemNamesList.forEach(itemName => {
-      let isSelected = itemName == selectedItem ? "selected" : "";
+
+    if (selectedItem !== undefined) {
+      //console.log(selectedItem, selectedItem.parentElement);
+      let index = selectedItem.getAttribute('idx');
+  
+      callback(selectedItem.innerText, index, wrapper);
+    }
+
+    itemNamesList.forEach((itemName, idx) => {
+      let isSelected = (selectedItem && itemName == selectedItem.innerText) ? "selected" : "";
 
       let newOpt = document.createElement('li');
       newOpt.onclick = updateName;
       newOpt.className = `${isSelected}`;
-      newOpt.textContent = itemName;
+      newOpt.textContent = titleCase(itemName);
+      newOpt.setAttribute('idx', idx)
       // return `<li onclick="updateName(this)" class="${isSelected}">${data}</li>`;
       options.appendChild(newOpt);
 
@@ -88,7 +108,7 @@ function configOptionElement(className, itemNamesList, callback) {
       let newOpt = document.createElement('li');
       newOpt.onclick = updateName;
       newOpt.className = `${isSelected}`;
-      newOpt.textContent = filteredItemName;
+      newOpt.textContent =  titleCase(filteredItemName);
 
       options.appendChild(newOpt);
     }).join("");
@@ -108,41 +128,68 @@ function collectBookNames(data) {
   return bookNames;
 }
 
+function trimText(text) {
+  const limit = 80;
+  return text.length > limit ? text.substring(0, limit - 3) + '...' : text;
+}
+
 function invertObject(obj) {
   return Object.fromEntries(Object.entries(obj).map(([key, value]) => [value, key]));
 }
 
-axios.get('/api/material/').then((response) => {
-  let materialNames = response.data;
-  let materialsFromValues = invertObject(materialNames);
-  let materials = Object.values(materialNames);
+function loadMaterials(categories, materials) {
 
-  configOptionElement("div.wrapper", materials, (selectedText, xwrapper) => {
+  configOptionElement("div.wrapper", materials, (selectedText, index, xwrapper) => {
+    console.log("selectedText: ", selectedText, " - ", index);
 
+    // 
     if (!selectedText || selectedText === 'Categoría') {
       return;
     }
 
-    let materialSelectedName = materialsFromValues[selectedText];
-    console.log('This is the selected material: ', materialSelectedName);
+    //let materialSelectedName = materialsFromValues[selectedText];
+    //console.log('This is the selected material: ', materialSelectedName);
 
     // TODO: Esto tiene un errror, cuando se cambia el primer option
     // el segundo se congela aunque carga toda la data
+    // Pista: El segundo options no puede cambiar a "activate"
 
     let fetchData = async () => {
       try {
-        const response = await axios.get(`/api/materialbook/${materialSelectedName}`);
-        console.log('My materialSelectedName is: ', materialSelectedName, response.data);
+        const response = await axios.get(`/api/materialbook/${sectionName}/${index}`);
+        console.log('My materialSelectedName is: ', response.data);
 
         let documentsData = response.data;
         let documentsNames = collectBookNames(documentsData);
 
         console.log('div.name_document: ', document.querySelector("div.name_document"))
 
-        configOptionElement("div.name_document", documentsNames, (selectedText, wrapper) => {
+        configOptionElement("div.name_document", documentsNames, (selectedText, index, wrapper) => {
+          const statusDocument = {
+            'DELIVERED': 'Entregado',
+            'PENDING': 'Pendiente',
+            'NA': 'No Aplica'
+        };
+          console.log("Estado: ", selectedText, " ", index, " ", wrapper)
+
+          let bookData = documentsData.items[index];
+
+          let deliveryProgress = document.querySelector("th#delivery-progress");
+          let dateDelivery = document.querySelector("td#date-delivery");
+          let environmentalPerformanceLevel = document.querySelector("td#environmental-performance-level");
+          let uploadTotheCloud = document.querySelector("td#upload-tothe-cloud");
+          let comments = document.querySelector("td#comments"); 
+
+          deliveryProgress.textContent = statusDocument[bookData.advance]; // cambiar color
+          dateDelivery.textContent = bookData.archives;
+          // is_critical
+          // environmentalPerformanceLevel.textContent = bookData.advance; // Aun no lo tenemos
+          uploadTotheCloud.textContent = bookData.essential_cloud ? "Si" : "No";
+          comments.textContent = bookData.comments;
+
           //const wrapper = document.querySelector(className),
-          selectBtn = wrapper.querySelector(".select-btn");
-          selectBtn.firstElementChild.innerText = "";
+          // selectBtn = wrapper.querySelector(".select-btn");
+          // selectBtn.firstElementChild.innerText = "";
 
           // console.log(`My select: ${selectedText}`)
         });
@@ -153,5 +200,14 @@ axios.get('/api/material/').then((response) => {
 
     fetchData()
 
+  });
+}
+
+
+axios.get('/api/category/').then((response) => {
+  let categories = response.data;
+  axios.get(`/api/material/${sectionName}`).then((response) => {
+    //console.log(categories, " - ", sectionName, " - ", response.data)
+    loadMaterials(categories, response.data.names)
   });
 });
