@@ -17,6 +17,7 @@ from . import models, utils, forms
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
 from django.http import JsonResponse
+import json
 
 
 
@@ -109,6 +110,18 @@ class Signup(generic.CreateView):  # ecosystem:
         return super().form_invalid(form)
 
 
+def pretty_print_dict(d):
+    with open('file.json', "w") as file:
+        print(json.dumps(d, indent=4, sort_keys=True), file=file)
+
+def get_materal_from_category(category: str):
+    match category:
+        case "water": return  SICMA_AZURE_DB.data['AGUA']
+        case "air-noise": return  SICMA_AZURE_DB.data['AIRE Y RUIDO']
+        case "waste": return  SICMA_AZURE_DB.data['RESIDUOS']
+        case "recnat-risks": return  SICMA_AZURE_DB.data['RECNAT Y RIESGO']
+        case "others": return  SICMA_AZURE_DB.data['OTROS']
+
 class Index(generic.TemplateView):
     template_name = 'index/generic.html'
 
@@ -116,25 +129,9 @@ class Index(generic.TemplateView):
         context = super().get_context_data(**kwargs)
         site = self.kwargs.get('site')
         context['category'] = site
-        # print(SICMA_AZURE_DB.data)
+        pretty_print_dict(SICMA_AZURE_DB.data)
 
-        # ['AIRE Y RUIDO', 'AGUA', 'RESIDUOS', 'RECNAT Y RIESGO', 'OTROS']
-        match site:
-            case "water":
-                context['book'] = SICMA_AZURE_DB.data['AGUA']
-                context['imgmaterial'] = 'agua.jpg'
-            case "air-noise":
-                context['book'] = SICMA_AZURE_DB.data['AIRE Y RUIDO']
-                context['imgmaterial'] = 'aire.jpg'
-            case "waste":
-                context['book'] = SICMA_AZURE_DB.data['RESIDUOS']
-                context['imgmaterial'] = 'residuos.jpg'
-            case "recnat-risks":
-                context['book'] = SICMA_AZURE_DB.data['RECNAT Y RIESGO']
-                context['imgmaterial'] = 'riesgos.jpg'
-            case "others":
-                context['book'] = SICMA_AZURE_DB.data['OTROS']
-                context['imgmaterial'] = 'others.jpg'
+        context['book'] = get_materal_from_category(site)
 
         return context
 
@@ -193,6 +190,23 @@ class ForgotPassword(generic.CreateView):
 class Material(generic.View):
 
     def get(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
+        category = self.kwargs.get('category')
+        
+        materal = get_materal_from_category(category) or {}
+
+        return JsonResponse({
+            "names": [x for  x in materal.keys()]
+        })
+    
+    def dispatch(self, request, *args, **kwargs):
+        if not self.request.user.is_authenticated:
+            return redirect('/')
+        
+        return super().dispatch(request, *args, **kwargs)
+    
+class Category(generic.View):
+
+    def get(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
         return JsonResponse({
             "water": "Agua",
             "air-noise": "Aire y ruído",
@@ -210,21 +224,15 @@ class Material(generic.View):
 class MaterialBook(generic.View):
 
     def get(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
-        # "water" SICMA_AZURE_DB.data['AGUA']
-        #print(kwargs['material'], SICMA_AZURE_DB.data['AGUA'])
-
-        # TODO: Optimize this together with the other match.
-        material = ""
-        match kwargs['material']:
-            case "water": material = 'AGUA'
-            case "air-noise": material = 'AIRE Y RUIDO'
-            case "waste": material = 'RESIDUOS'
-            case "recnat-risks": material = 'RECNAT Y RIESGO'
-
-        # super(generic.View, self).get(request, *args, **kwargs)
-        message = { "error": [f"The material {material} does not exist"] }
-        material_document = SICMA_AZURE_DB.data.get(material) or message
-        return JsonResponse(material_document)
+        materials = get_materal_from_category(kwargs['category']) or {}
+        
+        materials_namesidx = {k: v for k, v in enumerate(materials.keys())}
+        name = materials_namesidx.get(kwargs['material']) or ""
+        material = materials.get(name) or []
+      
+        return JsonResponse({
+            "items": material
+        })
     
     def dispatch(self, request, *args, **kwargs):
         if not self.request.user.is_authenticated:

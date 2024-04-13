@@ -34,7 +34,8 @@ urlpatterns = [
          views.ForgotPasswordUpdate.as_view(), name="forgotresetcode_pwd"),
 
     # Data request
-    path('api/material/', views.Material.as_view(), name="material"),
-    path('api/materialbook/<slug:material>', views.MaterialBook.as_view(), name="materialbook"),
+    path('api/category/', views.Category.as_view(), name="category"),
+    path('api/material/<slug:category>', views.Material.as_view(), name="material"),
+    path('api/materialbook/<slug:category>/<int:material>', views.MaterialBook.as_view(), name="materialbook"),
 
 ]
