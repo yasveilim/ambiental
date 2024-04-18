@@ -183,7 +183,7 @@ function loadMaterials(categories, materials) {
           deliveryProgress.textContent = statusDocument[bookData.advance]; // cambiar color
           dateDelivery.textContent = bookData.archives;
           // is_critical
-          // environmentalPerformanceLevel.textContent = bookData.advance; // Aun no lo tenemos
+          environmentalPerformanceLevel.textContent = bookData.nda;
           uploadTotheCloud.textContent = bookData.essential_cloud ? "Si" : "No";
           comments.textContent = bookData.comments;
 

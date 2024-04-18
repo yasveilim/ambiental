@@ -27,12 +27,19 @@ def calculate_advance(delivered: str | int, pending: str | int):
 @dataclass
 class DataExtractor:
     current_docuements: t.Dict = field(default_factory=dict)
+    nda_index: t.Optional[int] = None
+    last_nda: t.Optional[int] = None
     doc_index: int = 0
     material_idx: int = 0
     material: str = ""
     critical_materials: t.List[str] = field(default_factory=list)
 
     def extract_row(self, row: t.List[str]) -> t.Optional[str]:
+        if self.nda_index is not None:
+            current_nda = str(row[self.nda_index]).strip()
+            if len(current_nda) > 0:
+                self.last_nda = float(current_nda.replace(',', '.'))
+
 
         if len(row[self.material_idx]) > 0:
             self.material = row[self.material_idx]
@@ -49,6 +56,7 @@ class DataExtractor:
 
         current_material.append({
             'name': name,
+            "nda": self.last_nda,
             'essential_cloud': bool(row[self.doc_index + 1]),
             'advance': calculate_advance(
                 row[self.doc_index + 2], row[self.doc_index + 3]),
@@ -69,6 +77,10 @@ def read_sicma_db(account: Account, dbpath: str):
         data_extractor = DataExtractor()
         data_extractor.critical_materials = critical_materials
         all_cells = sharepoint.read_all_cells(workbook, sheet)
+
+        if "NDA" in all_cells[9]:
+            data_extractor.nda_index = all_cells[9].index("NDA")
+
 
         for row in all_cells[11:]:
             if sheet == 'AGUA':
@@ -126,3 +138,4 @@ class SicmaDB:
     def site_path_fmt(self, *args):
         path_chucks = '/'.join(args)
         return f"{self.site_path}/{path_chucks}"
+
