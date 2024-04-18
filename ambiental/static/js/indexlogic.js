@@ -166,21 +166,40 @@ function loadMaterials(categories, materials) {
 
         configOptionElement("div.name_document", documentsNames, (selectedText, index, wrapper) => {
           const statusDocument = {
-            'DELIVERED': 'Entregado',
-            'PENDING': 'Pendiente',
-            'NA': 'No Aplica'
+            'DELIVERED': {
+              text: 'Entregado',
+              className: 'thead-de',
+            },
+            'PENDING': {
+              text: 'Pendiente',
+              className: 'thead-pe',
+            },
+            'NA': {
+              text: 'No Aplica',
+              className: 'thead-na',
+            } 
         };
           console.log("Estado: ", selectedText, " ", index, " ", wrapper)
 
           let bookData = documentsData.items[index];
 
+          // #246355 #0F362D
+
           let deliveryProgress = document.querySelector("th#delivery-progress");
+          let theadUnique = document.querySelector("thead");
+
           let dateDelivery = document.querySelector("td#date-delivery");
           let environmentalPerformanceLevel = document.querySelector("td#environmental-performance-level");
           let uploadTotheCloud = document.querySelector("td#upload-tothe-cloud");
           let comments = document.querySelector("td#comments"); 
 
-          deliveryProgress.textContent = statusDocument[bookData.advance]; // cambiar color
+          metadataBar = statusDocument[bookData.advance];
+          deliveryProgress.textContent = metadataBar.text; // cambiar color
+          theadUnique.classList.forEach(name => theadUnique.classList.remove(name))
+          theadUnique.classList.add(metadataBar.className);
+
+
+
           dateDelivery.textContent = bookData.archives;
           // is_critical
           environmentalPerformanceLevel.textContent = bookData.nda;
@@ -210,4 +229,11 @@ axios.get('/api/category/').then((response) => {
     //console.log(categories, " - ", sectionName, " - ", response.data)
     loadMaterials(categories, response.data.names)
   });
+});
+
+let theadElement = document.querySelector('thead');
+
+
+theadElement.addEventListener("click", (e) => {
+  console.log("User make click", e);
 });
