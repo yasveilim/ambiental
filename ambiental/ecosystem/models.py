@@ -35,3 +35,9 @@ class AmbientalBookProps(models.Model):
     advance = models.CharField(
         max_length=9, choices=ADVANCE_STATUS, default="pending")
     essential_in_cloud = models.BooleanField(default=True)
+
+# TODO: From this point onwards, the data models used are as follows
+
+class AmbientalBookSharepointPath(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    path = models.TextField()
