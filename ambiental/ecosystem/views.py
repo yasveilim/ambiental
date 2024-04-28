@@ -23,6 +23,10 @@ import json
 SICMA_AZURE_DB = SicmaDB()
 
 
+
+def assign_sharepoint_directory(user_name: str):
+    pass
+
 class Home(generic.TemplateView):
     template_name = 'home.html'
 

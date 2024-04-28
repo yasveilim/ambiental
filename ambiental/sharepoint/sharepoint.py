@@ -72,7 +72,7 @@ def make_dir(account: Account, qdirpath: str) -> Folder:
     root_folder = doc_library.get_root_folder()
 
     for chuck in path_chucks:
-        query = [*root_folder.search(chuck)]
+        query = [x for x in root_folder.get_items() if x.name == chuck]
         chuck_exists = len(query) == 1
 
         if len(query) > 1:

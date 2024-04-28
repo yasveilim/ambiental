@@ -14,8 +14,9 @@ def main():
     client_secret = None  # os.getenv('CLIENT_SECRET')
 
     sicma_db = sicma.SicmaDB()
-    data = sicma_db.data['AGUA']
-    pretty_print_json(data)
+    sicma_db.create_material_folder("algo", "otra_cosa")
+    #data = sicma_db.data['AGUA']
+    #pretty_print_json(data)
     
     exit()
 

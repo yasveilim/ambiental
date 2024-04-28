@@ -6,6 +6,7 @@ from O365 import Account
 import typing as t
 from datetime import datetime
 from O365.drive import Folder
+from enum import Enum
 
 WORKSHEETS = ['CRITICAS', 'AIRE Y RUIDO', 'AYR1.2', 'AGUA',
               'RESIDUOS', 'RECNAT Y RIESGO', 'OTROS', r'% de Avance']
@@ -113,6 +114,19 @@ def read_sicma_db(account: Account, dbpath: str):
     return result
 
 
+
+ 
+class SearchResult(Enum):
+    Found = 1
+    Alternative = 2
+
+
+@dataclass
+class SearchObject:
+    status: SearchResult
+    result: str
+    
+
 class SicmaDB:
 
     def __init__(self):
@@ -130,10 +144,14 @@ class SicmaDB:
     def create_material_folder(self, username: str, material: str) -> Folder:
         # NOTE: year is not an argument because I don't know if it is generated
         # based on the current year or another base.
-
-        return sharepoint.make_dir(
-            username, str(datetime.now().year), material
+      
+        material_folder = self.site_path_fmt(
+            f'{username}/Informacion IL {datetime.now().year}/{material}'
         )
+        return sharepoint.make_dir(self.account, material_folder)
+    
+    def check_if_dir_exists(dirname: str) -> SearchObject:
+        pass
 
     def site_path_fmt(self, *args):
         path_chucks = '/'.join(args)
