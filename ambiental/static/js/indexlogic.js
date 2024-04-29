@@ -3,7 +3,12 @@ const sidebarClose = document.querySelector("#sidebar-close");
 const menu = document.querySelector(".menu-content");
 const menuItems = document.querySelectorAll(".submenu-item");
 const subMenuTitles = document.querySelectorAll(".submenu .menu-title");
+const mainModal = document.querySelector("div.modal");
 
+
+function closeModal() {
+  mainModal.style.display = "none";
+}
 
 sidebarClose.addEventListener("click", () => {
 
@@ -137,6 +142,7 @@ function invertObject(obj) {
   return Object.fromEntries(Object.entries(obj).map(([key, value]) => [value, key]));
 }
 
+
 function loadMaterials(categories, materials) {
 
   configOptionElement("div.wrapper", materials, (selectedText, index, xwrapper) => {
@@ -197,6 +203,12 @@ function loadMaterials(categories, materials) {
           deliveryProgress.textContent = metadataBar.text; // cambiar color
           theadUnique.classList.forEach(name => theadUnique.classList.remove(name))
           theadUnique.classList.add(metadataBar.className);
+          theadUnique.onclick = (event) => {
+            mainModal.style.display = "block";
+            console.log(`I clicked here: `, event);
+          };
+
+          //theadUnique.innerHTML.
 
 
 
@@ -224,16 +236,10 @@ function loadMaterials(categories, materials) {
 
 
 axios.get('/api/category/').then((response) => {
+  closeModal();
   let categories = response.data;
   axios.get(`/api/material/${sectionName}`).then((response) => {
     //console.log(categories, " - ", sectionName, " - ", response.data)
     loadMaterials(categories, response.data.names)
   });
-});
-
-let theadElement = document.querySelector('thead');
-
-
-theadElement.addEventListener("click", (e) => {
-  console.log("User make click", e);
 });

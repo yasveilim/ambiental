@@ -13,8 +13,7 @@ class AmbientalBookMaterial(models.Model):
 
 
 class AmbientalBook(models.Model):
-    material = models.ForeignKey(
-        AmbientalBookMaterial, on_delete=models.CASCADE)
+    material = models.ForeignKey(AmbientalBookMaterial, on_delete=models.CASCADE)
     document_name = models.CharField(max_length=50)
     is_critical = models.BooleanField(default=False)
     category = models.CharField(max_length=50)
@@ -25,19 +24,33 @@ class AmbientalBookProps(models.Model):
     # NOTE: This can not be null
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     book = models.ForeignKey(AmbientalBook, on_delete=models.CASCADE)
-    ADVANCE_STATUS = [
-        ("delivered", "DELIVERED"),
-        ("pending", "PENDING"),
-        ("na", "NA")
-    ]
-    archive = models.FileField(upload_to='uploads/')
+    ADVANCE_STATUS = [("delivered", "DELIVERED"), ("pending", "PENDING"), ("na", "NA")]
+    archive = models.FileField(upload_to="uploads/")
     comment = models.TextField(default="")
-    advance = models.CharField(
-        max_length=9, choices=ADVANCE_STATUS, default="pending")
+    advance = models.CharField(max_length=9, choices=ADVANCE_STATUS, default="pending")
     essential_in_cloud = models.BooleanField(default=True)
+
 
 # TODO: From this point onwards, the data models used are as follows
 
+
 class AmbientalBookSharepointPath(models.Model):
+    CATEGORIES = [
+        ("criticisms", "CRITICAS"),
+        ("air_and_noise", "AIRE Y RUIDO"),
+        ("water", "AGUA"),
+        ("waste", "RESIDUOS"),
+        ("recnat_and_risk", "RECNAT Y RIESGO"),
+        ("others", "OTROS"),
+    ]
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    path = models.TextField()
+    category = models.CharField(max_length=15, choices=CATEGORIES)
+    book_id = models.IntegerField()
+    bool_name = models.TextField()
+    receipt_date = models.DateField(auto_now=True)
+    # The book received in question
+
+
+class UserSharepointDir(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.TextField(unique=True)

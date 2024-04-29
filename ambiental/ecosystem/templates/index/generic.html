@@ -44,6 +44,36 @@
   </div>
 </div>
 
+
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-head">
+      <button class="close-modal-btn fa-1x" onclick="closeModal()">
+        <i class="fa-solid fa-x"></i>
+      </button>
+    </div>
+
+    <div class="form-container">
+      <form method="post" enctype="multipart/form-data">
+        <div  class="form-container-top">
+          <i class="fa-regular fa-file-pdf fa-3x"></i>
+          <p>Choose file to upload</p>
+          <input placeholder="Choose file to upload" type="file" id="document_pic" name="document_pic" accept=".pdf, .docx" />
+        </div>
+        
+        <div class="form-container-footer">
+          <button>Submit</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+</div>
+
+
 <table class="wrapper">
   <thead>
     <tr>

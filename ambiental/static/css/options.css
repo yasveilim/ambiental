@@ -64,7 +64,65 @@
     border-bottom: solid 2px gray;
 }
 
+.modal {
+  display: flex;
+  position: fixed;
+  z-index: 1000;
+  min-width: 300px;
+  min-height: 300px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+  background: #e7f2fd;
+  padding: 10px;
+}
 
+.modal-head {
+    display: flex;
+    justify-content: end;
+}
+
+.modal-head button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+.modal-head button:hover {
+    opacity: 0.1;
+}
+
+form {
+    min-height: 250px;
+}
+.form-container {
+    min-height: 250px;
+}
+
+.form-container-top {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 190px;
+    /* height: 100%; */
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-container-footer button,  .form-container-top input{
+    padding: 5px;
+    margin-top: 50px;   
+    border: none;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;      
+}
+
+.form-container-footer button:hover, .form-container-top input:hover {
+    background-color: #F2F2F2;
+}
+
+.form-container-footer {
+    display: flex;
+    justify-content: end;
+    flex-direction: row;
+}
 .options .option:hover {
     background: #F2F2F2;
 }
