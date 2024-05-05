@@ -9,6 +9,7 @@
 - Login y Sigup con Microsoft # Revision
 - Terminar la pagina de inicio # Monica
 - Utilizar toast cuando el usuario se valida incorrectamente en lugar de redirigirlo.
+- Cuando el admin quiera ver los libros de una carpeta sera redirigido a sharepoint
 
 https://learn.microsoft.com/en-us/entra/identity-platform/scenario-web-app-sign-user-app-configuration?tabs=python
 - Grupos de Sharepoint: https://www.youtube.com/watch?v=D9qdMTg6oAw
