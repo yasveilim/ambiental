@@ -9,3 +9,18 @@
 ## Punto 1
 
 Usuario de pruebas por defecto: Carloz, ismaelb02@hotmail.com, Mitanza12#yu
+
+## Cosas que tenemos
+- Sistema de autenticación. 
+- Sistema de permisos.
+- Pantalla para ver información de los libros.
+- Pantalla de inicio.
+- Mini API.
+- Carga de datos desde sharepoint.
+- Manipulación de un espacio en sharepoint mediante automatizaciones.
+
+## Cosas por hacer
+1) Acceso de usuarios a sus datos personales (actualmente solo carga los datos por defecto).
+2) Los usuarios no generan nueva informacion.
+3) No hay un espacio de administracion.
+4) La administracion de usuario se realiza con django admin (debe ser en el propio sistema)
