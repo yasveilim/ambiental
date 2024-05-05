@@ -46,7 +46,7 @@ class AmbientalBookSharepointPath(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.CharField(max_length=15, choices=CATEGORIES)
     book_id = models.IntegerField()
-    bool_name = models.TextField()
+    text_path = models.TextField()
     receipt_date = models.DateField(auto_now=True)
     # The book received in question
 

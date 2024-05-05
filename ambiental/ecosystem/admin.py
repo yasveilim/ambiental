@@ -5,3 +5,5 @@ from . import models
 admin.site.register(models.RestorePasswordRequest)
 admin.site.register(models.AmbientalBook)
 admin.site.register(models.AmbientalBookProps)
+admin.site.register(models.UserSharepointDir)
+admin.site.register(models.AmbientalBookSharepointPath)

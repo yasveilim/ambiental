@@ -197,13 +197,19 @@ class ForgotPassword(generic.CreateView):
         return super().form_invalid(form)
 
 
+from time import sleep
+
+
 # def assign_sharepoint_directory(user_name: str):#    pass
 class SaveMaterialBook(generic.View):
 
     def get(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
-        user_sharepoint_dir = models.UserSharepointDir.objects.first(
+        print(self.request.user, request.user)
+
+        # help(models.UserSharepointDir.objects.first)
+        user_sharepoint_dir = models.UserSharepointDir.objects.filter(
             user=self.request.user
-        )
+        ).first()
 
         if user_sharepoint_dir is None:
             unique_user_dir_name = SICMA_AZURE_DB.generate_unique_user_dir()
@@ -215,12 +221,14 @@ class SaveMaterialBook(generic.View):
             user=self.request.user,
             category=self.kwargs.get("category"),
             book_id=self.kwargs.get("book_id"),
-            bool_name=self.kwargs.get("bool_name"),
+            text_path=self.kwargs.get("text_path"),
         )
 
         store_folder = SICMA_AZURE_DB.create_material_folder(
             dirname=user_sharepoint_dir.name, material=new_book.category
         )
+
+        print(store_folder.child_count)
 
         # store_folder.upload_file()
 

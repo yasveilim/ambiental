@@ -161,7 +161,7 @@ class SicmaDB:
     def generate_unique_user_dir(self) -> str:
         random_uuid = uuid.uuid4()
 
-        user_folder_path = self.site_path_fmt(random_uuid)
+        user_folder_path = self.site_path_fmt(str(random_uuid))
         sharepoint.make_dir(self.account, user_folder_path)
 
         return random_uuid
