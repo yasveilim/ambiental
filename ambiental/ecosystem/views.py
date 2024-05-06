@@ -203,7 +203,7 @@ from time import sleep
 # def assign_sharepoint_directory(user_name: str):#    pass
 class SaveMaterialBook(generic.View):
 
-    def get(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
+    def post(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
         print(self.request.user, request.user)
 
         # help(models.UserSharepointDir.objects.first)
@@ -216,7 +216,9 @@ class SaveMaterialBook(generic.View):
             user_sharepoint_dir = models.UserSharepointDir.objects.create(
                 user=self.request.user, name=unique_user_dir_name
             )
-
+        # TODO: Esto debería obtener un documento binario y guardarlo en la carpeta del usuario en sharepoint
+        print(self.kwargs, self.args, request.body, request.body.decode())
+        return JsonResponse({"ok": 200})
         new_book = models.AmbientalBookSharepointPath.objects.create(
             user=self.request.user,
             category=self.kwargs.get("category"),
@@ -291,6 +293,8 @@ class MaterialBook(generic.View):
         materials_namesidx = {k: v for k, v in enumerate(materials.keys())}
         name = materials_namesidx.get(kwargs["material"]) or ""
         material = materials.get(name) or []
+
+        print(kwargs["category"], kwargs["material"], name, materials_namesidx)
 
         return JsonResponse({"items": material})
 

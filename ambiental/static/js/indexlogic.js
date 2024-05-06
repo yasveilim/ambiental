@@ -5,6 +5,7 @@ const menuItems = document.querySelectorAll(".submenu-item");
 const subMenuTitles = document.querySelectorAll(".submenu .menu-title");
 const mainModal = document.querySelector("div.modal");
 
+var globalBookSelect = null;
 
 function closeModal() {
   mainModal.style.display = "none";
@@ -188,6 +189,7 @@ function loadMaterials(categories, materials) {
           console.log("Estado: ", selectedText, " ", index, " ", wrapper)
 
           let bookData = documentsData.items[index];
+          globalBookSelect = bookData;
 
           // #246355 #0F362D
 
