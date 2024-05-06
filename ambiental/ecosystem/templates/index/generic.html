@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="{% static 'css/cartamaterial.css' %}" />
 <link rel="stylesheet" href="{% static 'css/panel.css' %}" />
 <link rel="stylesheet" href="{% static 'css/options.css' %}" />
+
+<script src="{% static 'js/submitbook.js' %}"></script>
 {% endblock content_head%}
 
 
@@ -56,15 +58,16 @@
     </div>
 
     <div class="form-container">
-      <form method="post" enctype="multipart/form-data">
-        <div  class="form-container-top">
+      <form id="book-form" method="post" enctype="multipart/form-data">
+        <div class="form-container-top">
           <i class="fa-regular fa-file-pdf fa-3x"></i>
-          <p>Choose file to upload</p>
-          <input placeholder="Choose file to upload" type="file" id="document_pic" name="document_pic" accept=".pdf, .docx" />
+          <p>Elija el archivo que desea cargar</p>
+          <input placeholder="Elija el archivo" type="file" id="document_pic" name="document_pic"
+            accept=".pdf, .docx" />
         </div>
-        
+
         <div class="form-container-footer">
-          <button>Submit</button>
+          <button type="button" onclick="submitBook()">Enviar</button>
         </div>
       </form>
     </div>
