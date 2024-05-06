@@ -1,0 +1,2004 @@
+{
+    "AGUA": {
+        "AGUA": [
+            {
+                "advance": "DELIVERED",
+                "archives": "12CAM107307 (3 NORIAS)\n12CAM107308 (9 NORIAS)",
+                "comments": "",
+                "doc_number": 1,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Titulo de Concesión (incluye evidencia de cumplimiento a los volumenes autorizados)",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "PAGOS de los 2 PREDIOS: Enero-Marzo 2021, Abril-Junio 2021, Julio-Sep 2021 / Oct-Dic 2022 / \nPAGOS del Predio I: Enero-Marzo 2023 y Abril-Junio 2023\n",
+                "doc_number": 2,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Pago de derechos por consumo de agua (Últimos dos años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "Revision",
+                "comments": "",
+                "doc_number": 3,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Bitácora de consumos de agua ",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 4,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Aviso de cambio de medidor (Si aplica)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 5,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Análisis de la calidad del agua suministrada",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 6,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Titulo de Concesión de la Empresa que abastece el agua",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 7,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Pago de derechos por consumo de agua (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 8,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Contrato de la red municipal",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 9,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "No. de medidor de agua. ",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 10,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Pago de derechos por consumo de agua (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 11,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Contrato de Suministro entre la empresa y el Parque Industrial o tercero",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 12,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Evidencia de Cumplimiento a clausulas de Contrato de Suministro",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 13,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Comprobantes de pago por el servicio de suministro (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 14,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Titulo de Concesión para extracción del Parque Industrial o tercero que abastece el agua y cumplimiento del titulo (volumen autorizado vs consumo y Declaraciones)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 15,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Titulo de concesion para descarga de agua (incluye evidencia de cumplimiento a los volumenes autorizados de descarga)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 16,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Comprobantes de pago de derechos de descarga de aguas residuales (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 17,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Condiciones particulares de descarga",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 18,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Titulo de concesión de zona federal (Si aplica)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 19,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Bitácora de descarga de agua",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 20,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Informe anual a CONAGUA de análisis (Condición específica del Título de concesion para descarga de aguas residuales en cuerpos receptores)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 21,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Informe bianual a CONAGUA de análisis  (Condición General 6, iniciso o del Título de concesion para descarga de aguas en cuerpos receptores)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 22,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Aviso de descarga de agua por evento extraordinario (Si aplica)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 23,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Permiso de descarga de aguas residuales (Actualizado)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 24,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Comprobantes de pago de derechos de descarga de aguas residuales (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 25,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Condiciones particulares de descarga",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 26,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Contrato de servicios (descarga y tratamiento) entre la empresa y el Parque Industrial o tercero",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 27,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Evidencia de Cumplimiento a clausulas de Contrato de Servicios",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 28,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Comprobantes de pago por los servicios de descarga y tratamiento (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 29,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Permiso de descarga de aguas residuales o Titulo de Descarga del Parque Industrial o Tercero",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 30,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Análisis de descarga de agua residual del Parque Industrial (posterior al tratamiento y de los últimos 2 años y actual si aplica)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 31,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Evidencia de la limpieza de fosas sépticas",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 32,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Evidencia de correcta disposicion de los residuos de la limpieza de la fosa",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 33,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Autorizacion de la empresa que realiza las limpiezas",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 34,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Contrato con la Empresa que realiza las limpiezas",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "Revisar con las Bitacoras de CONAGUA",
+                "comments": "",
+                "doc_number": 35,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Volumen de Consumo de agua (Últimos 2 años y lo que va del actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "Revision",
+                "comments": "",
+                "doc_number": 36,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Volumen de Descarga de agua (Últimos 2 años y lo que va del actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 37,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Balance de agua en cuanto a consumo y descarga",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 38,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Relación de sistemas para el almacenamiento de agua y capacidad (Cisternas, tanques, etc.)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 39,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Plano de drenajes",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 40,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Programa de mantenimiento a instalaciones hidráulicas (tuberías de suministro de agua, drenaje, sanitarios, regaderas, mingitorios, etc.) y evidencia de cumplimiento (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "Tienen vigencia cada 2 años",
+                "comments": "",
+                "doc_number": 41,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Capacitación del personal  en materia de ahorro de agua u operación de PTAR (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "Falta Analisis 2021\nAcuse y anexo en caso de estar inscrito al programa de la Nom-001-2021",
+                "doc_number": 42,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Análisis de descarga de aguas residuales (Últimos 2 años y actual si aplica)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 43,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Acreditación de EMA y Aprobación de CONAGUA del laboratorio que realiza los análisis  ",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "Plano (Aceites) ",
+                "doc_number": 44,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Diagrama de localización de colectores de grasas y aceites   ",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "Orden de trabajo (2021, 2022 y 2023)",
+                "doc_number": 45,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Programa  de mantenimiento y limpieza de colectores de grasas y aceites y evidencia de cumplimiento (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 46,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Descripción del proceso de acondicionamiento del agua para uso (Si aplica)",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "Diagrama/Plano de PTAR",
+                "doc_number": 47,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Proceso y Diagrama de Tratamiento de aguas residuales",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 48,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Actas de inspección por parte de la CNA para la revisión de las condiciones particulares de descarga y evaluación del sitio de descarga. Últimos dos años",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 49,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Bitácora de operación de la PTAR (Ejemplos de últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 50,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Programa de mantenimiento de la PTAR y evidencia de cumplimeinto (Ejemplos de últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 51,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Análisis de peligrosidad (CRIT) a los lodos generados en PTAR (Últimos 2 años y actual si aplica), incluir acreditación de EMA y aprobación de PROFEPA del laboratorio",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 52,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "En caso de utilizar/enviar los lodos de PTAR para mejoramiento de suelos/composta, análisis de NOM-004-SEMARNAT-2002",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 53,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Cantidad de agua reciclada (producción, áreas verdes y servicios)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 54,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Indicadores de desempeño ambiental específicos en materia de agua que evidencie la mejora ",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 55,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Declaración de su compromiso en la administración de los aspectos ambientales en materia de agua (Política Ambiental)",
+                "nda": 2.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 56,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Actividades de autorregulación (mejora del desempeño ambiental, indicadores particulares)",
+                "nda": 2.0
+            }
+        ]
+    },
+    "AIRE Y RUIDO": {
+        "AIRE": [
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 1,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Licencia Ambiental Única o Licencia de funcionamiento (Actualizada)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 2,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Cumplimiento a condicionantes de la Licencia Ambiental Única o Licencia de Funcionamiento. La capacidad instalada coincide con la Autorización de Impacto?  Se cumple con la capacidad instalada?",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 3,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Cédula de operación (Últimos 2 años). Incluir constancia de recepción, respaldo y diagramas. Incluye reporte RETC",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 4,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Análisis de emisiones (Últimos 2 años y año actual si aplica)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 5,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Acreditación de EMA y de Aprobación de PROFEPA del laboratorio que realiza los análisis",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 6,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Inventario de volumenes de emisiones atmosféricas anuales y memorias de cálculo correspondientes (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 7,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Validación de cumplimiento de las chimeneas con la NMX-AA-009-1993-SCFI Por la Auditada o Laboratorio \n(Ver pestaña AYR1.2)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 8,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Bitácoras de operación de equipos que generan emisiones y equipos de control. Para equipos de calentamiendo indirecto deben cumplir con lo requerido en el punto 5.2 de la NOM-085-SEMARNAT-2011 (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 9,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Programa de mantenimiento preventivo/correctivo de los equipos de generación de emisiones contaminantes y  equipos de control (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 10,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Registros de cumplimiento al Programa de mantenimiento preventivo/correctivo de los equipos de generación de emisiones contaminantes y  equipos de control (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 11,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Aviso a la Autoridad de paros programados o falla de equipos de control de emisiones atmosféricas",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "LISTA DE ASISTENCIA",
+                "doc_number": 12,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Evidencia de Capacitación del personal que opera los equipos de generación de emisiones contaminantes y equipos de control (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "Pendiente estudios",
+                "doc_number": 13,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Certificados o comprobantes de verificación de vehículos utilitarios /  fuentes móviles (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "Complementar con la dimensión del patio",
+                "doc_number": 14,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Estimación y/o medición de la suma anual de emisiones directas e indirectas de gases o compuestos de efecto invernadero para determinar aplicabilidad del RENE (Últimos 2 años)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 15,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Permiso para la combustión a cielo abierto",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "Listado de los equipos o procesos en los que se utiliza ",
+                "doc_number": 16,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Hoja de seguridad del gas refrigerante utilizado en proceso y/o servicios y listado de equipos o procesos en los que se utiliza",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "Desarrollo de la Actividad ",
+                "doc_number": 17,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Actividades de autorregulación para reducir las emisiones a la atmósfera",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 18,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Indicadores de desempeño ambiental específicos en materia de atmósfera que evidencie la mejora y estrategias de minimizacion de emisiones al aire",
+                "nda": 1.0
+            }
+        ],
+        "RUIDO": [
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 19,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Estudios de ruido perimetral",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 20,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Certificado de calibración del equipo que realiza la medición",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 21,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Acreditación de EMA del laboratorio que realiza los estudios",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 22,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Aprobación de PROFEPA del laboratorio que realiza los estudios (sólo si es de competencia federal en materia de emisiones)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 23,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Indicadores de desempeño ambiental específicos en materia de ruido que evidencie la mejora ",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 24,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Actividades de autorregulación (mejora del desempeño ambiental, indicadores particulares)",
+                "nda": 1.0
+            }
+        ]
+    },
+    "OTROS": {
+        "ENERGÍA": [
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 16,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Registro de consumos de energía eléctrica y de combustibles en la instalación (Últimos 2 años y lo que va del año actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 17,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Registro por nivel de área de los consumos de energía eléctrica y de combustibles por área equipo, forma, fuente y tipo de energía, consumo y eficiencia. ",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "AMPLIAR DESCRIPCION",
+                "doc_number": 18,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Proyectos para disminuir el consumo de energía eléctrica y combustibles o evitar pérdidas energéticas. Incluir evidencia de implementación en los últimos dos años y resultados obtenidos medibles si aplica.",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 19,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Programas o equipos de sensibilización  para el ahorro y consumo eficiente de energía y consumo de combustible",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 20,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Programas de cogeneración de energía",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "PANELES SOLARES, AMPLIAR",
+                "doc_number": 21,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Programas de uso de energía renovable",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "",
+                "doc_number": 22,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Capacitación en sensibilización  para el ahorro y consumo eficiente de energía y consumo de combustible (Ultimos 2 años)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 23,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Indicadores de desempeño ambiental específicos en materia de energía que evidencie la mejora ",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 24,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Evidencia de implementación de las acciones declaradas para la administración de los aspectos ambientales en materia de energía",
+                "nda": 1.0
+            }
+        ],
+        "GENERALES": [
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "",
+                "doc_number": 1,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "F-SAC-15-01 INFO PLAN",
+                "nda": 1.2
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "",
+                "doc_number": 2,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Producción Anual por producto (últimos 2 años y lo que va del año actual)",
+                "nda": 1.2
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "ok número de empleados",
+                "doc_number": 3,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Número de empleados adminsitrativos y operativos (últimos 2 años y actual)",
+                "nda": 1.2
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "pendiente consumibles químicos 2023",
+                "doc_number": 4,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Listado de materias primas y consumo anual (Últimos dos años).",
+                "nda": 1.2
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 5,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "En caso de ser Refrendo, historial de Certificado de Industrial Limpia: fecha de expedición de certificados anteriores",
+                "nda": 1.2
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "Ok acuse 2018",
+                "doc_number": 6,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "En caso de ser Refrendo, último Certificado de Industria Limpia (acuse de recibido) ",
+                "nda": 1.2
+            }
+        ],
+        "SISTEMA DE GESTIÓN AMBIENTAL": [
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "Ok listado de procedimientos",
+                "doc_number": 25,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Sistema de gestión o administración ambiental: Listado de Procedimientos  del sistema",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 26,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Política Ambiental",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 27,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Objetivos y metas (orientados a mantener o mejorar su desempeño ambiental)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 28,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Procedimiento de Identificación y Jerarquización de Aspectos Ambientales Significativos",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "actualizar las resultados, ya que su última actualización es del  01 de marzo del 2022",
+                "doc_number": 29,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Resultado de evaluación de la Identificación y Jerarquización de Aspectos Ambientales Significativos (actualizado)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 30,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Procedimiento y Matriz de cumplimiento legal ambiental",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 31,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Programa de Capacitación Ambiental (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 32,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Certificado de ISO 14001:2015 vigente",
+                "nda": 1.0
+            }
+        ],
+        "SUELO": [
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "Ok licencias",
+                "doc_number": 7,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Licencia y/o Constancia de uso de suelo",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 8,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Aviso de accidente de derrame (Si aplica)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 9,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Programa de remediación (Si aplica)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "Ok procedimiento de derrames ",
+                "doc_number": 10,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Procedimiento o Plan de emergencias para derrames, infiltraciones, descargas o vertidos accidentales de\nmateriales peligrosos o residuos peligrosos.",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 11,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Bitácora de generación de residuos de la remediación ",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 12,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Estudio de evaluación de riesgo ambiental, por contaminación de suelo. ",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 13,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Acreditación del laboratorio que realiza los análisis.",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 14,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Indicadores de desempeño ambiental específicos en materia de suelo que evidencie la mejora ",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 15,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Actividades de autorregulación (mejora del desempeño ambiental, indicadores particulares)",
+                "nda": 1.0
+            }
+        ]
+    },
+    "RECNAT Y RIESGO": {
+        "RECURSOS NATURALES": [
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 1,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Procesos o actividades  que explotan recursos naturales  (ecosistemas o biodiversidad) tales como pezca, caza, construcción de caminos, brechas y puentes, etc.",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "FALTAN",
+                "doc_number": 2,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Reporte de tratamiento fito-sanitario de embalaje de madera, tarimas o para comercio internacional (ejemplos de últimos 2 años y actual) y Autorización del responsable del tratamiento",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "PENDIENTE EJEMPLOS 2021",
+                "comments": "OK 2023, Y 2022",
+                "doc_number": 3,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Certificados de reembarque forestal de las tarimas de madera (ejemplos de últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "FALTAN",
+                "doc_number": 4,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Facturas de compra de madera/tarimas (ejemplos de últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "FALTA PROCEDIMIENTO DE MANEJO",
+                "comments": "OK LISTADO, PENDIENTE PROCEDIMIENTO DE MANEJO",
+                "doc_number": 5,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "En caso de tener especies enlistadas en la NOM-059-SEMARNAT-2010, presentar listado de especies y Autorización de la UMA. ",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "PENDIENTE HOJA DE NOTIFICACION DE RECIBIDO",
+                "comments": "OK REVISADA, PENDIENTE HOJA DE NOTIFICACION",
+                "doc_number": 6,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Resolución de Impacto ambiental ",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "PENDIENTE OFICIO DE NOTIFICACIÓN A LA PROFEPA DE LA RESOLUCIÓN QUE SE OBTUVO",
+                "comments": "OK 1ER REPORTE SEM DE CUMP DE T Y C",
+                "doc_number": 7,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Documentación  referente al cumplimiento a las condicionantes de la autorización de Impacto. La capacidad instalada coincide con la LF o LAU? Se cumple con la capacidad instalada?",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 8,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Indicadores de desempeño ambiental específicos en materia de recursos naturales que evidencie la mejora ",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 9,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Actividades de autorregulación (mejora del desempeño ambiental, indicadores particulares)",
+                "nda": 1.0
+            }
+        ],
+        "RIESGO AMBIENTAL Y ATENCIÓN A EMERGENCIAS AMBIENTALES": [
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "ESTUDIO NOM 005",
+                "doc_number": 10,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Listado de sustancias químicas utilizadas en todas las áreas, que indique cantidad máxima de almacenamiento, tipo de contenedor y Hojas de Datos de Seguridad.",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 11,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Listado de Tanques de Almacenamiento de Sustancias Químicas (Capacidad de almacenamiento )",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 12,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Pruebas de espesores y radiografiado de tanques de almacenamiento de sustancias peligrosas (Si aplica) ",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "REVISADO",
+                "doc_number": 13,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Programa y evidencias de mantenimiento de tuberías, diques y  tanques de almacenamiento de materiales peligrosos (últimos 2 años y actual).",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "OK",
+                "doc_number": 14,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Programa y evidencia de mantenimiento de almacenes de materiales peligrosos. Incluye condiciones del suelo (Últimos dos años y actual).",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 15,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Dictamen de verificación de  Instalaciones de Gas Natural conforme a la NOM-002-SECRE-2010 y/o la NOM-003-SECRE-2010. Incluyendo la acreditación de la empresa que realizó la evaluación (Últimos dos años y actual si aplica).",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 16,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Listado de recipientes sujetos a presión (No. de construcción, capacidad, condiciones de operación, localización). ",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "FALTA EL RESTO DE AUTORIZACIONES STPS",
+                "comments": "EN EN LISTADO HAY APROXIMADAMENTE 30 RSP CATEGORIA III, PERO SOLO NOS COMPARTIERON AUTORIZACION STPS DE 8",
+                "doc_number": 17,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Autorización STPS de tanques sujetos a presión que manejen sustancias peligrosas",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 18,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Si los RSP contienen sustancias peligrosas: Calibración de válvulas de seguridad, bitácoras de operación y mantenimiento y los Dictamenes emitidos por una UV.",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "REVISADO 2021, 2022, 2023",
+                "doc_number": 19,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Registro de Medición de Tierras Físicas para Almacén de Sustancias Químicas, Residuos Peligrosos, Materia prima y Producto terminado  (áreas con sustancias con riesgo por uso de sustancias químicas inflamables) NOM-022-STPS-2015 (Últimos dos años y actual si aplica) Incluir atención a recomendaciones del Estudio. ",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "OK 2021, 2022, 20023",
+                "doc_number": 20,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Calibración de equipos de Medición de Tierras Fisicas y/o Acreditación de Unidad de Verificación que realizó las mediciones conforme a NOM-022-STPS-2015 (Últimos dos años y actual si aplica)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "REVISADO",
+                "doc_number": 21,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Estudio de riesgo potencial de sustancias químicas conforme a la NOM-005-STPS-1998 (actualizado). Incluir atención a recomendaciones del Estudio. ",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 22,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Dictámenes de operación de Instalaciones de almacenamento y uso de Gas L.P. conforme a la NOM-003-SEDG y/o la NOM-004-SEDG-2004. Incluir acreditación de la Unidad de Inspección que realizó los dictamenes (Últimos dos años y actual si aplica).",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "CARGA DE DIESEL A SOLDADORAS",
+                "doc_number": 23,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Procedimiento de carga y descarga de sustancias peligrosas y/o combustibles",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "",
+                "doc_number": 24,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Registros de capacitación en materia de riesgo ambiental (Manejo de sustancias químicas, Colores e identificación, Sistema Globalmente Armonizado, Señalización, NOM-018-STPS-2015, etc.) (Últimos dos años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "REVISADO",
+                "doc_number": 25,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Estudio de riesgo por incendio conforme a la NOM-002-STPS-2010 y/o su dictamen por la autoridad correspondiente. Incluir atención a recomendaciones del Estudio. ",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "RECIBIDO, CARP 27",
+                "doc_number": 26,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Estudio de Riesgo Ambiental Federal (Constancia de Ingreso) y/o Estatal (Resolutivo y cumplimiento de condicionantes)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "RECIBIDO CARP 27, EN REVISION MEDIDAS DE CUMP",
+                "doc_number": 27,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Programa para la Prevención de Accidentes (PPA) y su dictamen. Incluir evidencia de implementación de actividades del PPA.",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "ESPECIFICAR SI SE INCLUYE LA INSTALACION DEL KM 10.5 EN LA POLIZA DE SEGURO, YA QUE NO APARECE EN LAS INSTALACIONES ASEGURADAS",
+                "doc_number": 28,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Seguro ambiental en caso de realizar Actividades Altamente Riesgosas",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "NO SE HA SUBIDO",
+                "comments": "REVISADO 2023, 2022, 2021",
+                "doc_number": 29,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Programa de Protección Civil y su dictamen o VoBo (Últimos dos años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 30,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Procedimiento para la atención de fuga de materiales peligrosos y/o combustibles",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "REVISADO",
+                "doc_number": 31,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Procedimiento para la atención de derrame de materiales peligrosos y/o combustibles",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "FALTA SUBIR",
+                "comments": "REVISADO",
+                "doc_number": 32,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Procedimiento para la atención de incendio y/o explosión.",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 33,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Registros y listas de verificación de carga y descarga de sustancias peligrosas (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 34,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Programa anual de revisión a las instalaciones eléctricas de las áreas del centro de trabajo y evidencias de la revisión (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 35,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Registros de revisión/mantenimiento de las instalaciones de gas licuado de petróleo y/o natural (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 36,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Cálculo del volumen total de gas natural o gas L.P. que fluye por las tuberías.",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "OK EXTINTORES",
+                "doc_number": 37,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Registros de verificación/mantenimiento de extintores, raisers,  hidrantes (Últimos dos años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 38,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Listado de equipos de atención de emergencias (derrames, fugas, explosiones) ",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "OK KIT VS DERRAMES",
+                "doc_number": 39,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Registro de mantenimiento de equipos para atención de fugas y derrames (Últimos dos años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 40,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Registros de mantenimiento de Bombas contra incendio (jockey, diesel, eléctrica), indicar cuántas se tienen (Últimos dos años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "FALTAN",
+                "doc_number": 41,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Registros de verificación/mantenimiento de alarmas y detectores (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "OK",
+                "doc_number": 42,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Plano de localización de sistemas de emergencia que incluya los puntos indicados en el 5.2 de la NOM-002-STPS-2010",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 43,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Acreditación al Sistema de Administración y Seguridad en el trabajo otorgada por Secretaría de Trabajo y Previsión Social (en caso de estar suscrito al Programa de autogestión de la STPS)",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "NO SE TIENE EVIDENCIA DE SIMULACROS DE EMERGENCIAS RELACIONADAS CON ACETILENO, QUE ES LA PRINCIPAL SUSTANCIA DEL PPA",
+                "doc_number": 44,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "En caso de tener Actividades Altamente Riesgosas, escenarios y reportes de simulacros de la sustancia altamente riesgosa, conforme a ERA/PPA, incluir evidencia de atención de recomendaciones de reportes (Últimos dos años y actual si aplica).",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "FALTA EVIDENCIA DE ATENCION A RECOMENDACIONES DEL SIMULACRO MARZO 2022, QUE YA SE HAYAN REALIZADO",
+                "comments": "RECIBIDOS 2021, 2022, PROGRAMA 2023",
+                "doc_number": 45,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "En caso de ser grado de riesgo de incendio ALTO, escenarios y reportes de 2 simulacros de incendio anuales, incluir evidencia de atención de recomendaciones de reportes  (Últimos dos años y actual si aplica).",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "OK INCENDIO, PENDIENTES LAS OTRAS BRIGADAS",
+                "doc_number": 46,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Capacitación de brigadistas con base en la NOM-002-STPS-2010, (respuesta a emergencias, primeros auxilios, manejo de extintores, incendio, etc.) (Últimos dos años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 47,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Evidencia de la evaluación y mejora continua de las acciones o medidas establecidas en la administración del riesgo ambiental (Actividades de autorregulación)",
+                "nda": 1.0
+            }
+        ]
+    },
+    "RESIDUOS": {
+        "RESIDUOS DE MANEJO ESPECIAL Y SÓLIDOS URBANOS": [
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "ok registro vigente ",
+                "doc_number": 26,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Registro como generador de residuos de manejo especial y solidos urbanos actualizado (Resolutivo y cumplimiento de condicionantes)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "Plan vigente (revisar cumplimiento de condicionantes)",
+                "doc_number": 27,
+                "essential_cloud": true,
+                "is_critical": false,
+                "name": "\nRegistro del Plan de manejo de residuos urbanos y de manejo especial actualizado (Resolutivo y cumplimiento de condicionantes)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "Ok bitácoras (actualizar hasta agosto)",
+                "doc_number": 28,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Bitácora de generación de residuos de manejo especial y solidos urbanos (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "reporte anual de generación presentado ante la autoridad",
+                "doc_number": 29,
+                "essential_cloud": true,
+                "is_critical": false,
+                "name": "Cédula de Operación Anual Estatal o Reporte de generación anual de residuos de manejo especial. \nIncluir acuse de ingreso y respaldo.",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "mismas de la bitácora, hacer la relación de áreas que generan el residuo",
+                "doc_number": 30,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Fuentes de generación Cantidad, tipo y manejo (Últimos dos años y lo que va del año actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "Ok autorizaciones (pendiente de valicación de trazabilidad)",
+                "doc_number": 31,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Autorizaciones de las empresas que realizan todas las etapas de manejo de RME y RSU: transporte, acopio, transporte 2 y destino final.",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "ok manifiestos (pendiente de validación de trazabilidad)",
+                "doc_number": 32,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Manifiestos de entrega, transporte y recepción (Últimos 2 años y actual) ",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "ok manifiestos",
+                "doc_number": 33,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Comprobantes de servicio de manejo o venta de RME y RSU, que evidencien la trazabilidad de cada residuo (Últimos 2 años y actual).",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "Ok procedimiento manejo de RME",
+                "doc_number": 34,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Procedimiento interno de segregación, manejo de residuos no peligrosos",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "pendiente Capacitación al personal 2021 y 2022 y programa de capacitación del 2021, 2022 y 2023",
+                "doc_number": 35,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Programa de capacitación  y evidencia  de cumplimiento en materia de RME y RSU (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "",
+                "doc_number": 36,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Programa de minimización y reciclaje de residuos no peligrosos",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "¿cómo realizan los indicadores?",
+                "doc_number": 37,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Indicadores de desempeño ambiental específicos en materia de residuos sólidos urbanos y de manejo especial que evidencie la mejora ",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 38,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Actividades de autorregulación (mejora del desempeño ambiental, indicadores particulares)",
+                "nda": 1.0
+            }
+        ],
+        "RESIDUOS PELIGROSOS": [
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 1,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Registro como empresa generadora de residuos peligrosos (Actualizado)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 2,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Plan de manejo de residuos peligrosos (Aprobado y cumplimiento de condicionantes)",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "bitácoras",
+                "doc_number": 3,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Relación de las Fuentes de generación Cantidad, tipo y manejo (Últimos dos años y lo que va del año actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "COA 2021 y 2022",
+                "doc_number": 4,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Cédula de Operación Anual de los últimos 2 años (Grandes generadores), secciones 4.1, 4.2 y 4.4 llenadas correctamente y en su totalidad. Incluir constancia de recepción, respaldo y diagramas. ",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "En validación de  trazabilidad,  actualizar bitácora 2023 hasta agosto",
+                "doc_number": 5,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Bitácora de generación y almacenamiento de residuos peligrosos que cumplan con el artículo 71 del RLGPGIR (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "Ok tabla de incompatibilidad",
+                "doc_number": 6,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Análisis de incompatibilidad de residuos ",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "",
+                "doc_number": 7,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Programa de mantenimiento al Almacén Temporal de RPE y evidencia de cumplimiento (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "",
+                "doc_number": 8,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Evidencia del resguardo de Bitácoras y Manifiestos por un periodo de 5 años. Mecanismo de control.",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "Ok manifiestos, pendiente de trazabilidad",
+                "doc_number": 9,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Manifiestos de entrega, transporte y recepción (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 10,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Comprobantes de recepción de los residuos peligrosos en el destino final, ya sean manifiestos o certificados (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "¿se han solicitado prórrogas?",
+                "doc_number": 11,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Prórrogas para el almacenamiento de residuos peligrosos en caso de haber requerido un periodo mayor a seis meses (Últimos dos años)",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "¿Seretornan RP al extranjero?",
+                "doc_number": 12,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Avisos de retorno en caso de enviar residuos peligrosos al extranjero (Últimos dos años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "ok plano y fotografías",
+                "doc_number": 13,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Planos de diseño y construcción del Almacén Temporal de Residuos Peligrosos",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "¿se han caracterizado?",
+                "doc_number": 14,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Análisis de residuos que hayan tenido que caracterizar por su CRETIB, incluir la Acreditación de EMA y Aprobación de PROFEPA del laboratorio",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "",
+                "doc_number": 15,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Procedimiento interno para el manejo de RPE",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "ok autorizaciones, pendiente validación de trazabilidad",
+                "doc_number": 16,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Autorizaciones de las empresas que realizan todas las etapas de manejo de RPE: transporte, acopio, transporte 2 y destino final.",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "¿Existen más hojas donde indique la cobertura ambiental?",
+                "doc_number": 17,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Seguro Ambiental, en caso de ser Gran Generador de Residuos Peligrosos ",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "Programa de capacitación al personal que manejo los resiudos.ejemplos: Constancias, DC-3, listas de asistencia",
+                "doc_number": 18,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Programa de capacitación y evidencia  de cumplimiento en materia de residuos peligrosos (Últimos 2 años y actual)",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "",
+                "doc_number": 19,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Programa de minimización de los residuos peligrosos",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "ok relación transformadores",
+                "doc_number": 20,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Relación de transformadores (tipo de aceite, fecha de fabricación)",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "Pendiente fotografía de placas para identificación de transformadores",
+                "doc_number": 21,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Certificado o fotografía de las placas de los transformadores secos o libres de BPCs",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "ok análisis 2019,  pendiente Acreditación EMA y Aprobación PROFEPA",
+                "doc_number": 22,
+                "essential_cloud": true,
+                "is_critical": true,
+                "name": "Análisis de aceite dieléctrico (incluyendo BPCs), incluir la Acreditación de EMA y Aprobación de PROFEPA del laboratorio",
+                "nda": 1.0
+            },
+            {
+                "advance": "DELIVERED",
+                "archives": "",
+                "comments": "ok mantenimientos y programa",
+                "doc_number": 23,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Programa de mantenimiento de los transformadores y reportes de mantenimientos realizados desde el último análisis de aceite dieléctrico",
+                "nda": 1.0
+            },
+            {
+                "advance": "PENDING",
+                "archives": "",
+                "comments": "¿cómo realizan el indicador?",
+                "doc_number": 24,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Indicadores de desempeño ambiental específicos en materia de residuos peligrosos que evidencie la mejora ",
+                "nda": 1.0
+            },
+            {
+                "advance": "NA",
+                "archives": "",
+                "comments": "",
+                "doc_number": 25,
+                "essential_cloud": false,
+                "is_critical": false,
+                "name": "Actividades de autorregulación (mejora del desempeño ambiental, indicadores particulares)",
+                "nda": 1.0
+            }
+        ]
+    }
+}

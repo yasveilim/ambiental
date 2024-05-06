@@ -37,11 +37,15 @@ def calculate_advance(delivered: str | int, pending: str | int):
 @dataclass
 class DataExtractor:
     current_docuements: t.Dict = field(default_factory=dict)
+    # This is used to store the last NDA number found in the excel sheet.
     nda_index: t.Optional[int] = None
     last_nda: t.Optional[int] = None
     doc_index: int = 0
     material_idx: int = 0
     material: str = ""
+    # This represents the index of the document number in the excel sheet
+    # This number is used to identify the document in the company's system.
+    no_doc: int = 0
     critical_materials: t.List[str] = field(default_factory=list)
 
     def extract_row(self, row: t.List[str]) -> t.Optional[str]:
@@ -67,6 +71,7 @@ class DataExtractor:
             {
                 "name": name,
                 "nda": self.last_nda,
+                "doc_number": row[self.no_doc],
                 "essential_cloud": bool(row[self.doc_index + 1]),
                 "advance": calculate_advance(
                     row[self.doc_index + 2], row[self.doc_index + 3]
@@ -92,6 +97,11 @@ def read_sicma_db(account: Account, dbpath: str):
 
         if "NDA" in all_cells[9]:
             data_extractor.nda_index = all_cells[9].index("NDA")
+
+        for field_name in ["ID+", "ID", "No."]:
+            if field_name in all_cells[9]:
+                data_extractor.no_doc = all_cells[9].index(field_name)
+                break
 
         for row in all_cells[11:]:
             if sheet == "AGUA":
@@ -123,17 +133,6 @@ def read_sicma_db(account: Account, dbpath: str):
         result[sheet] = data_extractor.current_docuements
 
     return result
-
-
-class SearchResult(Enum):
-    Found = 1
-    Alternative = 2
-
-
-@dataclass
-class SearchObject:
-    status: SearchResult
-    result: str
 
 
 class SicmaDB:

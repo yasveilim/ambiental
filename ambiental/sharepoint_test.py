@@ -4,25 +4,31 @@ from dotenv import load_dotenv
 import os
 import json
 
+
 def pretty_print_json(objeto_json):
     with open("main.json", "w", encoding="utf-8") as file:
-        print(json.dumps(objeto_json, indent=4, sort_keys=True, ensure_ascii=False), file=file)
+        print("Guardando archivo")
+        print(
+            json.dumps(objeto_json, indent=4, sort_keys=True, ensure_ascii=False),
+            file=file,
+        )
+
 
 def main():
     load_dotenv()  # TODO: Move this line and create main function
-    client_id = os.getenv('CLIENT_ID')
+    client_id = os.getenv("CLIENT_ID")
     client_secret = None  # os.getenv('CLIENT_SECRET')
 
     sicma_db = sicma.SicmaDB()
-    sicma_db.create_material_folder("algo", "otra_cosa")
-    #data = sicma_db.data['AGUA']
-    #pretty_print_json(data)
-    
+    # sicma_db.create_material_folder("algo", "otra_cosa")
+    data = sicma_db.data  # ["AGUA"]
+    pretty_print_json(data)
+
     exit()
 
     account = autenticate(client_id, client_secret, sharepoint.SCOPES)
-    sharepoint.make_dir(account, 'root:sites/Ambiental:/Fake/enero2')
+    sharepoint.make_dir(account, "root:sites/Ambiental:/Fake/enero2")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
