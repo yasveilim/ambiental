@@ -7,6 +7,8 @@ from django.contrib.auth.models import User
 # HttpRequest, HttpResponse,
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.core.files.storage import FileSystemStorage
+import os
 
 # from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -201,9 +203,14 @@ from time import sleep
 
 
 # def assign_sharepoint_directory(user_name: str):#    pass
+
+
 class SaveMaterialBook(generic.View):
 
-    def post(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
+    # Dada este metodo dejango como obtendria los valores que alguien me envia en un form
+
+    def post(self, request, *args: str, **kwargs: Any) -> HttpResponse:
+
         print(self.request.user, request.user)
 
         # help(models.UserSharepointDir.objects.first)
@@ -216,8 +223,22 @@ class SaveMaterialBook(generic.View):
             user_sharepoint_dir = models.UserSharepointDir.objects.create(
                 user=self.request.user, name=unique_user_dir_name
             )
+
+        # book_id, category, document
+        bool_id = request.POST.get("book_id")
+        category = request.POST.get("category")
+        document = request.FILES.get("document")
+        # Save the file (document) in to a local directory
+        # document = request.FILES.get('document')
+        if document is not None:
+            fs = FileSystemStorage()
+            path = os.path.join(fs.location, "documents", document.name)
+            filename = fs._save(path, document)
+            uploaded_file_url = fs.url(filename)
+
+        # request.body / request.body.decode()
         # TODO: Esto debería obtener un documento binario y guardarlo en la carpeta del usuario en sharepoint
-        print(self.kwargs, self.args, request.body, request.body.decode())
+        print(self.kwargs, request, self.args, args)
         return JsonResponse({"ok": 200})
         new_book = models.AmbientalBookSharepointPath.objects.create(
             user=self.request.user,

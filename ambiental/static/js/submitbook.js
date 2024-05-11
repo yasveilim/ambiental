@@ -1,15 +1,21 @@
 function submitBook() {
     // Get the form element
-    const form = document.querySelector("#book-form");
+    const form = document.querySelector("#document_pic");
 
     // Serialize the form data into JSON
-    const formData = new FormData(form);
+    const formData = new FormData();
     const jsonData = {};
-    for (let [key, value] of formData.entries()) {
-        jsonData[key] = value;
-    }
+    
+    // for (let [key, value] of formData.entries()) {
+    //     jsonData[key] = value;
+    // }
 
-    console.log(globalBookSelect);
+    console.log("File data: ", form.files[0]);
+    formData.append('book_id', globalBookSelect.doc_number);
+    formData.append('category', sectionName);
+    formData.append('document', form.files[0], form.files[0].name);
+
+    console.log(globalBookSelect, [...formData.entries()]);
     //category book_id
     // TODO: Add the category and book_id to the JSON data
     jsonData["category"] = sectionName;
@@ -23,7 +29,7 @@ function submitBook() {
     };
 
     // Send the JSON data to the server using Axios
-    axios.post('/api/save-material-book/', jsonData, config)
+    axios.post('/api/save-material-book/', formData, config)
         .then(response => {
             // Handle the response from the server
             console.log(response.data);
@@ -33,5 +39,5 @@ function submitBook() {
             console.error(error);
         });
 
-    console.log(jsonData);
+    //console.log(jsonData);
 }
