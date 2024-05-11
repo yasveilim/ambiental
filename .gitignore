@@ -5,3 +5,4 @@ ambiental/venv
 /ecosystem/migrations/__pycache__
 __pycache__
 *.zip
+/ambiental/static/documents/*
