@@ -225,33 +225,45 @@ class SaveMaterialBook(generic.View):
             )
 
         # book_id, category, document
-        bool_id = request.POST.get("book_id")
+        book_id = request.POST.get("book_id")
         category = request.POST.get("category")
+        document_name = request.POST.get("document_name")  # or "name"
         document = request.FILES.get("document")
+
         # Save the file (document) in to a local directory
         # document = request.FILES.get('document')
-        if document is not None:
-            fs = FileSystemStorage()
-            path = os.path.join(fs.location, "documents", document.name)
-            filename = fs._save(path, document)
-            uploaded_file_url = fs.url(filename)
+
+        fs = FileSystemStorage()
+        path = os.path.join(fs.location, "documents", document.name)
+        filename = fs._save(path, document)
+        uploaded_file_url = fs.url(filename)
 
         # request.body / request.body.decode()
         # TODO: Esto debería obtener un documento binario y guardarlo en la carpeta del usuario en sharepoint
+        # TODO: El nombre del archivo debería ser el mismo que el del documento (obtener el nombre del frontend)
         print(self.kwargs, request, self.args, args)
-        return JsonResponse({"ok": 200})
+
+        # return JsonResponse({"ok": 200})
+        tag = category.replace("-", "_")
         new_book = models.AmbientalBookSharepointPath.objects.create(
             user=self.request.user,
-            category=self.kwargs.get("category"),
-            book_id=self.kwargs.get("book_id"),
-            text_path=self.kwargs.get("text_path"),
+            category=tag,
+            book_id=book_id,
+            # text_path=self.kwargs.get("text_path"),
         )
 
-        store_folder = SICMA_AZURE_DB.create_material_folder(
-            dirname=user_sharepoint_dir.name, material=new_book.category
+        # dirname=#f"{user_sharepoint_dir.name}/{bool_id} {document_name}",
+        # material=models.AmbientalBookSharepointPath.get_category_tag(tag),
+        material_folder = SICMA_AZURE_DB.create_material_folder(
+            material=models.AmbientalBookSharepointPath.get_category_tag(tag),
+            id_book=book_id,
+            dirname=user_sharepoint_dir.name,
+            name_book=document_name,
         )
 
-        print(store_folder.child_count)
+        material_folder.upload_file(path)
+
+        print(material_folder.child_count)
 
         # store_folder.upload_file()
 

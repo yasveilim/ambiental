@@ -37,7 +37,7 @@ class AmbientalBookProps(models.Model):
 class AmbientalBookSharepointPath(models.Model):
     CATEGORIES = [
         ("criticisms", "CRITICAS"),
-        ("air_and_noise", "AIRE Y RUIDO"),
+        ("air_noise", "AIRE Y RUIDO"),
         ("water", "AGUA"),
         ("waste", "RESIDUOS"),
         ("recnat_and_risk", "RECNAT Y RIESGO"),
@@ -46,9 +46,17 @@ class AmbientalBookSharepointPath(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.CharField(max_length=15, choices=CATEGORIES)
     book_id = models.IntegerField()
-    text_path = models.TextField()
+    # text_path = models.TextField()
     receipt_date = models.DateField(auto_now=True)
     # The book received in question
+
+    @staticmethod
+    def get_category_tag(tag: str) -> str:
+        for category, counterpart in AmbientalBookSharepointPath.CATEGORIES:
+            if tag == category:
+                return counterpart
+
+        return None
 
 
 class UserSharepointDir(models.Model):

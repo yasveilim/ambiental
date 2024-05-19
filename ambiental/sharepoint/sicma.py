@@ -148,12 +148,15 @@ class SicmaDB:
         self.data = read_sicma_db(self.account, db_book)
 
     # /{USUARIO}/Informacion IL {Año}/{MATERIAL}/Libros
-    def create_material_folder(self, dirname: str, material: str) -> Folder:
+    def create_material_folder(
+        self, dirname: str, material: str, id_book: str, name_book: str
+    ) -> Folder:
         # NOTE: year is not an argument because I don't know if it is generated
         # based on the current year or another base.
-
+        year = datetime.now().year
         material_folder = self.site_path_fmt(
-            f"{dirname}/Informacion IL {datetime.now().year}/{material}"
+            # f"{dirname}/Informacion IL {datetime.now().year}/{material}"
+            f"{dirname}/Información Auditoria {year}/{material}/{id_book} {name_book}"
         )
         return sharepoint.make_dir(self.account, material_folder)
 

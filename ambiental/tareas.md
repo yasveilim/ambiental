@@ -25,3 +25,6 @@ Usuario de pruebas por defecto: Carloz, ismaelb02@hotmail.com, Mitanza12#yu
 2) Los usuarios no generan nueva informacion.
 3) No hay un espacio de administracion.
 4) La administracion de usuario se realiza con django admin (debe ser en el propio sistema)
+
+## Sharepoint Dir
+https://sicmaconsultores.sharepoint.com/_layouts/15/sharepoint.aspx
