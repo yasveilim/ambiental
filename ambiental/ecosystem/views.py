@@ -158,6 +158,12 @@ class Index(generic.TemplateView):
         if not self.request.user.is_authenticated:
             return redirect("/")
 
+        user_sharepoint_dir = models.UserSharepointDir.objects.filter(
+            user=self.request.user
+        ).first()
+
+        SICMA_AZURE_DB.load_data(user_sharepoint_dir.name)
+
         return super().dispatch(request, *args, **kwargs)
 
 
@@ -280,6 +286,12 @@ class SaveMaterialBook(generic.View):
         if not self.request.user.is_authenticated:
             return redirect("/")
 
+        user_sharepoint_dir = models.UserSharepointDir.objects.filter(
+            user=self.request.user
+        ).first()
+
+        SICMA_AZURE_DB.load_data(user_sharepoint_dir.name)
+
         return super().dispatch(request, *args, **kwargs)
 
 
@@ -296,6 +308,11 @@ class Material(generic.View):
         if not self.request.user.is_authenticated:
             return redirect("/")
 
+        user_sharepoint_dir = models.UserSharepointDir.objects.filter(
+            user=self.request.user
+        ).first()
+
+        SICMA_AZURE_DB.load_data(user_sharepoint_dir.name)
         return super().dispatch(request, *args, **kwargs)
 
 
@@ -315,6 +332,11 @@ class Category(generic.View):
         if not self.request.user.is_authenticated:
             return redirect("/")
 
+        user_sharepoint_dir = models.UserSharepointDir.objects.filter(
+            user=self.request.user
+        ).first()
+
+        SICMA_AZURE_DB.load_data(user_sharepoint_dir.name)
         return super().dispatch(request, *args, **kwargs)
 
 
@@ -335,6 +357,11 @@ class MaterialBook(generic.View):
         if not self.request.user.is_authenticated:
             return redirect("/")
 
+        user_sharepoint_dir = models.UserSharepointDir.objects.filter(
+            user=self.request.user
+        ).first()
+
+        SICMA_AZURE_DB.load_data(user_sharepoint_dir.name)
         return super().dispatch(request, *args, **kwargs)
 
 

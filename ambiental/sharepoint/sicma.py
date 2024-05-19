@@ -136,21 +136,50 @@ def read_sicma_db(account: Account, dbpath: str):
 
 
 class SicmaDB:
+    """
+    Represents a connection to the Sicma database on SharePoint.
+
+    Attributes:
+        site_path (str): The path to the SharePoint site.
+        account (SharePointAccount): The authenticated SharePoint account.
+        data (DataFrame): The data from the Sicma database.
+    """
 
     def __init__(self):
+        """
+        Initializes a new instance of the SicmaDB class.
+
+        It loads the environment variables, authenticates the client,
+        and reads the data from the Sicma database.
+        """
         load_dotenv()
         client_id = os.getenv("CLIENT_ID")
         client_secret = None  # os.getenv('CLIENT_SECRET')
         self.site_path = "root:sites/Ambiental:"
         self.account = autenticate(client_id, client_secret, sharepoint.SCOPES)
+        self.data = None
 
-        db_book = self.site_path_fmt("Requerimientos de informacion V22 NDA1.xlsx")
+    def load_data(self, user_dirname: str):
+        db_book = self.site_path_fmt(
+            user_dirname, "Requerimientos de informacion V22 NDA1.xlsx"
+        )
         self.data = read_sicma_db(self.account, db_book)
 
-    # /{USUARIO}/Informacion IL {Año}/{MATERIAL}/Libros
     def create_material_folder(
         self, dirname: str, material: str, id_book: str, name_book: str
     ) -> Folder:
+        """
+        Creates a material folder in the SharePoint site.
+
+        Args:
+            dirname (str): The directory name.
+            material (str): The material name.
+            id_book (str): The book ID.
+            name_book (str): The book name.
+
+        Returns:
+            Folder: The created material folder.
+        """
         # NOTE: year is not an argument because I don't know if it is generated
         # based on the current year or another base.
         year = datetime.now().year
@@ -161,6 +190,12 @@ class SicmaDB:
         return sharepoint.make_dir(self.account, material_folder)
 
     def generate_unique_user_dir(self) -> str:
+        """
+        Generates a unique user directory in the SharePoint site.
+
+        Returns:
+            str: The path of the generated user directory.
+        """
         random_uuid = uuid.uuid4()
 
         user_folder_path = self.site_path_fmt(str(random_uuid))
@@ -169,5 +204,14 @@ class SicmaDB:
         return random_uuid
 
     def site_path_fmt(self, *args) -> str:
+        """
+        Formats the site path with the given arguments.
+
+        Args:
+            *args: The path arguments.
+
+        Returns:
+            str: The formatted site path.
+        """
         path_chucks = "/".join(args)
         return f"{self.site_path}/{path_chucks}"
