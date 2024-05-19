@@ -195,7 +195,7 @@ function loadMaterials(categories, materials) {
                   className: "thead-na",
                 },
               };
-              console.log("Estado: ", selectedText, " ", index, " ", wrapper);
+              // console.log("Estado: ", selectedText, " ", index, " ", wrapper);
 
               let bookData = documentsData.items[index];
               globalBookSelect = bookData;

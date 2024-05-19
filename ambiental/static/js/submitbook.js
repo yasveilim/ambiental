@@ -35,6 +35,7 @@ function submitBook() {
     .post("/api/save-material-book/", formData, config)
     .then((response) => {
       // Handle the response from the server
+      closeModal();
       console.log(response.data);
     })
     .catch((error) => {
