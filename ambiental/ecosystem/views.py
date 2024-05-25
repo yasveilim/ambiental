@@ -22,6 +22,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
 from django.http import JsonResponse
 import json
+from datetime import datetime
 
 
 SICMA_AZURE_DB = SicmaDB()
@@ -350,6 +351,25 @@ class MaterialBook(generic.View):
         material = materials.get(name) or []
 
         print(kwargs["category"], kwargs["material"], name, materials_namesidx)
+        # material["deliveryDate"] = datetime.now().date()
+
+        for mat in material:
+            mat["deliveryDate"] = "No recibido"  # datetime.now().date()
+            sharepoint_path = models.AmbientalBookSharepointPath.objects.filter(
+                category=kwargs["category"],
+                user=self.request.user,
+                book_id=mat["doc_number"],
+            ).first()
+
+            if sharepoint_path:
+                mat["advance"] = "DELIVERED"
+                mat["deliveryDate"] = sharepoint_path.receipt_date
+                # sharepoint_path.receipt_date
+            elif mat["advance"] == "DELIVERED":
+                mat["advance"] = "PENDING"
+
+        #
+        # print(material)
 
         return JsonResponse({"items": material})
 

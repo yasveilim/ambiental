@@ -28,3 +28,4 @@ Usuario de pruebas por defecto: Carloz, ismaelb02@hotmail.com, Mitanza12#yu
 
 ## Sharepoint Dir
 https://sicmaconsultores.sharepoint.com/_layouts/15/sharepoint.aspx
+http://localhost:3030/api/v1/icons/elementModels/eventsAvailable?iconography=1&deviceGroup=16&elementSet=60&idSubsystem=1
