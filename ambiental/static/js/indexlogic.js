@@ -227,9 +227,7 @@ function loadMaterials(categories, materials) {
                 console.log(`I clicked here: `, event);
               };
 
-              //theadUnique.innerHTML.
-
-              dateDelivery.textContent = bookData.archives;
+              dateDelivery.textContent = bookData.deliveryDate; //bookData.archives;
               // is_critical
               environmentalPerformanceLevel.textContent = bookData.nda;
               uploadTotheCloud.textContent = bookData.essential_cloud
