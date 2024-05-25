@@ -156,11 +156,12 @@ a.selected {
   color: #fff;
   padding: 15px 20px;
   font-size: 25px;
-  background: #ee9039;
+  background: #e7f2fd;
   cursor: pointer;
 }
 .navbar #sidebar-close {
   cursor: pointer;
+  color: black;
 }
 .main {
   position: relative;
