@@ -77,8 +77,7 @@ body {
 
 .header {
     height: 60vh !important;
-    background-image: url("/static/header.jpg");
-    
+    background-image: url("/static/sicmaimagen.png");
     background-size: cover;
 }
 
