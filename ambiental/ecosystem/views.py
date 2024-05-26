@@ -354,6 +354,7 @@ class MaterialBook(generic.View):
         # material["deliveryDate"] = datetime.now().date()
 
         for mat in material:
+            mat["name"] = str(mat["doc_number"]) + " " + mat["name"]
             mat["deliveryDate"] = "No recibido"  # datetime.now().date()
             sharepoint_path = models.AmbientalBookSharepointPath.objects.filter(
                 category=kwargs["category"],
