@@ -52,6 +52,10 @@ function titleCase(str) {
 function configOptionElement(className, itemNamesList, callback) {
   console.log("configOptionElement: ", className);
 
+  let loaderDiv = document.querySelector("div.loader-div");
+  console.log("loaderDiv: ", loaderDiv);
+  loaderDiv.style.display = "none";
+
   const wrapper = document.querySelector(className),
     selectBtn = wrapper.querySelector(".select-btn"),
     searchInp = wrapper.querySelector("input"),
@@ -76,7 +80,7 @@ function configOptionElement(className, itemNamesList, callback) {
     if (selectedItem !== undefined) {
       //console.log(selectedItem, selectedItem.parentElement);
       let index = selectedItem.getAttribute("idx");
-
+      loaderDiv.style.display = "flex";
       callback(selectedItem.innerText, index, wrapper);
     }
 
@@ -234,6 +238,9 @@ function loadMaterials(categories, materials) {
                 ? "Si"
                 : "No";
               comments.textContent = bookData.comments;
+
+              let loaderDiv = document.querySelector("div.loader-div");
+              loaderDiv.style.display = "none";
             }
           );
         } catch (error) {
