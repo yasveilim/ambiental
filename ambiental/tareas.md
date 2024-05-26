@@ -6,6 +6,7 @@
 4) Gestion de usuarios - Si es posible. [ ]
 5) Gestion de comentarios en en la pagina. [ ]
 6) Cuando el admin quiera ver los libros de una carpeta sera redirigido a sharepoint [ ]
+7) Agregar la id del libro en el combobox de los documentos en la página del índice [ ]
 
 ## Punto 1
 
