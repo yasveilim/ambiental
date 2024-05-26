@@ -350,12 +350,11 @@ class MaterialBook(generic.View):
         name = materials_namesidx.get(kwargs["material"]) or ""
         material = materials.get(name) or []
 
-        print(kwargs["category"], kwargs["material"], name, materials_namesidx)
-        # material["deliveryDate"] = datetime.now().date()
+        # print(kwargs["category"], kwargs["material"], name, materials_namesidx)
 
         for mat in material:
             mat["name"] = str(mat["doc_number"]) + " " + mat["name"]
-            mat["deliveryDate"] = "No recibido"  # datetime.now().date()
+            mat["deliveryDate"] = "No recibido"
             sharepoint_path = models.AmbientalBookSharepointPath.objects.filter(
                 category=kwargs["category"],
                 user=self.request.user,

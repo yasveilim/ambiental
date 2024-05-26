@@ -35,7 +35,7 @@ header {
     align-items: center;
     position: fixed;
     top: 0;
-    z-index: 200;
+    z-index: 30;
 }
 
 .icon__menu {
@@ -67,7 +67,7 @@ header {
     left: 0;
     color: white;
     font-size: 18px;
-    z-index: 300;
+    z-index: 30;
     overflow: hidden;
     overflow-y: scroll;
     border-right: 20px solid #1783db;
