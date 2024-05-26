@@ -157,6 +157,7 @@ a.selected {
   padding: 15px 20px;
   font-size: 25px;
   background: #1783db;
+  border: 2px solid #e7f2fd;
   cursor: pointer;
 }
 .navbar #sidebar-close {
