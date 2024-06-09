@@ -141,6 +141,9 @@ class Index(generic.TemplateView):
         context = super().get_context_data(**kwargs)
         site = self.kwargs.get("site")
         context["category"] = site
+        context["currentUser"] = {
+            "name": self.request.user.username,
+        }
         pretty_print_dict(SICMA_AZURE_DB.data)
 
         context["book"] = get_materal_from_category(site)
