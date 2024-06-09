@@ -20,12 +20,18 @@
   <body>
     <script>
       let sectionName = "{{category}}";
-      // console.log('sectionName: ', sectionName);
     </script>
 
     <nav class="sidebar">
 
       <p class="logo">{{ currentUser.name }}</p>
+
+      <select id="cars">
+        {% for user in usersList %}
+          <option value="{{ user.username }}">{{ user.username }}</option>
+        {% endfor %}
+      </select>
+
 
       <div class="menu-content">
         <div class="options__menu">	

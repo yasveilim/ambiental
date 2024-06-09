@@ -45,7 +45,6 @@ class Logout(generic.RedirectView):
         return super().get(request, *args, **kwargs)
 
 
-# material
 class Login(generic.CreateView):
     success_url = reverse_lazy("index", kwargs={"site": "air-noise"})
     template_name = "login.html"
@@ -70,7 +69,6 @@ class Login(generic.CreateView):
     def form_valid(self, form: forms.LoginUserForm):
         legit_url = self.get_success_url()
         user_base = get_object_or_404(User, email=form["email"].value())
-        # print("Form valid / ", self.request.user, ' / ', self.request.user.is_authenticated)
 
         if not self.request.user.is_authenticated:
 
@@ -80,14 +78,12 @@ class Login(generic.CreateView):
                 password=form["password"].value(),
             )
 
-            print("My user is: ", user)
             if user is not None:
                 login(self.request, user)
 
             else:
                 return JsonResponse({"message": "Invalid user or password"}, status=404)
 
-        # HttpResponseRedirect(legit_url)
         return JsonResponse({"message": "Ok"})
 
     def form_invalid(self, form):
@@ -95,7 +91,7 @@ class Login(generic.CreateView):
         return super().form_invalid(form)
 
 
-class Signup(generic.CreateView):  # ecosystem:
+class Signup(generic.CreateView):
     success_url = reverse_lazy("login")
     template_name = "signup.html"
     model = User
@@ -140,10 +136,21 @@ class Index(generic.TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         site = self.kwargs.get("site")
+        is_staff = self.request.user.is_staff
+        usersList = None
+       
         context["category"] = site
         context["currentUser"] = {
             "name": self.request.user.username,
+            "isStaff": is_staff,
         }
+
+        if is_staff:
+            usersList = User.objects.filter(
+                is_staff=False
+            ).values("username", "id")
+            context["usersList"] = usersList
+
         pretty_print_dict(SICMA_AZURE_DB.data)
 
         context["book"] = get_materal_from_category(site)
@@ -173,7 +180,7 @@ class Index(generic.TemplateView):
 
 class ForgotPassword(generic.CreateView):
     template_name = "forgotpassword/index.html"
-    model = User  # models.RestorePasswordRequest
+    model = User
     form_class = forms.RestorePasswordForm
 
     def get_success_url(self):
