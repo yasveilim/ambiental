@@ -3,12 +3,12 @@ const sidebarClose = document.querySelector("#sidebar-close");
 const menu = document.querySelector(".menu-content");
 const menuItems = document.querySelectorAll(".submenu-item");
 const subMenuTitles = document.querySelectorAll(".submenu .menu-title");
-const mainModal = document.querySelector("div.modal");
+const mainModal = () => document.querySelector("div.modal");
 
 var globalBookSelect = null;
 
 function closeModal() {
-  mainModal.style.display = "none";
+  mainModal().style.display = "none";
 }
 
 sidebarClose.addEventListener("click", () => {
@@ -227,7 +227,7 @@ function loadMaterials(categories, materials) {
               );
               theadUnique.classList.add(metadataBar.className);
               theadUnique.onclick = (event) => {
-                mainModal.style.display = "block";
+                mainModal().style.display = "block";
                 console.log(`I clicked here: `, event);
               };
 
@@ -253,8 +253,11 @@ function loadMaterials(categories, materials) {
   );
 }
 
-axios.get("/api/category/").then((response) => {
-  closeModal();
+if (mainModal().style.display !== "none") {
+  mainModal().style.display = "none";
+}
+
+axios.get("/api/category/").then((response) => {  
   let categories = response.data;
   axios.get(`/api/material/${sectionName}`).then((response) => {
     //console.log(categories, " - ", sectionName, " - ", response.data)
