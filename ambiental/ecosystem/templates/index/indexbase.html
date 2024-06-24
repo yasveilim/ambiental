@@ -26,11 +26,15 @@
 
       <p class="logo">{{ currentUser.name }}</p>
 
-      <select id="cars">
-        {% for user in usersList %}
-          <option value="{{ user.username }}">{{ user.username }}</option>
-        {% endfor %}
-      </select>
+      {% if currentUser.isStaff %}
+        <div class="users-list-container">
+          <select id="users-list">
+            {% for user in usersList %}
+              <option value="{{ user.username }}">{{ user.username }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      {% endif %}
 
 
       <div class="menu-content">

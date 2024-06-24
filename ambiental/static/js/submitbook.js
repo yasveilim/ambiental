@@ -43,3 +43,15 @@ function submitBook() {
       console.error(error);
     });
 }
+
+/// Path: static/js/submitbook.js
+
+const selectElement = document.querySelector("#users-list");
+
+selectElement.addEventListener("click", () => {
+  selectElement.classList.toggle("open");
+});
+
+selectElement.addEventListener("blur", () => {
+  selectElement.classList.remove("open");
+});
