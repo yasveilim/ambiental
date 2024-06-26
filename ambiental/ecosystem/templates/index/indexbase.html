@@ -30,7 +30,7 @@
         <div class="users-list-container">
           <select id="users-list">
             {% for user in usersList %}
-              <option value="{{ user.username }}">{{ user.username }}</option>
+              <option value="{{ user.id }}">{{ user.username }}</option>
             {% endfor %}
           </select>
         </div>

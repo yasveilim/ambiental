@@ -30,16 +30,13 @@ function submitBook() {
     },
   };
 
-  // Send the JSON data to the server using Axios
   axios
     .post("/api/save-material-book/", formData, config)
     .then((response) => {
-      // Handle the response from the server
       closeModal();
       console.log(response.data);
     })
     .catch((error) => {
-      // Handle any errors that occurred during the request
       console.error(error);
     });
 }

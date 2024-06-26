@@ -169,9 +169,19 @@ class Index(generic.TemplateView):
         if not self.request.user.is_authenticated:
             return redirect("/")
 
+        user = self.request.user
+        if user.is_staff:
+            user = User.objects.filter(is_staff=False).first()
+
         user_sharepoint_dir = models.UserSharepointDir.objects.filter(
-            user=self.request.user
+            user=user
         ).first()
+
+        if user_sharepoint_dir is None:
+            unique_user_dir_name = SICMA_AZURE_DB.generate_unique_user_dir()
+            user_sharepoint_dir = models.UserSharepointDir.objects.create(
+                user=user, name=unique_user_dir_name
+            )
 
         SICMA_AZURE_DB.load_data(user_sharepoint_dir.name)
 
@@ -230,15 +240,19 @@ class SaveMaterialBook(generic.View):
 
         print(self.request.user, request.user)
 
+        user = self.request.user
+        if user.is_staff:
+            user = User.objects.get(id=kwargs["targetUser"])
+
         # help(models.UserSharepointDir.objects.first)
         user_sharepoint_dir = models.UserSharepointDir.objects.filter(
-            user=self.request.user
+            user=user
         ).first()
 
         if user_sharepoint_dir is None:
             unique_user_dir_name = SICMA_AZURE_DB.generate_unique_user_dir()
             user_sharepoint_dir = models.UserSharepointDir.objects.create(
-                user=self.request.user, name=unique_user_dir_name
+                user=user, name=unique_user_dir_name
             )
 
         # book_id, category, document
@@ -263,7 +277,7 @@ class SaveMaterialBook(generic.View):
         # return JsonResponse({"ok": 200})
         tag = category.replace("-", "_")
         new_book = models.AmbientalBookSharepointPath.objects.create(
-            user=self.request.user,
+            user=user,
             category=tag,
             book_id=book_id,
             # text_path=self.kwargs.get("text_path"),
@@ -296,9 +310,13 @@ class SaveMaterialBook(generic.View):
     def dispatch(self, request, *args, **kwargs):
         if not self.request.user.is_authenticated:
             return redirect("/")
+        
+        user = self.request.user
+        if user.is_staff:
+            user = User.objects.get(id=kwargs["targetUser"]["id"])
 
         user_sharepoint_dir = models.UserSharepointDir.objects.filter(
-            user=self.request.user
+            user=user
         ).first()
 
         SICMA_AZURE_DB.load_data(user_sharepoint_dir.name)
@@ -308,7 +326,7 @@ class SaveMaterialBook(generic.View):
 
 class Material(generic.View):
 
-    def get(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
+    def post(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
         category = self.kwargs.get("category")
 
         materal = get_materal_from_category(category) or {}
@@ -316,11 +334,18 @@ class Material(generic.View):
         return JsonResponse({"names": [x for x in materal.keys()]})
 
     def dispatch(self, request, *args, **kwargs):
-        if not self.request.user.is_authenticated:
+        user = self.request.user
+        if not user.is_authenticated:
             return redirect("/")
+        
+        body_unicode = request.body.decode('utf-8')
+        body_data = json.loads(body_unicode)
+
+        if user.is_staff:
+            user = User.objects.get(id=body_data["targetUser"]["id"])
 
         user_sharepoint_dir = models.UserSharepointDir.objects.filter(
-            user=self.request.user
+            user=user
         ).first()
 
         SICMA_AZURE_DB.load_data(user_sharepoint_dir.name)
@@ -342,12 +367,7 @@ class Category(generic.View):
     def dispatch(self, request, *args, **kwargs):
         if not self.request.user.is_authenticated:
             return redirect("/")
-
-        user_sharepoint_dir = models.UserSharepointDir.objects.filter(
-            user=self.request.user
-        ).first()
-
-        SICMA_AZURE_DB.load_data(user_sharepoint_dir.name)
+  
         return super().dispatch(request, *args, **kwargs)
 
 
@@ -360,6 +380,10 @@ class MaterialBook(generic.View):
         name = materials_namesidx.get(kwargs["material"]) or ""
         material = materials.get(name) or []
 
+        user = self.request.user
+        if user.is_staff:
+            user = User.objects.get(id=kwargs["targetUser"])
+
         # print(kwargs["category"], kwargs["material"], name, materials_namesidx)
 
         for mat in material:
@@ -367,7 +391,7 @@ class MaterialBook(generic.View):
             mat["deliveryDate"] = "No recibido"
             sharepoint_path = models.AmbientalBookSharepointPath.objects.filter(
                 category=kwargs["category"],
-                user=self.request.user,
+                user=user,
                 book_id=mat["doc_number"],
             ).first()
 
@@ -386,9 +410,13 @@ class MaterialBook(generic.View):
     def dispatch(self, request, *args, **kwargs):
         if not self.request.user.is_authenticated:
             return redirect("/")
+        
+        user = self.request.user
+        if user.is_staff:
+            user = User.objects.get(id=kwargs["targetUser"])
 
         user_sharepoint_dir = models.UserSharepointDir.objects.filter(
-            user=self.request.user
+            user=user
         ).first()
 
         SICMA_AZURE_DB.load_data(user_sharepoint_dir.name)

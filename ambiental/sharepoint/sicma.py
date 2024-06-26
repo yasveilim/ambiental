@@ -213,5 +213,5 @@ class SicmaDB:
         Returns:
             str: The formatted site path.
         """
-        path_chucks = "/".join(args)
+        path_chucks = "/".join([str(x) for x in args])
         return f"{self.site_path}/{path_chucks}"

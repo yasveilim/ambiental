@@ -257,9 +257,25 @@ if (mainModal().style.display !== "none") {
   mainModal().style.display = "none";
 }
 
-axios.get("/api/category/").then((response) => {  
+axios.get("/api/category/").then((response) => {
   let categories = response.data;
-  axios.get(`/api/material/${sectionName}`).then((response) => {
+
+  let selectUser = document.querySelector("#users-list");
+  let ctx = {
+    targetUser: {
+      username: selectUser.textContent.trim(),
+      id: Number(selectUser.value),
+    },
+  };
+
+  let csrftoken = Cookies.get("csrftoken");
+  let config = {
+    headers: {
+      "X-CSRFToken": csrftoken,
+    },
+  };
+
+  axios.post(`/api/material/${sectionName}`, ctx, config).then((response) => {
     //console.log(categories, " - ", sectionName, " - ", response.data)
     loadMaterials(categories, response.data.names);
   });
