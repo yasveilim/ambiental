@@ -257,26 +257,44 @@ if (mainModal().style.display !== "none") {
   mainModal().style.display = "none";
 }
 
-axios.get("/api/category/").then((response) => {
-  let categories = response.data;
-
+function getCtx() {
   let selectUser = document.querySelector("#users-list");
-  let ctx = {
+  if (selectUser === null || selectUser === undefined) {
+    return null;
+  }
+
+  return {
     targetUser: {
       username: selectUser.textContent.trim(),
       id: Number(selectUser.value),
     },
   };
+}
 
-  let csrftoken = Cookies.get("csrftoken");
-  let config = {
-    headers: {
-      "X-CSRFToken": csrftoken,
-    },
-  };
+axios.get("/api/category/").then((response) => {
+  function searchMaterialByUser() {
+    console.log("On searchMaterialByUser");
+    let categories = response.data;
+    let ctx = getCtx();
+    let csrftoken = Cookies.get("csrftoken");
+    let config = {
+      headers: {
+        "X-CSRFToken": csrftoken,
+      },
+    };
 
-  axios.post(`/api/material/${sectionName}`, ctx, config).then((response) => {
-    //console.log(categories, " - ", sectionName, " - ", response.data)
-    loadMaterials(categories, response.data.names);
-  });
+    axios.post(`/api/material/${sectionName}`, ctx, config).then((response) => {
+      //console.log(categories, " - ", sectionName, " - ", response.data)
+      loadMaterials(categories, response.data.names);
+    });
+  }
+
+  searchMaterialByUser();
+
+  let selectUser = document.querySelector("#users-list");
+  if (selectUser !== null && selectUser !== undefined) {
+    console.log("No user list found");
+    selectUser.addEventListener("change", searchMaterialByUser);
+  }
+
 });

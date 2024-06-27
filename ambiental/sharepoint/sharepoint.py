@@ -41,6 +41,18 @@ def load_workbook(account: Account, filepath: str) -> WorkBook:
     return workbook
 
 
+def get_route(account: Account, qdirpath: str):
+    parent, site, dirpath = qdirpath.split(':')
+    path_chucks = dirpath.split('/')[1:]
+
+    sp = account.sharepoint()
+    main_dir = sp.get_site(parent, site)
+    doc_library = main_dir.get_document_library('.')
+    root_folder = doc_library.get_root_folder()
+
+    return path_chucks, root_folder
+
+
 def make_dir(account: Account, qdirpath: str) -> Folder:
     """
     Create a SharePoint directory and the required parent directories.
@@ -63,13 +75,7 @@ def make_dir(account: Account, qdirpath: str) -> Folder:
         >>> _folder = make_dir(account, mysite)
     """
 
-    parent, site, dirpath = qdirpath.split(':')
-    path_chucks = dirpath.split('/')[1:]
-
-    sp = account.sharepoint()
-    main_dir = sp.get_site(parent, site)
-    doc_library = main_dir.get_document_library('.')
-    root_folder = doc_library.get_root_folder()
+    path_chucks, root_folder = get_route(account, qdirpath)
 
     for chuck in path_chucks:
         query = [x for x in root_folder.get_items() if x.name == chuck]
@@ -86,6 +92,41 @@ def make_dir(account: Account, qdirpath: str) -> Folder:
             root_folder = query[0]
 
     return root_folder
+
+def copy_file(account: Account, source: str, target_folder: Folder) -> None:
+    """
+    Copy a file from a source directory to a target directory.
+
+    Args:
+        account: The SharePoint account.
+        source (str): The path to the source file.
+        target (str): The path to the target file.
+
+    Raises:
+        ValueError: If the source or target paths are not in the correct format.
+
+    Example:
+        >>> from sharepoint import autenticate
+        >>> myaccount = autenticate()
+        >>> # source and target example: "https://domain.sharepoint.com/sites/Ambiental/path/to/file"
+        >>> mysource = 'root:sites/Ambiental:/path/to/file'
+        >>> mytarget = 'root:sites/Ambiental:/path/to/target'
+        >>> copy_file(account, mysource, mytarget)
+    """
+
+    source_chucks, source_folder = get_route(account, source)
+
+    source_file = source_chucks[-1]
+
+    source_file = [x for x in source_folder.get_items() if x.name == source_file]
+
+    if len(source_file) != 1:
+        raise ValueError(f"The source file was not found {source}")
+
+
+    source_file = source_file[0]
+
+    source_file.copy(target_folder)
 
 
 def get_worksheets_names(workbook: WorkBook) -> t.List[str]:

@@ -199,10 +199,16 @@ class SicmaDB:
         random_uuid = uuid.uuid4()
 
         user_folder_path = self.site_path_fmt(str(random_uuid))
-        sharepoint.make_dir(self.account, user_folder_path)
+        folder = sharepoint.make_dir(self.account, user_folder_path)
+
+        sharepoint.copy_file(
+            self.account,
+            self.site_path_fmt("Requerimientos de informacion V22 NDA1.xlsx"),
+            folder
+        )
 
         return random_uuid
-
+    
     def site_path_fmt(self, *args) -> str:
         """
         Formats the site path with the given arguments.

@@ -323,6 +323,19 @@ class SaveMaterialBook(generic.View):
 
         return super().dispatch(request, *args, **kwargs)
 
+def get_user_sharepoint_dir(user: User) -> models.UserSharepointDir:
+    user_sharepoint_dir = models.UserSharepointDir.objects.filter(
+        user=user
+    ).first()
+
+    if user_sharepoint_dir is None:
+        unique_user_dir_name = SICMA_AZURE_DB.generate_unique_user_dir()
+        user_sharepoint_dir = models.UserSharepointDir.objects.create(
+            user=user, name=unique_user_dir_name
+        )
+    
+    return user_sharepoint_dir
+       
 
 class Material(generic.View):
 
@@ -344,10 +357,8 @@ class Material(generic.View):
         if user.is_staff:
             user = User.objects.get(id=body_data["targetUser"]["id"])
 
-        user_sharepoint_dir = models.UserSharepointDir.objects.filter(
-            user=user
-        ).first()
-
+        user_sharepoint_dir = get_user_sharepoint_dir(user)
+       
         SICMA_AZURE_DB.load_data(user_sharepoint_dir.name)
         return super().dispatch(request, *args, **kwargs)
 
