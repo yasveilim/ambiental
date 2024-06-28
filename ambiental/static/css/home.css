@@ -109,14 +109,14 @@ p {
     margin-top: 15px;
     padding: 10px 40px;
     border: 2px solid #1783db;
-    color: black;
+    color: white;
     font-weight: bold;
     text-decoration: none;
     background: #1783db;
 }
 
 .btn:hover {
-    background: white;
+    background: rgb(12, 33, 153);
 
 }
 
