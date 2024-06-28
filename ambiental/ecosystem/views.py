@@ -351,10 +351,10 @@ class Material(generic.View):
         if not user.is_authenticated:
             return redirect("/")
         
-        body_unicode = request.body.decode('utf-8')
-        body_data = json.loads(body_unicode)
 
         if user.is_staff:
+            body_unicode = request.body.decode('utf-8')
+            body_data = json.loads(body_unicode)
             user = User.objects.get(id=body_data["targetUser"]["id"])
 
         user_sharepoint_dir = get_user_sharepoint_dir(user)
@@ -384,7 +384,7 @@ class Category(generic.View):
 
 class MaterialBook(generic.View):
 
-    def get(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
+    def post(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
         materials = get_materal_from_category(kwargs["category"]) or {}
 
         materials_namesidx = {k: v for k, v in enumerate(materials.keys())}
@@ -393,9 +393,10 @@ class MaterialBook(generic.View):
 
         user = self.request.user
         if user.is_staff:
-            user = User.objects.get(id=kwargs["targetUser"])
+            body_unicode = request.body.decode('utf-8')
+            body_data = json.loads(body_unicode)
+            user = User.objects.get(id=body_data["targetUser"]["id"])
 
-        # print(kwargs["category"], kwargs["material"], name, materials_namesidx)
 
         for mat in material:
             mat["name"] = str(mat["doc_number"]) + " " + mat["name"]
@@ -419,12 +420,14 @@ class MaterialBook(generic.View):
         return JsonResponse({"items": material})
 
     def dispatch(self, request, *args, **kwargs):
-        if not self.request.user.is_authenticated:
+        user = self.request.user
+        if not user.is_authenticated:
             return redirect("/")
         
-        user = self.request.user
         if user.is_staff:
-            user = User.objects.get(id=kwargs["targetUser"])
+            body_unicode = request.body.decode('utf-8')
+            body_data = json.loads(body_unicode)
+            user = User.objects.get(id=body_data["targetUser"]["id"])
 
         user_sharepoint_dir = models.UserSharepointDir.objects.filter(
             user=user
