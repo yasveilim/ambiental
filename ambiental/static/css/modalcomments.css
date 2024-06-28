@@ -1,0 +1,20 @@
+.modal-comments {
+  height: 300px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  padding: 10px;
+  position: fixed;
+  width: 800px;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-comments-group-end {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  gap: 10px;
+  width: 100%;
+}
