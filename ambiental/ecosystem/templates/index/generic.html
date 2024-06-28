@@ -1,10 +1,17 @@
-{% extends "index/indexbase.html" %}
-{% load static %}
-{% block content_head %}
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+{% extends "index/indexbase.html" %} {% load static %} {% block content_head %}
+<script
+  type="module"
+  src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+></script>
+<script
+  nomodule
+  src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+></script>
 
-<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+<link
+  href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+  rel="stylesheet"
+/>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
 
@@ -12,12 +19,7 @@
 <link rel="stylesheet" href="{% static 'css/panel.css' %}" />
 <link rel="stylesheet" href="{% static 'css/options.css' %}" />
 
-
-{% endblock content_head%}
-
-
-{% load static %}
-{% block content %}
+{% endblock content_head%} {% load static %} {% block content %}
 <!-- <h2>{{ category }}</h2> -->
 <div class="wrapper">
   <div class="select-btn">
@@ -27,7 +29,7 @@
   <div class="content">
     <div class="search">
       <i class="uil uil-search"></i>
-      <input spellcheck="false" type="text" placeholder="Search">
+      <input spellcheck="false" type="text" placeholder="Search" />
     </div>
     <ul class="options"></ul>
   </div>
@@ -41,15 +43,13 @@
   <div class="content">
     <div class="search">
       <i class="uil uil-search"></i>
-      <input spellcheck="false" type="text" placeholder="Search">
+      <input spellcheck="false" type="text" placeholder="Search" />
     </div>
     <ul class="options"></ul>
   </div>
 </div>
 
-
 <div id="myModal" class="modal">
-
   <!-- Modal content -->
   <div class="modal-content">
     <div class="modal-head">
@@ -63,8 +63,13 @@
         <div class="form-container-top">
           <i class="fa-regular fa-file-pdf fa-3x"></i>
           <p>Elija el archivo que desea cargar</p>
-          <input placeholder="Elija el archivo" type="file" id="document_pic" name="document_pic"
-            accept=".pdf, .docx" />
+          <input
+            placeholder="Elija el archivo"
+            type="file"
+            id="document_pic"
+            name="document_pic"
+            accept=".pdf, .docx"
+          />
         </div>
 
         <div class="form-container-footer">
@@ -72,11 +77,60 @@
         </div>
       </form>
     </div>
-
   </div>
-
 </div>
 
+<div
+  style="
+    height: 300px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    padding: 10px;
+    position: fixed;
+    width: 800px;
+  "
+>
+  <div
+    style="
+      display: flex;
+      justify-content: end;
+      align-items: end;
+      gap: 10px;
+      width: 100%;
+    "
+  >
+    <button class="close-modal-btn fa-1x" >
+      <i class="fa-solid fa-x"></i>
+    </button>
+  </div>
+  <h2 style="text-align: center;">Comentarios</h2>
+  <div
+    style="
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    "
+  >
+    <textarea
+      style="width: 90%; margin-bottom: 10px; font-size: medium;"
+      rows="10"
+      placeholder="Escriba aquí su comentario..."
+    ></textarea>
+    <div
+      style="
+        display: flex;
+        justify-content: end;
+        align-items: end;
+        gap: 10px;
+        width: 90%;
+      "
+    >
+      <button style="font-size: medium;">Aptualizar</button>
+    </div>
+  </div>
+</div>
 
 <table class="wrapper">
   <thead>
