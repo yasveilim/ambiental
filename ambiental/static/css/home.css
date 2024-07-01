@@ -186,7 +186,7 @@ p {
 }
 
 .about {
-    background: #333333;
+    background: black;
 }
 
 
@@ -279,7 +279,7 @@ p {
 }
 .pie-pagina .grupo-2{
     background-color: black;
-    padding: 15px 10px;
+    padding: 80px 10px;
     text-align: center;
     color: #fff;
 }
