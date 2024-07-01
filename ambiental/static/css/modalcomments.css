@@ -27,3 +27,7 @@
   border-radius: 15px;
   cursor: pointer;
 }
+
+.comments-btn:hover {
+  background-color: #bbbaba;
+}
