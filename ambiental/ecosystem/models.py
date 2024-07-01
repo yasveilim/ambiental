@@ -58,9 +58,11 @@ class AmbientalBookSharepointPath(models.Model):
 
         return None
 
+
 class BookSharepointComment(models.Model):
     book = models.ForeignKey(AmbientalBookSharepointPath, on_delete=models.CASCADE)
     comment = models.TextField()
+
 
 class UserSharepointDir(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -248,7 +248,10 @@ function loadMaterials(categories, materials) {
                 "td#upload-tothe-cloud"
               );
               let comments = document.querySelector("td#comments");
-              comments.innerHTML = `<button onclick="showComments()">Ver</button>`;
+              comments.innerHTML = `<button
+                class="comments-btn" 
+                onclick="showComments()">Ver</button>
+              `;
 
               metadataBar = statusDocument[bookData.advance];
               deliveryProgress.textContent = metadataBar.text; // cambiar color
