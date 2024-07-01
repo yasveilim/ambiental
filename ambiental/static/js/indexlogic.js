@@ -151,7 +151,9 @@ function setCommentsModal(newValue) {
   let commentsModal = document.querySelector("div.modal-comments");
   commentsModal.classList.toggle("hidden");
 
-  let commentsModalText = commentsModal.querySelector(".modal-comments-textarea");
+  let commentsModalText = commentsModal.querySelector(
+    ".modal-comments-textarea"
+  );
   commentsModalText.value = newValue;
   return commentsModal;
 }
@@ -160,10 +162,32 @@ document.querySelector("div.modal-comments .close-modal-btn").onclick = () => {
   setCommentsModal("");
 };
 
+async function showComments() {
+  let commentMessage = "";
+  try {
+    let ctx = getCtx();
+    let csrftoken = Cookies.get("csrftoken");
+    let config = {
+      headers: {
+        "X-CSRFToken": csrftoken,
+      },
+    };
 
-function showComments() {
-  let commentsModal = setCommentsModal("This is a comment from the admin");
+    console.log("Token is: ", csrftoken);
+    const response = await axios.post(
+      `/api/comment/`,
+      {...ctx, bookId: globalBookSelect.doc_number, category: sectionName},
+      config
+    );
 
+    console.log("Comments: ", response.data);
+    commentMessage = response.data.comment;
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+  }
+
+
+  let commentsModal = setCommentsModal(commentMessage);
 }
 
 function loadMaterials(categories, materials) {
@@ -195,7 +219,6 @@ function loadMaterials(categories, materials) {
         };
 
         try {
-
           const response = await axios.post(
             `/api/materialbook/${sectionName}/${index}`,
             ctx,

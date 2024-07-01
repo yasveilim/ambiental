@@ -16,10 +16,13 @@ function submitBook() {
     .map((x) => (isLetter(x) ? x : ""))
     .join("");
 
+  let ctx = getCtx();
+  let targetUserDump = JSON.stringify(ctx.targetUser);
   formData.append("book_id", globalBookSelect.doc_number);
   formData.append("document_name", shortName);
   formData.append("category", sectionName);
   formData.append("document", form.files[0], form.files[0].name);
+  formData.append("targetUser", targetUserDump);
   //
   console.log(globalBookSelect, [...formData.entries()]);
 
