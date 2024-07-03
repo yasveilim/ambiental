@@ -1,0 +1,33 @@
+.modal-comments {
+  height: 300px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  padding: 10px;
+  position: fixed;
+  width: 800px;
+}
+
+.hidden {
+  display: none;
+}
+
+.modal-comments-group-end {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  gap: 10px;
+  width: 100%;
+}
+
+.comments-btn {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.comments-btn:hover {
+  background-color: #bbbaba;
+}

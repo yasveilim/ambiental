@@ -52,4 +52,6 @@ urlpatterns = [
         views.MaterialBook.as_view(),
         name="materialbook",
     ),
+
+    path("api/comment/", views.SaveCommentMaterialBook.as_view(), name="comment")
 ]

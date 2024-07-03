@@ -232,6 +232,50 @@ from time import sleep
 # def assign_sharepoint_directory(user_name: str):#    pass
 
 
+class SaveCommentMaterialBook(generic.View):
+
+    def post(self, request, *args: str, **kwargs: Any) -> HttpResponse:
+        user = self.request.user
+
+        body_unicode = request.body.decode('utf-8')
+        body_data = json.loads(body_unicode)
+        
+        if user.is_staff:
+            
+            user = User.objects.get(id=body_data["targetUser"]["id"])
+
+        book_id = body_data["bookId"]
+        category = body_data["category"]
+
+        tag = category.replace("-", "_")
+        sharepoint_path = models.AmbientalBookSharepointPath.objects.filter(
+            category=tag,
+            user=user,
+            book_id=book_id,
+        ).first()
+
+        comment = None
+        if sharepoint_path:
+            comment = models.BookSharepointComment.objects.filter(
+                book=sharepoint_path
+            ).first()
+
+            if comment is None:
+                comment = models.BookSharepointComment.objects.create(
+                    book=sharepoint_path,
+                    comment="",
+                )
+
+        else:
+            error_message = "{\"error\": \"NotFound\"}" 
+            return HttpResponse(error_message, content_type='application/json', status=404)
+
+        return JsonResponse({"ok": 200, "comment": comment.comment})
+    
+    def patch(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
+        return JsonResponse({"update": 200})
+
+
 class SaveMaterialBook(generic.View):
 
     # Dada este metodo dejango como obtendria los valores que alguien me envia en un form
@@ -242,7 +286,9 @@ class SaveMaterialBook(generic.View):
 
         user = self.request.user
         if user.is_staff:
-            user = User.objects.get(id=kwargs["targetUser"])
+            target_user = json.loads(request.POST.get("targetUser"))
+            user = User.objects.get(id=target_user["id"])
+
 
         # help(models.UserSharepointDir.objects.first)
         user_sharepoint_dir = models.UserSharepointDir.objects.filter(
@@ -313,7 +359,8 @@ class SaveMaterialBook(generic.View):
         
         user = self.request.user
         if user.is_staff:
-            user = User.objects.get(id=kwargs["targetUser"]["id"])
+            target_user = json.loads(request.POST.get("targetUser"))
+            user = User.objects.get(id=target_user["id"])
 
         user_sharepoint_dir = models.UserSharepointDir.objects.filter(
             user=user
@@ -351,10 +398,10 @@ class Material(generic.View):
         if not user.is_authenticated:
             return redirect("/")
         
-        body_unicode = request.body.decode('utf-8')
-        body_data = json.loads(body_unicode)
 
         if user.is_staff:
+            body_unicode = request.body.decode('utf-8')
+            body_data = json.loads(body_unicode)
             user = User.objects.get(id=body_data["targetUser"]["id"])
 
         user_sharepoint_dir = get_user_sharepoint_dir(user)
@@ -384,7 +431,7 @@ class Category(generic.View):
 
 class MaterialBook(generic.View):
 
-    def get(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
+    def post(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
         materials = get_materal_from_category(kwargs["category"]) or {}
 
         materials_namesidx = {k: v for k, v in enumerate(materials.keys())}
@@ -393,15 +440,18 @@ class MaterialBook(generic.View):
 
         user = self.request.user
         if user.is_staff:
-            user = User.objects.get(id=kwargs["targetUser"])
+            body_unicode = request.body.decode('utf-8')
+            body_data = json.loads(body_unicode)
+            user = User.objects.get(id=body_data["targetUser"]["id"])
 
-        # print(kwargs["category"], kwargs["material"], name, materials_namesidx)
 
         for mat in material:
             mat["name"] = str(mat["doc_number"]) + " " + mat["name"]
             mat["deliveryDate"] = "No recibido"
+            category = kwargs["category"]
+            tag = category.replace("-", "_")
             sharepoint_path = models.AmbientalBookSharepointPath.objects.filter(
-                category=kwargs["category"],
+                category=tag,
                 user=user,
                 book_id=mat["doc_number"],
             ).first()
@@ -419,12 +469,14 @@ class MaterialBook(generic.View):
         return JsonResponse({"items": material})
 
     def dispatch(self, request, *args, **kwargs):
-        if not self.request.user.is_authenticated:
+        user = self.request.user
+        if not user.is_authenticated:
             return redirect("/")
         
-        user = self.request.user
         if user.is_staff:
-            user = User.objects.get(id=kwargs["targetUser"])
+            body_unicode = request.body.decode('utf-8')
+            body_data = json.loads(body_unicode)
+            user = User.objects.get(id=body_data["targetUser"]["id"])
 
         user_sharepoint_dir = models.UserSharepointDir.objects.filter(
             user=user

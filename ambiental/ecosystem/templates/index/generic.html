@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="{% static 'css/cartamaterial.css' %}" />
 <link rel="stylesheet" href="{% static 'css/panel.css' %}" />
 <link rel="stylesheet" href="{% static 'css/options.css' %}" />
+<link rel="stylesheet" href="{% static 'css/modalcomments.css' %}" />
 
 {% endblock content_head%} {% load static %} {% block content %}
 <!-- <h2>{{ category }}</h2> -->
@@ -80,30 +81,13 @@
   </div>
 </div>
 
-<div
-  style="
-    height: 300px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    padding: 10px;
-    position: fixed;
-    width: 800px;
-  "
->
-  <div
-    style="
-      display: flex;
-      justify-content: end;
-      align-items: end;
-      gap: 10px;
-      width: 100%;
-    "
-  >
-    <button class="close-modal-btn fa-1x" >
+<div class="modal-comments hidden">
+  <div class="modal-comments-group-end">
+    <button class="close-modal-btn fa-1x">
       <i class="fa-solid fa-x"></i>
     </button>
   </div>
-  <h2 style="text-align: center;">Comentarios</h2>
+  <h2 style="text-align: center">Comentarios</h2>
   <div
     style="
       margin-top: 10px;
@@ -114,10 +98,12 @@
     "
   >
     <textarea
-      style="width: 90%; margin-bottom: 10px; font-size: medium;"
+      class="modal-comments-textarea"
+      style="width: 90%; margin-bottom: 10px; font-size: medium"
       rows="10"
       placeholder="Escriba aquí su comentario..."
     ></textarea>
+<<<<<<< HEAD
     <div
       style="
         display: flex;
@@ -128,6 +114,10 @@
       "
     >
       <button style="font-size: medium;">Actualizar</button>
+=======
+    <div class="modal-comments-group-end">
+      <button class="comments-btn" style="font-size: medium">Aptualizar</button>
+>>>>>>> 99372515160af38a910f4e891c64343ef93ff38e
     </div>
   </div>
 </div>

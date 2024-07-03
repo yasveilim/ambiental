@@ -147,6 +147,49 @@ function invertObject(obj) {
   );
 }
 
+function setCommentsModal(newValue) {
+  let commentsModal = document.querySelector("div.modal-comments");
+  commentsModal.classList.toggle("hidden");
+
+  let commentsModalText = commentsModal.querySelector(
+    ".modal-comments-textarea"
+  );
+  commentsModalText.value = newValue;
+  return commentsModal;
+}
+
+document.querySelector("div.modal-comments .close-modal-btn").onclick = () => {
+  setCommentsModal("");
+};
+
+async function showComments() {
+  let commentMessage = "";
+  try {
+    let ctx = getCtx();
+    let csrftoken = Cookies.get("csrftoken");
+    let config = {
+      headers: {
+        "X-CSRFToken": csrftoken,
+      },
+    };
+
+    console.log("Token is: ", csrftoken);
+    const response = await axios.post(
+      `/api/comment/`,
+      {...ctx, bookId: globalBookSelect.doc_number, category: sectionName},
+      config
+    );
+
+    console.log("Comments: ", response.data);
+    commentMessage = response.data.comment;
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+  }
+
+
+  let commentsModal = setCommentsModal(commentMessage);
+}
+
 function loadMaterials(categories, materials) {
   configOptionElement(
     "div.wrapper",
@@ -167,11 +210,20 @@ function loadMaterials(categories, materials) {
       // Pista: El segundo options no puede cambiar a "activate"
 
       let fetchData = async () => {
+        let ctx = getCtx();
+        let csrftoken = Cookies.get("csrftoken");
+        let config = {
+          headers: {
+            "X-CSRFToken": csrftoken,
+          },
+        };
+
         try {
-          const response = await axios.get(
-            `/api/materialbook/${sectionName}/${index}`
+          const response = await axios.post(
+            `/api/materialbook/${sectionName}/${index}`,
+            ctx,
+            config
           );
-          console.log("My materialSelectedName is: ", response.data);
 
           let documentsData = response.data;
           let documentsNames = collectBookNames(documentsData);
@@ -219,6 +271,10 @@ function loadMaterials(categories, materials) {
                 "td#upload-tothe-cloud"
               );
               let comments = document.querySelector("td#comments");
+              comments.innerHTML = `<button
+                class="comments-btn" 
+                onclick="showComments()">Ver</button>
+              `;
 
               metadataBar = statusDocument[bookData.advance];
               deliveryProgress.textContent = metadataBar.text; // cambiar color
@@ -237,7 +293,7 @@ function loadMaterials(categories, materials) {
               uploadTotheCloud.textContent = bookData.essential_cloud
                 ? "Si"
                 : "No";
-              comments.textContent = bookData.comments;
+              //comments.textContent = bookData.comments;
 
               let loaderDiv = document.querySelector("div.loader-div");
               loaderDiv.style.display = "none";
@@ -263,6 +319,7 @@ function getCtx() {
     return null;
   }
 
+  selectUser = selectUser.options[selectUser.selectedIndex];
   return {
     targetUser: {
       username: selectUser.textContent.trim(),
@@ -273,7 +330,6 @@ function getCtx() {
 
 axios.get("/api/category/").then((response) => {
   function searchMaterialByUser() {
-    console.log("On searchMaterialByUser");
     let categories = response.data;
     let ctx = getCtx();
     let csrftoken = Cookies.get("csrftoken");
@@ -293,8 +349,6 @@ axios.get("/api/category/").then((response) => {
 
   let selectUser = document.querySelector("#users-list");
   if (selectUser !== null && selectUser !== undefined) {
-    console.log("No user list found");
     selectUser.addEventListener("change", searchMaterialByUser);
   }
-
 });
