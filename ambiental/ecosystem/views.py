@@ -138,7 +138,7 @@ class Index(generic.TemplateView):
         site = self.kwargs.get("site")
         is_staff = self.request.user.is_staff
         usersList = None
-       
+
         context["category"] = site
         context["currentUser"] = {
             "name": self.request.user.username,
@@ -146,9 +146,7 @@ class Index(generic.TemplateView):
         }
 
         if is_staff:
-            usersList = User.objects.filter(
-                is_staff=False
-            ).values("username", "id")
+            usersList = User.objects.filter(is_staff=False).values("username", "id")
             context["usersList"] = usersList
 
         pretty_print_dict(SICMA_AZURE_DB.data)
@@ -173,9 +171,7 @@ class Index(generic.TemplateView):
         if user.is_staff:
             user = User.objects.filter(is_staff=False).first()
 
-        user_sharepoint_dir = models.UserSharepointDir.objects.filter(
-            user=user
-        ).first()
+        user_sharepoint_dir = models.UserSharepointDir.objects.filter(user=user).first()
 
         if user_sharepoint_dir is None:
             unique_user_dir_name = SICMA_AZURE_DB.generate_unique_user_dir()
@@ -237,11 +233,11 @@ class SaveCommentMaterialBook(generic.View):
     def post(self, request, *args: str, **kwargs: Any) -> HttpResponse:
         user = self.request.user
 
-        body_unicode = request.body.decode('utf-8')
+        body_unicode = request.body.decode("utf-8")
         body_data = json.loads(body_unicode)
-        
+
         if user.is_staff:
-            
+
             user = User.objects.get(id=body_data["targetUser"]["id"])
 
         book_id = body_data["bookId"]
@@ -267,13 +263,64 @@ class SaveCommentMaterialBook(generic.View):
                 )
 
         else:
-            error_message = "{\"error\": \"NotFound\"}" 
-            return HttpResponse(error_message, content_type='application/json', status=404)
+            error_message = '{"error": "NotFound"}'
+            return HttpResponse(
+                error_message, content_type="application/json", status=404
+            )
 
         return JsonResponse({"ok": 200, "comment": comment.comment})
-    
-    def patch(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
-        return JsonResponse({"update": 200})
+
+    def put(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
+        user = self.request.user
+
+        body_unicode = request.body.decode("utf-8")
+        body_data = json.loads(body_unicode)
+
+        if user.is_staff:
+            user = User.objects.get(id=body_data["targetUser"]["id"])
+        
+        else:
+            return JsonResponse({"error": "Forbidden"}, status=403)
+
+        book_id = body_data["bookId"]
+        category = body_data["category"]
+        comment_text = body_data["comment"]
+
+        tag = category.replace("-", "_")
+        sharepoint_path = models.AmbientalBookSharepointPath.objects.filter(
+            category=tag,
+            user=user,
+            book_id=book_id,
+        ).first()
+
+        if sharepoint_path is None:
+            error_message = '{"error": "NotFound"}'
+            return HttpResponse(
+                error_message, content_type="application/json", status=404
+            )
+
+        comment = models.BookSharepointComment.objects.filter(
+            book=sharepoint_path
+        ).first()
+
+        if comment:
+            comment.comment = comment_text
+            comment.save()
+
+        else:
+            error_message = '{"error": "NotFound"}'
+            return HttpResponse(
+                error_message, content_type="application/json", status=404
+            )
+
+        return JsonResponse({"ok": 200, "comment": comment.comment})
+
+    def dispatch(self, request, *args, **kwargs):
+        if not self.request.user.is_authenticated:
+            return redirect("/")
+
+
+        return super().dispatch(request, *args, **kwargs)
 
 
 class SaveMaterialBook(generic.View):
@@ -289,11 +336,8 @@ class SaveMaterialBook(generic.View):
             target_user = json.loads(request.POST.get("targetUser"))
             user = User.objects.get(id=target_user["id"])
 
-
         # help(models.UserSharepointDir.objects.first)
-        user_sharepoint_dir = models.UserSharepointDir.objects.filter(
-            user=user
-        ).first()
+        user_sharepoint_dir = models.UserSharepointDir.objects.filter(user=user).first()
 
         if user_sharepoint_dir is None:
             unique_user_dir_name = SICMA_AZURE_DB.generate_unique_user_dir()
@@ -356,33 +400,30 @@ class SaveMaterialBook(generic.View):
     def dispatch(self, request, *args, **kwargs):
         if not self.request.user.is_authenticated:
             return redirect("/")
-        
+
         user = self.request.user
         if user.is_staff:
             target_user = json.loads(request.POST.get("targetUser"))
             user = User.objects.get(id=target_user["id"])
 
-        user_sharepoint_dir = models.UserSharepointDir.objects.filter(
-            user=user
-        ).first()
+        user_sharepoint_dir = models.UserSharepointDir.objects.filter(user=user).first()
 
         SICMA_AZURE_DB.load_data(user_sharepoint_dir.name)
 
         return super().dispatch(request, *args, **kwargs)
 
+
 def get_user_sharepoint_dir(user: User) -> models.UserSharepointDir:
-    user_sharepoint_dir = models.UserSharepointDir.objects.filter(
-        user=user
-    ).first()
+    user_sharepoint_dir = models.UserSharepointDir.objects.filter(user=user).first()
 
     if user_sharepoint_dir is None:
         unique_user_dir_name = SICMA_AZURE_DB.generate_unique_user_dir()
         user_sharepoint_dir = models.UserSharepointDir.objects.create(
             user=user, name=unique_user_dir_name
         )
-    
+
     return user_sharepoint_dir
-       
+
 
 class Material(generic.View):
 
@@ -397,15 +438,14 @@ class Material(generic.View):
         user = self.request.user
         if not user.is_authenticated:
             return redirect("/")
-        
 
         if user.is_staff:
-            body_unicode = request.body.decode('utf-8')
+            body_unicode = request.body.decode("utf-8")
             body_data = json.loads(body_unicode)
             user = User.objects.get(id=body_data["targetUser"]["id"])
 
         user_sharepoint_dir = get_user_sharepoint_dir(user)
-       
+
         SICMA_AZURE_DB.load_data(user_sharepoint_dir.name)
         return super().dispatch(request, *args, **kwargs)
 
@@ -425,7 +465,7 @@ class Category(generic.View):
     def dispatch(self, request, *args, **kwargs):
         if not self.request.user.is_authenticated:
             return redirect("/")
-  
+
         return super().dispatch(request, *args, **kwargs)
 
 
@@ -440,10 +480,9 @@ class MaterialBook(generic.View):
 
         user = self.request.user
         if user.is_staff:
-            body_unicode = request.body.decode('utf-8')
+            body_unicode = request.body.decode("utf-8")
             body_data = json.loads(body_unicode)
             user = User.objects.get(id=body_data["targetUser"]["id"])
-
 
         for mat in material:
             mat["name"] = str(mat["doc_number"]) + " " + mat["name"]
@@ -472,15 +511,13 @@ class MaterialBook(generic.View):
         user = self.request.user
         if not user.is_authenticated:
             return redirect("/")
-        
+
         if user.is_staff:
-            body_unicode = request.body.decode('utf-8')
+            body_unicode = request.body.decode("utf-8")
             body_data = json.loads(body_unicode)
             user = User.objects.get(id=body_data["targetUser"]["id"])
 
-        user_sharepoint_dir = models.UserSharepointDir.objects.filter(
-            user=user
-        ).first()
+        user_sharepoint_dir = models.UserSharepointDir.objects.filter(user=user).first()
 
         SICMA_AZURE_DB.load_data(user_sharepoint_dir.name)
         return super().dispatch(request, *args, **kwargs)

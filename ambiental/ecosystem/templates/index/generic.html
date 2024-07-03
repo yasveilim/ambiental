@@ -103,9 +103,11 @@
       rows="10"
       placeholder="Escriba aquí su comentario..."
     ></textarea>
-    <div class="modal-comments-group-end">
-      <button class="comments-btn" style="font-size: medium">Aptualizar</button>
-    </div>
+    {% if currentUser.isStaff %}
+      <div class="modal-comments-group-end">
+        <button class="comments-btn" style="font-size: medium">Aptualizar</button>
+      </div>
+    {% endif %}
   </div>
 </div>
 
