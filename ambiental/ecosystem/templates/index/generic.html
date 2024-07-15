@@ -103,22 +103,11 @@
       rows="10"
       placeholder="Escriba aquí su comentario..."
     ></textarea>
-<<<<<<< HEAD
-    <div
-      style="
-        display: flex;
-        justify-content: end;
-        align-items: end;
-        gap: 10px;
-        width: 90%;
-      "
-    >
-      <button style="font-size: medium;">Actualizar</button>
-=======
-    <div class="modal-comments-group-end">
-      <button class="comments-btn" style="font-size: medium">Aptualizar</button>
->>>>>>> 99372515160af38a910f4e891c64343ef93ff38e
-    </div>
+    {% if currentUser.isStaff %}
+      <div class="modal-comments-group-end">
+        <button class="comments-btn" style="font-size: medium">Aptualizar</button>
+      </div>
+    {% endif %}
   </div>
 </div>
 

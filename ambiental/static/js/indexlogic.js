@@ -173,7 +173,7 @@ async function showComments() {
       },
     };
 
-    console.log("Token is: ", csrftoken);
+    // console.log("Token is: ", csrftoken);
     const response = await axios.post(
       `/api/comment/`,
       {...ctx, bookId: globalBookSelect.doc_number, category: sectionName},
@@ -188,6 +188,36 @@ async function showComments() {
 
 
   let commentsModal = setCommentsModal(commentMessage);
+  commentsModal.querySelector(".comments-btn").onclick = async () => {
+    let commentsModalText = commentsModal.querySelector(
+      ".modal-comments-textarea"
+    );
+    let csrftoken = Cookies.get("csrftoken");
+    let config = {
+      headers: {
+        "X-CSRFToken": csrftoken,
+      },
+    };
+
+    try {
+      let ctx = getCtx();
+      const response = await axios.put(
+        `/api/comment/`,
+        {
+          ...ctx,
+          bookId: globalBookSelect.doc_number,
+          category: sectionName,
+          comment: commentsModalText.value,
+        },
+        config
+      );
+      console.log("Comments: ", response.data);
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    }
+
+    commentsModal.classList.toggle("hidden");
+  }
 }
 
 function loadMaterials(categories, materials) {
@@ -284,7 +314,6 @@ function loadMaterials(categories, materials) {
               theadUnique.classList.add(metadataBar.className);
               theadUnique.onclick = (event) => {
                 mainModal().style.display = "block";
-                console.log(`I clicked here: `, event);
               };
 
               dateDelivery.textContent = bookData.deliveryDate; //bookData.archives;
