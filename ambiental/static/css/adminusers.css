@@ -9,8 +9,9 @@
   justify-content: space-between;
 }
 
-
-.update-button, .delete-button, .add-button {
+.update-button,
+.delete-button,
+.add-button {
   background-color: #fff;
   border: 1px solid #d5d9d9;
   border-radius: 8px;
@@ -32,14 +33,39 @@
   width: 100px;
 }
 
-.update-button:hover, .delete-button:hover, .add-button:hover {
+.update-button:hover,
+.delete-button:hover,
+.add-button:hover {
   background-color: #f7fafa;
 }
 
-.update-button:focus, .delete-button:focus, .add-button:hover {
+.update-button:focus,
+.delete-button:focus,
+.add-button:hover {
   border-color: #008296;
   box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
   outline: 0;
+}
+
+.users-list-container {
+  height: 100vh;
+  width: 100%;
+  background-color: #f7fafa;
+  overflow-y: auto;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: tomato;
+  gap: 10px;
+  width: 100%;
+}
+
+.user-card {
+  background-color: transparent;
 }
 
 .user-image-div {
@@ -48,26 +74,22 @@
   justify-content: center;
   align-items: center;
 }
-.user-card {
-  width: 240px;
-  height: 140px;
-  background-color: transparent;
-}
 
 .user-image {
   width: 140px;
   height: 140px;
   border-radius: 50%;
   object-fit: cover;
-
 }
 
 .button-group {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: transparent;
+  gap: 10px;
 }
+
 .userfields-div {
   display: flex;
   width: 100%;
@@ -78,3 +100,4 @@
   align-items: center;
   margin-top: 20px;
 }
+

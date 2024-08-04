@@ -197,6 +197,9 @@ class AdminUsers(Index):
             "isStaff": is_staff,
         }
 
+        context["sheet"] = "admin-users"
+        context["fakerange"] = range(1, 110)
+
         if is_staff:
             usersList = User.objects.filter(is_staff=False).values("username", "id")
             context["usersList"] = usersList

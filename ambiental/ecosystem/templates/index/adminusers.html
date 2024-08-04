@@ -33,19 +33,25 @@
 {% endif %}
 
 
-<div class="user-card">
-    <div class="user-image-div">
-      <img src="{% static 'alejandro.jpeg' %}" alt="User Image" class="user-image">
-    </div>
-    
-    <div class="button-group">
-      <button class="update-button">Actualizar</button>
-      <button class="delete-button">Borrar</button>
-    </div>
+<div class="users-list-container">
+  <div class="flex-container">
+    {% for f in fakerange %}
+      <div class="user-card">
+          <div class="user-image-div">
+            <img src="{% static 'alejandro.jpeg' %}" alt="User Image" class="user-image">
+          </div>
+          
+          <div class="button-group">
+            <button class="update-button">Actualizar</button>
+            <button class="delete-button">Borrar</button>
+          </div>
 
-    <div class="userfields-div">
-      <input type="text" placeholder="Username" class="input-field">
-      <input type="password" placeholder="Password" class="input-field">
-    </div>
+          <div class="userfields-div">
+            <input type="text" placeholder="Username" class="input-field">
+            <input type="password" placeholder="Password" class="input-field">
+          </div>
+      </div>
+    {% endfor %}
+  </div>
 </div>
 {% endblock content %}
