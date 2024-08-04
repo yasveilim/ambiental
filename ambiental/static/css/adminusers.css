@@ -11,7 +11,8 @@
 
 .update-button,
 .delete-button,
-.add-button {
+.add-button,
+.button-select-user {
   background-color: #fff;
   border: 1px solid #d5d9d9;
   border-radius: 8px;
@@ -35,23 +36,26 @@
 
 .update-button:hover,
 .delete-button:hover,
-.add-button:hover {
+.add-button:hover,
+.button-select-user:hover {
   background-color: #f7fafa;
 }
 
 .update-button:focus,
 .delete-button:focus,
-.add-button:hover {
+.add-button:focus,
+.button-select-user:focus {
   border-color: #008296;
   box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
   outline: 0;
 }
 
-.users-list-container {
-  height: 100vh;
-  width: 100%;
-  background-color: #f7fafa;
-  overflow-y: auto;
+.right-side {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: row;
+  gap: 4px;
 }
 
 .flex-container {
@@ -59,9 +63,24 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background-color: tomato;
-  gap: 10px;
-  width: 100%;
+  background-color: transparent;
+  gap: 5px;
+
+  height: 88vh;
+  width: 10%;
+  overflow-y: auto;
+  scrollbar-color: #f1f2f5 #c9cdda;
+}
+
+.flex-container::-webkit-scrollbar {
+  width: 10px; /* Mostly for vertical scrollbars */
+  height: 10px; /* Mostly for horizontal scrollbars */
+}
+.flex-container::-webkit-scrollbar-thumb { /* Foreground */
+  background: #8ad3e9;
+}
+.flex-container::-webkit-scrollbar-track { /* Background */
+  background: #a1d4bb;
 }
 
 .user-card {
@@ -76,8 +95,8 @@
 }
 
 .user-image {
-  width: 140px;
-  height: 140px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -90,6 +109,31 @@
   gap: 10px;
 }
 
+.button-select-user {
+  background-color: rgba(51, 51, 51, 0.05);
+  border-radius: 8px;
+  border-width: 0;
+  color: #333333;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 14px;
+  width: 100%;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 12px;
+  text-align: center;
+  transition: all 200ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
 .userfields-div {
   display: flex;
   width: 100%;
@@ -100,4 +144,3 @@
   align-items: center;
   margin-top: 20px;
 }
-
