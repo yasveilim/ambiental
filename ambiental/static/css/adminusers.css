@@ -11,12 +11,8 @@
 
 .update-button,
 .delete-button,
-<<<<<<< HEAD
 .add-button,
 .button-select-user {
-=======
-.add-button {
->>>>>>> a42ef36 (feat: user list v1)
   background-color: #fff;
   border: 1px solid #d5d9d9;
   border-radius: 8px;
@@ -148,4 +144,3 @@
   align-items: center;
   margin-top: 20px;
 }
-
