@@ -231,7 +231,6 @@ p {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
-    padding: 45px 0px;
 }
 
 .pie-pagina .grupo-1 .box {
@@ -279,7 +278,7 @@ p {
 }
 .pie-pagina .grupo-2{
     background-color: black;
-    padding: 80px 10px;
+    padding: 15px 10px;
     text-align: center;
     color: #fff;
 }
