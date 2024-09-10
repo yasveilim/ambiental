@@ -182,7 +182,8 @@ class Index(generic.TemplateView):
         SICMA_AZURE_DB.load_data(user_sharepoint_dir.name)
 
         return super().dispatch(request, *args, **kwargs)
-    
+
+
 class AdminUsers(Index):
     template_name = "index/adminusers.html"
 
@@ -191,7 +192,7 @@ class AdminUsers(Index):
         is_staff = self.request.user.is_staff
         usersList = None
 
-        #context["category"] = "admin_user"
+        # context["category"] = "admin_user"
         context["currentUser"] = {
             "name": self.request.user.username,
             "isStaff": is_staff,
@@ -201,22 +202,21 @@ class AdminUsers(Index):
         context["fakerange"] = range(1, 110)
 
         if is_staff:
-            usersList = User.objects.filter(is_staff=False).values("username", "id")
+            usersList = User.objects.filter(is_staff=False).values(
+                "username", "last_name", "id", "email"
+            )
             context["usersList"] = usersList
 
         return context
 
     def get_template_names(self):
         return ["index/adminusers.html"]
-    
+
     def dispatch(self, request, *args, **kwargs):
         if not self.request.user.is_authenticated:
             return redirect("/")
-        
+
         return super(generic.TemplateView, self).dispatch(request, *args, **kwargs)
-
-    
-
 
 
 class ForgotPassword(generic.CreateView):
@@ -313,7 +313,7 @@ class SaveCommentMaterialBook(generic.View):
 
         if user.is_staff:
             user = User.objects.get(id=body_data["targetUser"]["id"])
-        
+
         else:
             return JsonResponse({"error": "Forbidden"}, status=403)
 
@@ -353,7 +353,6 @@ class SaveCommentMaterialBook(generic.View):
     def dispatch(self, request, *args, **kwargs):
         if not self.request.user.is_authenticated:
             return redirect("/")
-
 
         return super().dispatch(request, *args, **kwargs)
 
