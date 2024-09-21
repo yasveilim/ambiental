@@ -155,13 +155,19 @@
 }
 
 
+.container-form__group {
+  width: 500px;
+  display: none;
+}
+
 /* Custom Input */
 .form__group {
   position: relative;
   padding: 15px 0 0;
   margin-top: 10px;
-  width: 50%;
+  width: 100%;
 }
+
 .form__field {
   font-family: inherit;
   width: 100%;
@@ -182,7 +188,10 @@
   cursor: text;
   top: 20px;
 }
+
+
 .form__label {
+  /* width: 500px; */
   position: absolute;
   top: 0;
   display: block;
@@ -190,6 +199,7 @@
   font-size: 1rem;
   color: #9b9b9b;
 }
+
 .form__field:focus {
   padding-bottom: 6px;
   font-weight: 700;

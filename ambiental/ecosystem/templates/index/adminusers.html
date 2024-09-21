@@ -38,7 +38,7 @@
 <div class="users-list-container">
   <div class="flex-container">
     {% for user in usersList %}
-    <button class="button-select-user" onclick="selectUser(event)">
+    <button class="button-select-user" onclick='selectUser(event, { "username": "{{ user.username }}", "lastname": "{{ user.last_name }}", "email": "{{ user.email }}" })'>
       <div class="user-card">
         <div class="user-image-div">
           <img
@@ -57,36 +57,43 @@
   </div>
   {% comment %} Pablo's div {% endcomment %}
   <div class="main-content-user">
-    <div class="form__group field">
-      <input
-        type="input"
-        class="form__field"
-        placeholder="Name"
-        name="name"
-        id="name"
-        required
-      />
-      <label for="name" class="form__label">Name</label>
 
-      <input
-        type="input"
-        class="form__field"
-        placeholder="Lastname"
-        name="lastname"
-        id="lastname"
-        required
-      />
-      <label for="lastname" class="form__label">Lastname</label>
+    <div class="container-form__group">
+      <div class="form__group field">
+        <input
+          type="input"
+          class="form__field"
+          placeholder="Name"
+          name="name"
+          id="name"
+          required
+        />
+        <label for="name" class="form__label">Name</label>
+      </div>
 
-      <input
-        type="input"
-        class="form__field"
-        placeholder="Email"
-        name="email"
-        id="email"
-        required
-      />
-      <label for="email" class="form__label">Email</label>
+      <div class="form__group field">
+        <input
+          type="input"
+          class="form__field"
+          placeholder="Lastname"
+          name="lastname"
+          id="lastname"
+          required
+        />
+        <label for="lastname" class="form__label">Lastname</label>
+      </div>
+
+      <div class="form__group field">
+        <input
+          type="input"
+          class="form__field"
+          placeholder="Email"
+          name="email"
+          id="email"
+          required
+        />
+        <label for="email" class="form__label">Email</label>
+      </div>
     </div>
   </div>
 </div>

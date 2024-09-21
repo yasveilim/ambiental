@@ -1,13 +1,17 @@
-function selectUser(event) {
-    console.log(event);
+function selectUser(event, user) {
+    console.log(event, "user=> ", user);
 
-    let topBar  = document.querySelector(".top-bar ")
+    const topBar  = document.querySelector(".top-bar ")
 
     let rightSide = document.querySelector(".right-side")
     if (!rightSide) {
         rightSide = createRightSide(topBar);
     }
 
+    const userFieldsDiv = document.querySelector(".container-form__group");
+
+    setUserFieldsDiv(userFieldsDiv, user);
+    
 
     console.log(topBar);
 }
@@ -28,4 +32,23 @@ function createRightSide(topBar) {
 
     topBar.appendChild(rightSide);
     return rightSide;
+}
+
+function setUserFieldsDiv(userFieldsDiv, user) {
+    userFieldsDiv.style.display = "flex";
+    userFieldsDiv.style["flex-direction"] = "column";
+    userFieldsDiv.style.gap = "20px";
+
+    // ids name lastname email
+
+    const nameInput = userFieldsDiv.querySelector("#name");
+    nameInput.value = user.username;
+    
+    const lastnameInput = userFieldsDiv.querySelector("#lastname");
+    lastnameInput.value = user.lastname;
+
+    const emailInput = userFieldsDiv.querySelector("#email");
+    emailInput.value = user.email;
+
+    console.log(nameInput);
 }
