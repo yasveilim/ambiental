@@ -217,6 +217,32 @@ class AdminUsers(Index):
             return redirect("/")
 
         return super(generic.TemplateView, self).dispatch(request, *args, **kwargs)
+    
+class AdminUsersUpdate(generic.View):
+    def put(self, request, *args, **kwargs):
+
+        user_id = kwargs["pk"]
+
+
+        body_unicode = request.body.decode("utf-8")
+        body_data = json.loads(body_unicode)
+
+
+        user = User.objects.get(id=user_id)
+        user.username = body_data["username"]
+        user.last_name = body_data["lastname"]
+        user.email = body_data["email"]
+        
+        user.save()
+
+
+        return JsonResponse({"ok": 200})
+    
+    def dispatch(self, request, *args, **kwargs):
+        if not self.request.user.is_authenticated:
+            return redirect("/")
+
+        return super().dispatch(request, *args, **kwargs)
 
 
 class ForgotPassword(generic.CreateView):
@@ -256,11 +282,6 @@ class ForgotPassword(generic.CreateView):
         # print('I am here, in invalid', form.errors)
         return super().form_invalid(form)
 
-
-from time import sleep
-
-
-# def assign_sharepoint_directory(user_name: str):#    pass
 
 
 class SaveCommentMaterialBook(generic.View):
