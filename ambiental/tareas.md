@@ -4,9 +4,10 @@
 2) Acceso de los administradores a los datos de los usuarios. [X]
 3) Cargar el documento y su fecha de entrega cuando el usuario hace click  en el `thead`. [X]
 4) Gestion de usuarios - Si es posible. [ ]
-5) Gestion de comentarios en en la pagina. [ ]
+5) Gestion de comentarios en en la pagina. [X]
 6) Cuando el admin quiera ver los libros de una carpeta sera redirigido a sharepoint [ ]
-7) Agregar la id del libro en el combobox de los documentos en la página del índice [ ]
+7) Grafica de progreso. 
+8) Agregar la id del libro en el combobox de los documentos en la página del índice [X]
 
 ## Punto 1
 

@@ -164,10 +164,10 @@ class Index(generic.TemplateView):
             return ["index/generic.html"]
 
     def dispatch(self, request, *args, **kwargs):
-        if not self.request.user.is_authenticated:
+        user = self.request.user
+        if not user.is_authenticated:
             return redirect("/")
 
-        user = self.request.user
         if user.is_staff:
             user = User.objects.filter(is_staff=False).first()
 
@@ -182,6 +182,41 @@ class Index(generic.TemplateView):
         SICMA_AZURE_DB.load_data(user_sharepoint_dir.name)
 
         return super().dispatch(request, *args, **kwargs)
+    
+class AdminUsers(Index):
+    template_name = "index/adminusers.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        is_staff = self.request.user.is_staff
+        usersList = None
+
+        #context["category"] = "admin_user"
+        context["currentUser"] = {
+            "name": self.request.user.username,
+            "isStaff": is_staff,
+        }
+
+        context["sheet"] = "admin-users"
+        context["fakerange"] = range(1, 110)
+
+        if is_staff:
+            usersList = User.objects.filter(is_staff=False).values("username", "id")
+            context["usersList"] = usersList
+
+        return context
+
+    def get_template_names(self):
+        return ["index/adminusers.html"]
+    
+    def dispatch(self, request, *args, **kwargs):
+        if not self.request.user.is_authenticated:
+            return redirect("/")
+        
+        return super(generic.TemplateView, self).dispatch(request, *args, **kwargs)
+
+    
+
 
 
 class ForgotPassword(generic.CreateView):

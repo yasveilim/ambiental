@@ -1,0 +1,56 @@
+{% extends "index/indexbase.html" %} {% load static %} {% block content_head %}
+<script
+  type="module"
+  src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+></script>
+<script
+  nomodule
+  src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+></script>
+
+<link
+  href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+  rel="stylesheet"
+/>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+
+<script src="{% static 'js/adminusers.js' %}"></script>
+
+<link rel="stylesheet" href="{% static 'css/panel.css' %}" />
+<link rel="stylesheet" href="{% static 'css/options.css' %}" />
+<link rel="stylesheet" href="{% static 'css/adminusers.css' %}" />
+
+{% endblock content_head%} {% load static %} {% block content %}
+
+<script>
+    let loaderDiv = document.querySelector("div.loader-div");
+    loaderDiv.style.display = "none";
+</script>
+
+{% if currentUser.isStaff %}
+  <div class="top-bar">
+    <button class="add-button">Agregar</button>
+  </div>
+{% endif %}
+
+
+<div class="users-list-container">
+  <div class="flex-container">
+    {% for f in fakerange %}
+      <button class='button-select-user' onclick="selectUser(event)"> 
+        <div class="user-card">
+            <div class="user-image-div">
+              <img src="{% static 'alejandro.jpeg' %}" alt="User Image" class="user-image">
+            </div>
+            <div class="user-info">
+              <h3 class="user-name">Alejandro</h3>
+              <p class="user-lastname">Perez</p>
+            </div>
+        </div>
+      </button>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

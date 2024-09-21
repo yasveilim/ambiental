@@ -26,7 +26,7 @@
 
       <p class="logo">{{ currentUser.name }}</p>
 
-      {% if currentUser.isStaff %}
+      {% if currentUser.isStaff and sheet != "admin-users" %}
         <div class="users-list-container">
           <select id="users-list">
             {% for user in usersList %}
@@ -87,13 +87,22 @@
       </div>
   </a>
 
+  {% if currentUser.isStaff %}
+    <a href="{% url 'admin_users' %}">
+      <div class="option">       
+          <i class="fa-solid fa-user-tie" title="Usuarios"></i>
+          <h4>Usuarios</h4>
+      </div>
+    </a>
+  {% endif %}
+
   <a href="{% url 'logout' %}">
     <div class="option">
        
         <i class="fa fa-sign-out" title="Salir"></i>
         <h4>Salir</h4>
     </div>
-</a>
+  </a>
         </div>
       </div>
     </nav>
@@ -109,8 +118,9 @@
       {% block content %}{% endblock content %}
     </main>
 
-  
-    <script src="{% static 'js/indexlogic.js' %}"></script>
+    {% if category %}
+      <script src="{% static 'js/indexlogic.js' %}"></script>
+    {% endif %}
   </body>
 </html>
 
