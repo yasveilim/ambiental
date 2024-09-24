@@ -203,7 +203,7 @@ class AdminUsers(Index):
 
         if is_staff:
             usersList = User.objects.filter(is_staff=False).values(
-                "username", "last_name", "id", "email"
+                "username", "last_name",  "email", "id"
             )
             context["usersList"] = usersList
 
@@ -217,8 +217,17 @@ class AdminUsers(Index):
             return redirect("/")
 
         return super(generic.TemplateView, self).dispatch(request, *args, **kwargs)
-    
-class AdminUsersUpdate(generic.View):
+
+        
+class AdminUsersAPI(generic.View):
+
+    def get(self, request, *args, **kwargs):
+        user_id = kwargs["pk"]
+
+        user = User.objects.get(id=user_id)
+
+        return JsonResponse({"username": user.username, "lastname": user.last_name, "email": user.email})
+
     def put(self, request, *args, **kwargs):
 
         user_id = kwargs["pk"]
@@ -238,7 +247,19 @@ class AdminUsersUpdate(generic.View):
 
         return JsonResponse({"ok": 200})
     
+    def delete(self, request, *args, **kwargs):
+        print("Deleting user: ", kwargs)
+        user_id = kwargs["pk"]
+
+        user = User.objects.get(id=user_id)
+        user.delete()
+
+        print("User deleted: ", user, user_id)
+
+        return JsonResponse({"ok": 200})
+    
     def dispatch(self, request, *args, **kwargs):
+        print("Dispatching user: ", kwargs)
         if not self.request.user.is_authenticated:
             return redirect("/")
 

@@ -1,5 +1,18 @@
-function selectUser(event, user) {
-  console.log(event, "user=> ", user);
+async function selectUser(event, userID) {
+  let csrftoken = Cookies.get("csrftoken");
+  let config = {
+    headers: {
+      "X-CSRFToken": csrftoken,
+    },
+  };
+
+  console.log("Selecting user: ", userID);
+  let responseData = await axios.get(
+    `/api/admin-users/${userID.id}/`,
+    null,
+    config
+  );
+  user = responseData.data;
 
   const topBar = document.querySelector(".top-bar ");
 
@@ -18,21 +31,21 @@ function selectUser(event, user) {
       email: emailInput.value,
     };
 
-    console.log("Updating user: ", user.id);
-    let csrftoken = Cookies.get('csrftoken');
-    let config = {
-        headers:  {
-            'X-CSRFToken': csrftoken
-        },
-    };
-    
-    axios.put(`/api/admin-users/${user.id}/`, userUpdated, config).then((response) => { 
-      console.log("response=>", response);
-    });
+    axios
+      .put(`/api/admin-users/${userID.id}/`, userUpdated, config)
+      .then((response) => {
+        console.log("response=>", response);
+      });
+  };
+
+  const deleteUser = () => {
+    console.log("Deleting user: ", userID, config);
+
+    axios.delete(`/api/admin-users/${userID.id}/`, config);
   };
 
   if (!rightSide) {
-    rightSide = createRightSide(topBar, updateUser);
+    rightSide = createRightSide(topBar, updateUser, deleteUser);
   }
 
   const userFieldsDiv = document.querySelector(".container-form__group");
@@ -40,7 +53,7 @@ function selectUser(event, user) {
   setUserFieldsDiv(userFieldsDiv, user);
 }
 
-function createRightSide(topBar, onUpdate) {
+function createRightSide(topBar, onUpdate, onDelete) {
   let rightSide = document.createElement("div");
   rightSide.classList.add("right-side");
 
@@ -52,6 +65,7 @@ function createRightSide(topBar, onUpdate) {
 
   let deleteButton = document.createElement("button");
   deleteButton.textContent = "Borrar";
+  deleteButton.onclick = onDelete;
   deleteButton.classList.add("delete-button");
   rightSide.appendChild(deleteButton);
 

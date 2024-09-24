@@ -38,7 +38,7 @@
 <div class="users-list-container">
   <div class="flex-container">
     {% for user in usersList %}
-    <button class="button-select-user" onclick='selectUser(event, { "id": "{{ user.id }}", "username": "{{ user.username }}", "lastname": "{{ user.last_name }}", "email": "{{ user.email }}" })'>
+    <button class="button-select-user" onclick='selectUser(event, { "id": "{{ user.id }}" })' id="user-card-{{ user.id}}">
       <div class="user-card">
         <div class="user-image-div">
           <img
