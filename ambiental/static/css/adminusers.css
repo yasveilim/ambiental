@@ -9,6 +9,8 @@
   justify-content: space-between;
 }
 
+.add-user-button,
+.cancel-add-user-button,
 .update-button,
 .delete-button,
 .add-button,
@@ -34,6 +36,8 @@
   width: 100px;
 }
 
+.add-user-button:hover,
+.cancel-add-user-button:hover,
 .update-button:hover,
 .delete-button:hover,
 .add-button:hover,
@@ -41,6 +45,8 @@
   background-color: #f7fafa;
 }
 
+.add-user-button:focus,
+.cancel-add-user-button:focus,
 .update-button:focus,
 .delete-button:focus,
 .add-button:focus,
