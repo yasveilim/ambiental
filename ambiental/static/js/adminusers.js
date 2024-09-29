@@ -10,8 +10,40 @@ async function newUser() {
   let rightSide = document.querySelector(".right-side");
   let rightSideNewUser = document.querySelector(".right-side-new-user");
 
+
+  const createUser = () => {
+    // extract user data from user html
+    const nameInput = userFieldsDiv.querySelector("#name");
+    const lastnameInput = userFieldsDiv.querySelector("#lastname");
+    const emailInput = userFieldsDiv.querySelector("#email");
+    const passwordInput = userFieldsDiv.querySelector("#newuser-password");
+
+    // update user data
+    const userUpdated = {
+      username: nameInput.value,
+      lastname: lastnameInput.value,
+      password: passwordInput.value || "",
+      email: emailInput.value,
+    };
+
+    axios
+      .post(`/api/admin-users/`, userUpdated, config)
+      .then((response) => {
+        console.log("response=>", response);
+      });
+  };
+
+  const cancelCreateUser = () => {
+    const oldRightSideNewUser = document.querySelector(".right-side-new-user");
+    console.log("oldRightSideNewUser=>", oldRightSideNewUser);
+    oldRightSideNewUser.remove();
+
+    const userFieldsDiv = document.querySelector(".container-form__group");
+    userFieldsDiv.style.display = "none";
+  };
+
   if (!rightSideNewUser) {
-    rightSideNewUser = createRightSideNewUser(topBar);
+    rightSideNewUser = createRightSideNewUser(topBar, createUser, cancelCreateUser);
   }
 
   if (rightSide) {
@@ -24,28 +56,28 @@ async function newUser() {
     email: ""
   };
 
-  const createUser = () => {};
-  const cancelCreateUser = () => {};
 
   const userFieldsDiv = document.querySelector(".container-form__group");
 
   setUserFieldsDiv(
-    userFieldsDiv, newUserObject, createUser, cancelCreateUser
+    userFieldsDiv, newUserObject, true
   );
 }
 
-function createRightSideNewUser(topBar) {
+function createRightSideNewUser(topBar, createUserFn, cancelCreateUserFn) {
   let rightSide = document.createElement("div");
-  rightSide.classList.add("right-side");
+  rightSide.classList.add("right-side-new-user");
 
   let updateButton = document.createElement("button");
   updateButton.textContent = "Crear";
+  updateButton.onclick = createUserFn;
 
   updateButton.classList.add("add-user-button");
   rightSide.appendChild(updateButton);
 
   let deleteButton = document.createElement("button");
   deleteButton.textContent = "Cancelar";
+  deleteButton.onclick = cancelCreateUserFn;
   deleteButton.classList.add("cancel-add-user-button");
   rightSide.appendChild(deleteButton);
 
@@ -77,11 +109,13 @@ async function selectUser(event, userID) {
     const nameInput = userFieldsDiv.querySelector("#name");
     const lastnameInput = userFieldsDiv.querySelector("#lastname");
     const emailInput = userFieldsDiv.querySelector("#email");
+    const passwordInput = userFieldsDiv.querySelector("#newuser-password");
 
     // update user data
     const userUpdated = {
       username: nameInput.value,
       lastname: lastnameInput.value,
+      password: passwordInput.value || "",
       email: emailInput.value,
     };
 
@@ -114,10 +148,15 @@ async function selectUser(event, userID) {
 
   const userFieldsDiv = document.querySelector(".container-form__group");
 
-  setUserFieldsDiv(userFieldsDiv, user, updateUser, deleteUser);
+  setUserFieldsDiv(userFieldsDiv, user, false);
 }
 
 function createRightSide(topBar) {
+  const rightSideNewUser = document.querySelector(".right-side-new-user");
+  if (rightSideNewUser) {
+    rightSideNewUser.remove();
+  }
+
   let rightSide = document.createElement("div");
   rightSide.classList.add("right-side");
 
@@ -151,4 +190,5 @@ function setUserFieldsDiv(userFieldsDiv, user) {
 
   const emailInput = userFieldsDiv.querySelector("#email");
   emailInput.value = user.email;
+
 }
