@@ -1,3 +1,78 @@
+async function loadUsers() {
+  const container = document.querySelector(".flex-container");
+
+  // 1. Eliminar todos los nodos hijos de "flex-container"
+  while (container.firstChild) {
+    console.log("container.firstChild=>", container.firstChild);
+    container.removeChild(container.firstChild);
+  }
+
+  console.log("container=>", container.chh);
+
+  try {
+    /*
+    let csrftoken = Cookies.get("csrftoken");
+  let config = {
+    headers: {
+      "X-CSRFToken": csrftoken,
+    },
+  };
+  */
+    // 2. Hacer la solicitud a la API
+    const response = await axios.get("/api/admin-users/");
+    if (response.status != 200) {
+      throw new Error("Error al obtener los usuarios");
+    }
+    const usersList = response.data.users; // Asumiendo que la API devuelve un JSON con la lista de usuarios
+
+    // 3. Crear y agregar los nuevos elementos de usuario
+    usersList.forEach((user) => {
+      // Crear el botón de usuario
+      const button = document.createElement("button");
+      button.classList.add("button-select-user");
+      button.setAttribute(
+        "onclick",
+        `selectUser(event, { "id": "${user.id}" })`
+      );
+      button.id = `user-card-${user.id}`;
+
+      // Crear la estructura interna del botón
+      const userCard = document.createElement("div");
+      userCard.classList.add("user-card");
+
+      const userImageDiv = document.createElement("div");
+      userImageDiv.classList.add("user-image-div");
+
+      const img = document.createElement("img");
+      img.src = "/static/alejandro.jpeg"; // Puedes cambiar esta línea según la lógica de la imagen
+      img.alt = "User Image";
+      img.classList.add("user-image");
+
+      const userInfo = document.createElement("div");
+      userInfo.classList.add("user-info");
+
+      const userName = document.createElement("h3");
+      userName.classList.add("user-name");
+      userName.textContent = user.username;
+
+      const userEmail = document.createElement("p");
+      userEmail.classList.add("user-lastname");
+      userEmail.textContent = user.email;
+
+      // Añadir todo a su lugar
+      userImageDiv.appendChild(img);
+      userInfo.appendChild(userName);
+      userInfo.appendChild(userEmail);
+      userCard.appendChild(userImageDiv);
+      userCard.appendChild(userInfo);
+      button.appendChild(userCard);
+      container.appendChild(button);
+    });
+  } catch (error) {
+    console.error("Error al cargar los usuarios:", error);
+  }
+}
+
 async function newUser() {
   let csrftoken = Cookies.get("csrftoken");
   let config = {
@@ -9,7 +84,6 @@ async function newUser() {
   const topBar = document.querySelector(".top-bar ");
   let rightSide = document.querySelector(".right-side");
   let rightSideNewUser = document.querySelector(".right-side-new-user");
-
 
   const createUser = () => {
     // extract user data from user html
@@ -28,8 +102,15 @@ async function newUser() {
 
     axios
       .post(`/api/admin-users/`, userUpdated, config)
-      .then((response) => {
+      .then(async (response) => {
         console.log("response=>", response);
+        await loadUsers();
+
+        setUserFieldsDiv(userFieldsDiv, {
+          username: "",
+          lastname: "",
+          email: "",
+        });
       });
   };
 
@@ -43,7 +124,11 @@ async function newUser() {
   };
 
   if (!rightSideNewUser) {
-    rightSideNewUser = createRightSideNewUser(topBar, createUser, cancelCreateUser);
+    rightSideNewUser = createRightSideNewUser(
+      topBar,
+      createUser,
+      cancelCreateUser
+    );
   }
 
   if (rightSide) {
@@ -53,15 +138,12 @@ async function newUser() {
   let newUserObject = {
     username: "",
     lastname: "",
-    email: ""
+    email: "",
   };
-
 
   const userFieldsDiv = document.querySelector(".container-form__group");
 
-  setUserFieldsDiv(
-    userFieldsDiv, newUserObject, true
-  );
+  setUserFieldsDiv(userFieldsDiv, newUserObject);
 }
 
 function createRightSideNewUser(topBar, createUserFn, cancelCreateUserFn) {
@@ -191,4 +273,10 @@ function setUserFieldsDiv(userFieldsDiv, user) {
   const emailInput = userFieldsDiv.querySelector("#email");
   emailInput.value = user.email;
 
+  const passwordInput = userFieldsDiv.querySelector("#newuser-password");
+  if (user.password) {
+    passwordInput.value = user.password;
+  } else {
+    passwordInput.value = "";
+  }
 }

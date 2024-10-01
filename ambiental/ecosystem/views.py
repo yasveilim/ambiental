@@ -220,9 +220,29 @@ class AdminUsers(Index):
 
         
 class AdminUsersAPI(generic.View):
+    def post(self, request, *args, **kwargs):
+        body_unicode = request.body.decode("utf-8")
+        body_data = json.loads(body_unicode)
+
+        user = User.objects.create(
+            username=body_data["username"],
+            last_name=body_data["lastname"],
+            #password=body_data["password"],
+            email=body_data["email"],
+            is_staff=False,
+        )
+
+        user.set_password(body_data["password"])
+        user.save()
+
+        return JsonResponse({"ok": 200})
 
     def get(self, request, *args, **kwargs):
-        user_id = kwargs["pk"]
+        user_id = kwargs.get("pk")
+
+        if user_id is None:
+            users = User.objects.filter(is_staff=False).values("username", "last_name", "email", "id")
+            return JsonResponse({"users": list(users)})
 
         user = User.objects.get(id=user_id)
 

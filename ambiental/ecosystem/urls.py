@@ -29,6 +29,7 @@ urlpatterns = [
     path("index/<slug:site>", views.Index.as_view(), name="index"),
     path("index/", views.Index.as_view(), name="index_no_site"),
     path("admin-users/", views.AdminUsers.as_view(), name="admin_users"),
+    path("api/admin-users/", views.AdminUsersAPI.as_view()), 
     path("api/admin-users/<int:pk>/", views.AdminUsersAPI.as_view()), 
     path("forgot-password/", views.ForgotPassword.as_view(), name="forgotpassword"),
     path(
