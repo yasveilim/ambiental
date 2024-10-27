@@ -16,6 +16,7 @@
 />
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <link rel="stylesheet" href="{% static 'css/advance.css' %}" />
 <link rel="stylesheet" href="{% static 'css/advance-table.css' %}" />
@@ -30,7 +31,6 @@
             <li class="active"><a href="#tab1">General Data</a></li>
             <li><a href="#tab2">Statistics</a></li>
         </ul>
-
         <div class="tab-content">
             <div id="tab1" class="tab active">
                 <table>
@@ -112,6 +112,33 @@
             <div id="tab2" class="tab">
                 <!-- Content for Statistics tab goes here -->
                 <p>Statistics content will be added here.</p>
+            <canvas id="nvivoBarChart" width="400" height="200"></canvas>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const ctx = document.getElementById('nvivoBarChart').getContext('2d');
+                    const nvivoBarChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['GENERALES', 'RUIDO', 'AGUA', 'SUELO', 'RPE', 'RME Y RSU', 'RECNAT', 'ENERGÍA', 'RIESGO', 'SGA'],
+                            datasets: [{
+                                label: 'Topics',
+                                data: [12, 19, 3, 5, 2, 3, 7, 8, 9, 6], // Example data, replace with actual values
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                });
+            </script>
             </div>
         </div>
     </div>
