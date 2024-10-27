@@ -18,36 +18,122 @@
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
 
 <link rel="stylesheet" href="{% static 'css/advance.css' %}" />
+<link rel="stylesheet" href="{% static 'css/advance-table.css' %}" />
+
 
 
 {% endblock content_head%}
 
 {% block content %}
-    <h2>Advance</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>RUBRO</th>
-                <th>REQUERIDOS TOTALES</th>
-                <th>NA</th>
-                <th>REQUERIMIENTOS APLICABLES</th>
-                <th class="avance-subtable">
-                    <span>AVANCE</span>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ENTREGADO</th>
-                                <th>PENDIENTE</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </th>
-                <th>TOTAL</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Add your table rows here -->
-        </tbody>
-    </table>
+    <div class="tabs">
+        <ul class="tab-links">
+            <li class="active"><a href="#tab1">General Data</a></li>
+            <li><a href="#tab2">Statistics</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="tab1" class="tab active">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>RUBRO</th>
+                            <th>REQUERIDOS TOTALES</th>
+                            <th>NA</th>
+                            <th>REQUERIMIENTOS APLICABLES</th>
+                            <th class="avance-subtable">
+                                <span>AVANCE</span>
+                                <table>
+                                    <thead class="thead-bo-border">
+                                        <tr>
+                                            <th>ENTREGADO</th>
+                                            <th>PENDIENTE</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </th>
+                            <th>TOTAL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Rubro 1</td>
+                            <td>10</td>
+                            <td>2</td>
+                            <td>8</td>
+                            <td>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>3</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>Rubro 2</td>
+                            <td>15</td>
+                            <td>1</td>
+                            <td>14</td>
+                            <td>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>10</td>
+                                            <td>4</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td>Rubro 3</td>
+                            <td>20</td>
+                            <td>0</td>
+                            <td>20</td>
+                            <td>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td>15</td>
+                                            <td>5</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td>20</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="tab2" class="tab">
+                <!-- Content for Statistics tab goes here -->
+                <p>Statistics content will be added here.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.tab-links a');
+            const tabContents = document.querySelectorAll('.tab');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+
+                    tabs.forEach(t => t.parentElement.classList.remove('active'));
+                    tabContents.forEach(tc => tc.classList.remove('active'));
+
+                    this.parentElement.classList.add('active');
+                    target.classList.add('active');
+                });
+            });
+        });
+    </script>
 
 {% endblock content %}
