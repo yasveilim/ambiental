@@ -44,7 +44,7 @@ async function loadUsers() {
       userImageDiv.classList.add("user-image-div");
 
       const img = document.createElement("img");
-      img.src = "/static/alejandro.jpeg"; // Puedes cambiar esta línea según la lógica de la imagen
+      img.src = "/static/image.png"; // Puedes cambiar esta línea según la lógica de la imagen
       img.alt = "User Image";
       img.classList.add("user-image");
 

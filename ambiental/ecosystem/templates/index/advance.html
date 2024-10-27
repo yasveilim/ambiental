@@ -1,5 +1,53 @@
 {% extends "index/indexbase.html" %}
 
+{% load static %} {% block content_head %}
+<script
+  type="module"
+  src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+></script>
+<script
+  nomodule
+  src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+></script>
+
+<link
+  href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+  rel="stylesheet"
+/>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+
+<link rel="stylesheet" href="{% static 'css/advance.css' %}" />
+
+
+{% endblock content_head%}
+
 {% block content %}
     <h2>Advance</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>RUBRO</th>
+                <th>REQUERIDOS TOTALES</th>
+                <th>NA</th>
+                <th>REQUERIMIENTOS APLICABLES</th>
+                <th class="avance-subtable">
+                    <span>AVANCE</span>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ENTREGADO</th>
+                                <th>PENDIENTE</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Add your table rows here -->
+        </tbody>
+    </table>
+
 {% endblock content %}
