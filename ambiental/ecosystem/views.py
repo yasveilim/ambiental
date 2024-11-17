@@ -17,6 +17,7 @@ from django.views.generic.edit import BaseUpdateView
 
 from sharepoint.mailbox import send_email
 from sharepoint.sicma import SicmaDB
+from sharepoint.counting import analyze_materials
 from . import models, utils, forms
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
@@ -26,7 +27,6 @@ from datetime import datetime
 
 
 SICMA_AZURE_DB = SicmaDB()
-
 
 class Home(generic.TemplateView):
     template_name = "home.html"
@@ -546,15 +546,40 @@ class Material(generic.View):
         return super().dispatch(request, *args, **kwargs)
 
 
+class AnalyzeMaterials(generic.View):
+    def get(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
+        data_analyzed = analyze_materials(SICMA_AZURE_DB.data)
+
+        return JsonResponse(data_analyzed)
+   
+    def dispatch(self, request, *args, **kwargs):
+        user = self.request.user
+        if not user.is_authenticated:
+            return redirect("/")
+        
+        id_user = kwargs.get("targetuser")
+
+        if not id_user:
+            return JsonResponse({"error": "User not found"}, status=404)
+        
+        if not user.is_staff and user.id != id_user:
+            return JsonResponse({"error": "Forbidden"}, status=403)
+
+        user_sharepoint_dir = models.UserSharepointDir.objects.filter(user__id=id_user).first()
+
+        SICMA_AZURE_DB.load_data(user_sharepoint_dir.name)
+        return super().dispatch(request, *args, **kwargs)
+
 class Category(generic.View):
 
     def get(self, request: HttpRequest, *args: str, **kwargs: Any) -> HttpResponse:
         return JsonResponse(
             {
-                "water": "Agua",
                 "air-noise": "Aire y ruído",
+                "water": "Agua",
                 "waste": "Residuos",
                 "recnat-risks": "RECNAT y riesgo",
+                "others": "Otros",
             }
         )
 

@@ -48,6 +48,7 @@ urlpatterns = [
         views.SaveMaterialBook.as_view(),
         name="save_material_book",
     ),
+    path("api/statistics/materials/<int:targetuser>", views.AnalyzeMaterials.as_view(), name="statistics_materials"),
     path("api/category/", views.Category.as_view(), name="category"),
     path("api/material/<slug:category>", views.Material.as_view(), name="material"),
     path(

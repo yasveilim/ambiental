@@ -56,8 +56,12 @@ function configOptionElement(className, itemNamesList, callback) {
   console.log("loaderDiv: ", loaderDiv);
   loaderDiv.style.display = "none";
 
-  const wrapper = document.querySelector(className),
-    selectBtn = wrapper.querySelector(".select-btn"),
+  const wrapper = document.querySelector(className);
+  if (wrapper === null) {
+    return;
+  }
+  
+  const selectBtn = wrapper.querySelector(".select-btn"),
     searchInp = wrapper.querySelector("input"),
     options = wrapper.querySelector(".options");
 
@@ -157,10 +161,15 @@ function setCommentsModal(newValue) {
   commentsModalText.value = newValue;
   return commentsModal;
 }
+const possibleModal = document.querySelector(
+  "div.modal-comments .close-modal-btn"
+);
 
-document.querySelector("div.modal-comments .close-modal-btn").onclick = () => {
-  setCommentsModal("");
-};
+if (possibleModal !== null) {
+  possibleModal.onclick = () => {
+    setCommentsModal("");
+  };
+}
 
 async function showComments() {
   let commentMessage = "";
@@ -176,7 +185,7 @@ async function showComments() {
     // console.log("Token is: ", csrftoken);
     const response = await axios.post(
       `/api/comment/`,
-      {...ctx, bookId: globalBookSelect.doc_number, category: sectionName},
+      { ...ctx, bookId: globalBookSelect.doc_number, category: sectionName },
       config
     );
 
@@ -185,7 +194,6 @@ async function showComments() {
   } catch (error) {
     console.error("Error fetching data: ", error);
   }
-
 
   let commentsModal = setCommentsModal(commentMessage);
   commentsModal.querySelector(".comments-btn").onclick = async () => {
@@ -217,7 +225,7 @@ async function showComments() {
     }
 
     commentsModal.classList.toggle("hidden");
-  }
+  };
 }
 
 function loadMaterials(categories, materials) {
@@ -338,8 +346,9 @@ function loadMaterials(categories, materials) {
   );
 }
 
-if (mainModal().style.display !== "none") {
-  mainModal().style.display = "none";
+const localmainModal = mainModal();
+if (localmainModal && localmainModal.style.display !== "none") {
+  localmainModal.style.display = "none";
 }
 
 function getCtx() {
