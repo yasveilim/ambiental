@@ -116,24 +116,20 @@
             <canvas id="nvivoBarChart" width="400" height="200"></canvas>
 
             <script>
-                //""
+                // TODO: Reload page when admin change the user selector
 
                 axios.get('/api/category/').then(async (response) => {
                     const categories = response.data;
                     console.log(categories);
                     
                     const tableBody = document.querySelector('.tbody-advance');
-                    // http://127.0.0.1:8000/api/statistics/materials/1
-                    // FIX: Change the id to the actual id of the user and change id when user clicks on the user selector 
-                    const request = await axios.get(`/api/statistics/materials/1`);
+                    const ctx = getCtx();
+                    const request = await axios.get(`/api/statistics/materials/${ctx.id}`);
                     const materialData = Object.values(request.data);
 
-                    console.log("Current Material Data: ", materialData);
-                    
-
+                
                     Object.entries(categories).forEach(([category, categorName], index) => {
                         const currentMaterialData = materialData[index];
-                        // console.log("Coss: ", category, categorName);
 
                         const tr = document.createElement('tr');
                         tr.innerHTML = `
