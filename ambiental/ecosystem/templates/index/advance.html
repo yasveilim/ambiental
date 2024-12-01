@@ -123,8 +123,9 @@
                     console.log(categories);
                     
                     const tableBody = document.querySelector('.tbody-advance');
-                    const ctx = getCtx();
-                    const request = await axios.get(`/api/statistics/materials/${ctx.id}`);
+                    const {targetUser} = getCtx();
+                    console.log("My ctx is +>", targetUser);
+                    const request = await axios.get(`/api/statistics/materials/${targetUser.id}`);
                     const materialData = Object.values(request.data);
 
                 

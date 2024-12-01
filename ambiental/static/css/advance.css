@@ -51,3 +51,35 @@
   justify-content: center;
   align-items: center;
 }
+
+
+#users-list {
+	padding: 10px 20px;
+	font-size: 16px;
+	color: #333;
+	background-color: #add8e6; /* Pastel blue */
+	border: none;
+	border-radius: 5px;
+	outline: none;
+	cursor: pointer;
+	appearance: none; /* Remove default arrow in some browsers */
+	-webkit-appearance: none; /* Remove default arrow in Safari and Chrome */
+	-moz-appearance: none; /* Remove default arrow in Firefox */
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M7.646 4.854a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8 5.707l-2.646 2.647a.5.5 0 0 1-.708-.708l3-3z"/></svg>');
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+	background-size: 16px;
+	padding-right: 30px;
+}
+
+#users-list.open {
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/></svg>');
+}
+
+#users-list:hover {
+	background-color: #b9dcef; /* Slightly lighter pastel blue on hover */
+}
+
+#users-list:focus {
+	box-shadow: 0 0 5px #add8e6;
+}
