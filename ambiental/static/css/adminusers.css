@@ -73,7 +73,7 @@
   gap: 5px;
 
   height: 88vh;
-  width: 10%;
+  width: 20%;
   overflow-y: auto;
   scrollbar-color: #f1f2f5 #c9cdda;
 }
@@ -140,6 +140,12 @@
   touch-action: manipulation;
 }
 
+.users-list-container {
+	display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
 .userfields-div {
   display: flex;
   width: 100%;
@@ -155,6 +161,7 @@
 .main-content-user {
   display: flex;
   justify-content: center;
+  margin-top: 100px;
   background-color: transparent;
   width: 88%;
   height: 100%;
